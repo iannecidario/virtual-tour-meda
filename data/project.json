@@ -1,0 +1,45 @@
+{
+  "version": 4,
+  "settings": {
+    "initialSceneId": "casa-contadina"
+  },
+  "media": {
+    "collections": [],
+    "items": [
+      {
+        "id": "casa-contadina-360",
+        "name": "Casa Contadina 360",
+        "description": "Panorama principale della Casa Contadina.",
+        "category": "Panorami 360",
+        "keywords": [
+          "casa contadina",
+          "panorama"
+        ],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 0,
+        "uploadedAt": "2026-07-08T00:00:00.000Z",
+        "path": "./assets/panorami/casa-contadina-360.jpeg",
+        "fileName": "casa-contadina-360.jpeg"
+      }
+    ]
+  },
+  "tours": [],
+  "scenes": [
+    {
+      "id": "casa-contadina",
+      "title": "Casa Contadina",
+      "description": "Ambiente domestico della tradizione contadina aquiloniese.",
+      "panorama": "./assets/panorami/casa-contadina-360.jpeg",
+      "cover": "./assets/panorami/casa-contadina-360.jpeg",
+      "panoramaMediaId": "casa-contadina-360",
+      "coverMediaId": "casa-contadina-360",
+      "order": 1,
+      "defaultYaw": "150deg",
+      "defaultPitch": "-4deg",
+      "settings": {},
+      "links": [],
+      "hotspots": []
+    }
+  ]
+}

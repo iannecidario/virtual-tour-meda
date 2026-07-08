@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#BE1622">
+    <meta
+      name="description"
+      content="Visualizzatore panoramico 360 gradi del Museo Etnografico di Aquilonia."
+    >
+    <title>MEdA | Visualizzatore 360</title>
+    <link rel="icon" href="./assets/icons/meda-mark.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.3/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5.14.3/index.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+          "@photo-sphere-viewer/core": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.3/index.module.js",
+          "@photo-sphere-viewer/gyroscope-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/gyroscope-plugin@5.14.3/index.module.js",
+          "@photo-sphere-viewer/markers-plugin": "https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5.14.3/index.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body data-app-mode="visitor">
+    <div class="app-shell">
+      <header class="topbar" aria-label="Intestazione del museo">
+        <a class="brand" href="./" aria-label="MEdA - Museo Etnografico di Aquilonia">
+          <picture>
+            <source media="(min-width: 1024px)" srcset="./assets/brand/meda-orizzontale-rosso.png">
+            <img
+              class="brand-logo"
+              src="./assets/brand/meda-verticale-rosso.png"
+              alt="MEdA - Museo Etnografico di Aquilonia Beniamino Tartaglia"
+              width="846"
+              height="828"
+            >
+          </picture>
+        </a>
+        <button class="explore-toggle" id="explore-toggle" type="button" aria-controls="exploration-panel" aria-expanded="false">
+          Esplora
+        </button>
+        <button class="tours-toggle" id="tours-toggle" type="button">
+          Percorsi
+        </button>
+        <p class="scene-title" id="scene-title">Casa Contadina</p>
+      </header>
+
+      <main class="viewer-stage" aria-label="Visualizzatore panoramico a 360 gradi">
+        <p class="app-message" id="app-message" role="status" aria-live="polite" hidden></p>
+        <nav class="tour-navigation" aria-label="Navigazione tra scene">
+          <button type="button" id="scene-back" disabled>Torna alla scena precedente</button>
+          <label>
+            Vai a...
+            <select id="scene-jump"></select>
+          </label>
+        </nav>
+        <section class="viewer-panel" aria-labelledby="scene-title">
+          <div class="loading-overlay" id="loading-overlay" aria-live="polite">
+            <div class="loading-mark" aria-hidden="true"></div>
+            <span>Caricamento panorama</span>
+          </div>
+          <div id="viewer" class="panorama-viewer"></div>
+        </section>
+
+        <section class="guided-tour-bar" id="guided-tour-bar" aria-label="Visita guidata" hidden>
+          <div class="guided-tour-bar__heading">
+            <strong id="guided-tour-title"></strong>
+            <span id="guided-tour-position"></span>
+          </div>
+          <progress id="guided-tour-progress" value="0" max="1"></progress>
+          <div class="guided-tour-bar__actions">
+            <button type="button" data-guided-tour-action="previous">Precedente</button>
+            <button type="button" class="primary-action" data-guided-tour-action="next">Successiva</button>
+            <button type="button" data-guided-tour-action="stop">Interrompi percorso</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="statusbar" aria-label="Informazioni sul visualizzatore">
+        <span>Muovi, esplora e ingrandisci la sala</span>
+        <span>Schermo intero disponibile dai controlli</span>
+      </footer>
+    </div>
+
+    <dialog class="manager-dialog tour-catalog-dialog" id="tour-catalog-dialog" aria-labelledby="tour-catalog-title">
+      <form method="dialog">
+        <header>
+          <h2 id="tour-catalog-title">Visite Guidate</h2>
+          <button class="icon-action" type="button" data-tour-catalog-action="close" aria-label="Chiudi">
+            <span aria-hidden="true">x</span>
+          </button>
+        </header>
+        <div class="tour-catalog-list" id="tour-catalog-list"></div>
+      </form>
+    </dialog>
+
+    <aside class="exploration-panel" id="exploration-panel" aria-labelledby="exploration-title" aria-hidden="true" inert>
+      <div class="exploration-panel__sheet">
+        <header>
+          <div>
+            <span>Centro Esplorazione</span>
+            <h2 id="exploration-title">Esplora il museo</h2>
+          </div>
+          <button class="icon-action" type="button" data-exploration-action="close" aria-label="Chiudi">
+            <span aria-hidden="true">x</span>
+          </button>
+        </header>
+
+        <form class="exploration-filters" id="exploration-filters" role="search">
+          <label class="exploration-search">
+            <span>Cerca nel museo</span>
+            <input id="exploration-search" type="search" autocomplete="off" placeholder="Cerca oggetti, temi, sale...">
+          </label>
+          <div class="exploration-filter-grid">
+            <label>
+              Categoria
+              <select id="exploration-category"></select>
+            </label>
+            <label>
+              Tipologia
+              <select id="exploration-kind">
+                <option value="">Tutti i contenuti</option>
+                <option value="hotspot">Hotspot</option>
+                <option value="scene">Scene</option>
+                <option value="media">Media</option>
+                <option value="link">Collegamenti</option>
+              </select>
+            </label>
+            <label>
+              Scena
+              <select id="exploration-scene"></select>
+            </label>
+          </div>
+          <fieldset>
+            <legend>Contenuti presenti</legend>
+            <label><input name="image" type="checkbox"> Immagine</label>
+            <label><input name="audio" type="checkbox"> Audio</label>
+            <label><input name="video" type="checkbox"> Video</label>
+            <label><input name="document" type="checkbox"> Documento</label>
+          </fieldset>
+          <button type="button" data-exploration-action="reset">Azzera filtri</button>
+        </form>
+
+        <div class="exploration-panel__content">
+          <section>
+            <h3>Esplora per categoria</h3>
+            <div class="exploration-chips" id="exploration-categories"></div>
+          </section>
+          <section>
+            <h3>Scene del museo</h3>
+            <div class="exploration-scenes" id="exploration-scenes"></div>
+          </section>
+          <section class="exploration-results-section">
+            <div class="exploration-results-heading">
+              <h3>Risultati</h3>
+              <span id="exploration-result-count" aria-live="polite"></span>
+            </div>
+            <div class="exploration-results" id="exploration-results"></div>
+          </section>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="info-panel" id="info-panel" aria-labelledby="info-panel-title" aria-live="polite" aria-hidden="true" inert>
+      <div class="info-panel__sheet">
+        <header class="info-panel__header">
+          <span class="info-panel__eyebrow">Scheda catalogo</span>
+          <button class="icon-action" type="button" data-info-panel-action="close" aria-label="Chiudi">
+            <span aria-hidden="true">x</span>
+          </button>
+        </header>
+
+        <div class="info-panel__content">
+          <h2 id="info-panel-title"></h2>
+          <p class="info-panel__category" id="info-panel-category"></p>
+          <div class="info-panel__blocks" id="info-panel-blocks"></div>
+        </div>
+
+        <footer class="info-panel__footer">
+          <button type="button" data-info-panel-action="close">Chiudi</button>
+        </footer>
+      </div>
+    </aside>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>
