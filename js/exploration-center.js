@@ -56,6 +56,7 @@ function bindUi(elements, state, callbacks) {
       elements.panel.setAttribute('aria-hidden', 'false');
       elements.panel.inert = false;
       elements.toggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('is-exploration-open');
       elements.search.focus();
     }
   });
@@ -186,6 +187,7 @@ function closePanel(elements, onMatchesChange, clearMatches = true) {
   elements.panel.setAttribute('aria-hidden', 'true');
   elements.panel.inert = true;
   elements.toggle.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('is-exploration-open');
   if (clearMatches) onMatchesChange(new Set(), false);
   elements.toggle.focus();
 }
