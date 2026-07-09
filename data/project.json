@@ -21,6 +21,19 @@
         "uploadedAt": "2026-07-08T00:00:00.000Z",
         "path": "./assets/panorami/casa-contadina-360.jpeg",
         "fileName": "casa-contadina-360.jpeg"
+      },
+      {
+        "id": "stalla-360",
+        "name": "Stalla 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 3780672,
+        "uploadedAt": "2026-07-09T13:51:34.457Z",
+        "path": "./assets/media/stalla-360-360-STALLA.jpg",
+        "fileName": "360 STALLA.jpg"
       }
     ]
   },
@@ -32,14 +45,54 @@
       "description": "Ambiente domestico della tradizione contadina aquiloniese.",
       "panorama": "./assets/panorami/casa-contadina-360.jpeg",
       "cover": "./assets/panorami/casa-contadina-360.jpeg",
+      "order": 1,
       "panoramaMediaId": "casa-contadina-360",
       "coverMediaId": "casa-contadina-360",
-      "order": 1,
-      "defaultYaw": "150deg",
-      "defaultPitch": "-4deg",
+      "hotspots": [
+        {
+          "id": "hotspot-001",
+          "type": "navigation",
+          "title": "Stalla",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "s",
+          "label": "Stalla",
+          "orientation": "avanti",
+          "visible": true,
+          "yaw": 5.21452911364553,
+          "pitch": -0.30906774150813576
+        }
+      ],
       "settings": {},
       "links": [],
-      "hotspots": []
+      "defaultYaw": "0deg",
+      "defaultPitch": "0deg"
+    },
+    {
+      "id": "s",
+      "title": "Stalla",
+      "description": "La stalla per la custodia degli animali e per gli attrezzi da lavoro era comunicante con la casa contadina",
+      "panorama": "./assets/media/stalla-360-360-STALLA.jpg",
+      "cover": "./assets/media/stalla-360-360-STALLA.jpg",
+      "order": 2,
+      "panoramaMediaId": "stalla-360",
+      "coverMediaId": "stalla-360",
+      "hotspots": [],
+      "settings": {},
+      "links": [],
+      "defaultYaw": "0deg",
+      "defaultPitch": "0deg"
     }
   ]
 }
