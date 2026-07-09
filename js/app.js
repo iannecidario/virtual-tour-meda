@@ -5,7 +5,7 @@ import { createExplorationCenter } from './exploration-center.js';
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
-import { createMobileControlsAutoHide } from './mobile-controls.js';
+import { createMobileControlsAutoHide } from './mobile-controls.js?v=20260709-5';
 
 const state = {
   project: null,
