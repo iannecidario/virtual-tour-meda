@@ -5,7 +5,7 @@ import { createExplorationCenter } from './exploration-center.js';
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
-import { createMobileControlsAutoHide } from './mobile-controls.js?v=20260709-5';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260709-7';
 
 const state = {
   project: null,
@@ -212,8 +212,12 @@ async function initialize() {
       });
       state.informationPanel = informationPanel;
 
-      createMobileControlsAutoHide({
-        interactionElement: document.querySelector('.viewer-stage'),
+      createMobileControlsMenu({
+        onResetOrientation: () => state.viewer.animate({
+          yaw: state.activeScene.defaultYaw || 0,
+          pitch: state.activeScene.defaultPitch || 0,
+          speed: '3rpm',
+        }),
       });
 
       state.hotspotViewer = await createHotspotViewer({

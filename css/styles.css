@@ -1968,19 +1968,139 @@ body:not(.is-editor-active) .editor-toolbar {
     margin-left: 0;
   }
 
-  .tour-navigation,
-  .psv-navbar,
-  .guided-tour-bar {
-    transition: opacity 240ms ease, visibility 0s linear;
+  .mobile-controls-toggle {
+    position: fixed;
+    z-index: 42;
+    right: max(12px, env(safe-area-inset-right));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    display: grid;
+    place-content: center;
+    width: 42px;
+    min-height: 42px;
+    padding: 9px;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: 50%;
+    background: rgba(31, 35, 40, 0.66);
+    box-shadow: 0 8px 24px rgba(31, 35, 40, 0.24);
+    backdrop-filter: blur(10px);
   }
 
-  body.are-mobile-controls-hidden .tour-navigation,
-  body.are-mobile-controls-hidden .psv-navbar,
-  body.are-mobile-controls-hidden .guided-tour-bar {
-    visibility: hidden;
+  .mobile-controls-toggle span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 2px 0;
+    border-radius: 2px;
+    background: #fff;
+  }
+
+  body.is-mobile-controls-menu-open .mobile-controls-toggle {
     opacity: 0;
     pointer-events: none;
-    transition: opacity 240ms ease, visibility 0s linear 240ms;
+  }
+
+  .mobile-controls-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 44;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+    background: rgba(31, 35, 40, 0.12);
+    opacity: 1;
+    transition: opacity 240ms ease;
+  }
+
+  .mobile-controls-layer[aria-hidden="true"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-controls-panel {
+    display: grid;
+    gap: 10px;
+    width: min(100%, 420px);
+    max-height: calc(100dvh - max(20px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+    padding: 12px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 18px 50px rgba(31, 35, 40, 0.28);
+    backdrop-filter: blur(16px);
+    transform: translateY(0);
+    transition: transform 240ms ease;
+  }
+
+  .mobile-controls-layer[aria-hidden="true"] .mobile-controls-panel {
+    transform: translateY(18px);
+  }
+
+  .mobile-controls-panel header,
+  .mobile-controls-panel footer,
+  .mobile-controls-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .mobile-controls-panel h2 {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .mobile-controls-panel button {
+    min-height: 38px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+  }
+
+  .mobile-controls-actions {
+    justify-content: flex-start;
+  }
+
+  .mobile-controls-content {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+  }
+
+  .mobile-controls-panel .tour-navigation,
+  .mobile-controls-panel .psv-navbar,
+  .mobile-controls-panel .guided-tour-bar {
+    position: static;
+    inset: auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    transform: none;
+  }
+
+  .mobile-controls-panel .tour-navigation {
+    justify-content: space-between;
+    box-shadow: none;
+  }
+
+  .mobile-controls-panel .psv-navbar {
+    order: 2;
+  }
+
+  .mobile-controls-panel .guided-tour-bar {
+    order: 3;
+  }
+
+  .mobile-controls-panel footer {
+    justify-content: flex-end;
+  }
+
+  body:not(.is-mobile-controls-menu-open) .tour-navigation,
+  body:not(.is-mobile-controls-menu-open) .psv-navbar,
+  body:not(.is-mobile-controls-menu-open) .guided-tour-bar {
+    visibility: hidden;
   }
 
   .psv-caption {
