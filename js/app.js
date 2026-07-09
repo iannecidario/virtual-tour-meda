@@ -5,6 +5,7 @@ import { createExplorationCenter } from './exploration-center.js';
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
+import { createMobileControlsAutoHide } from './mobile-controls.js';
 
 const state = {
   project: null,
@@ -210,6 +211,10 @@ async function initialize() {
         blocks: elements.infoPanelBlocks,
       });
       state.informationPanel = informationPanel;
+
+      createMobileControlsAutoHide({
+        interactionElement: document.querySelector('.viewer-stage'),
+      });
 
       state.hotspotViewer = await createHotspotViewer({
         viewer,

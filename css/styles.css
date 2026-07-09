@@ -1968,6 +1968,21 @@ body:not(.is-editor-active) .editor-toolbar {
     margin-left: 0;
   }
 
+  .tour-navigation,
+  .psv-navbar,
+  .guided-tour-bar {
+    transition: opacity 240ms ease, visibility 0s linear;
+  }
+
+  body.are-mobile-controls-hidden .tour-navigation,
+  body.are-mobile-controls-hidden .psv-navbar,
+  body.are-mobile-controls-hidden .guided-tour-bar {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 240ms ease, visibility 0s linear 240ms;
+  }
+
   .psv-caption {
     display: none;
   }
