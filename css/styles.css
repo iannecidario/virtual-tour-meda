@@ -2281,6 +2281,13 @@ body.is-initial-view-mode .tour-navigation {
     min-width: 0;
   }
 
+  .mobile-exit-fullscreen {
+    border-color: var(--accent) !important;
+    background: var(--accent) !important;
+    color: #fff !important;
+    font-weight: 800;
+  }
+
   .mobile-controls-panel .tour-navigation,
   .mobile-controls-panel .psv-navbar,
   .mobile-controls-panel .guided-tour-bar {

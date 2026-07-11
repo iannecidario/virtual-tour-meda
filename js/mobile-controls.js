@@ -1,6 +1,6 @@
 const MOBILE_QUERY = '(max-width: 760px)';
 
-export function createMobileControlsMenu({ onResetOrientation }) {
+export function createMobileControlsMenu({ mount = document.body, onResetOrientation, onExitFullscreen }) {
   const mediaQuery = window.matchMedia(MOBILE_QUERY);
   const elements = createMenuElements();
   const movableControls = [
@@ -15,9 +15,10 @@ export function createMobileControlsMenu({ onResetOrientation }) {
     return { element, placeholder };
   });
 
-  document.body.append(elements.toggle, elements.layer);
+  mount.append(elements.toggle, elements.layer);
   bindMenu();
   handleBreakpointChange();
+  updateFullscreenState();
 
   return {
     open: openMenu,
@@ -29,6 +30,8 @@ export function createMobileControlsMenu({ onResetOrientation }) {
       elements.layer.remove();
       mediaQuery.removeEventListener('change', handleBreakpointChange);
       window.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('fullscreenchange', updateFullscreenState);
+      document.removeEventListener('webkitfullscreenchange', updateFullscreenState);
     },
   };
 
@@ -44,12 +47,19 @@ export function createMobileControlsMenu({ onResetOrientation }) {
         closeMenu();
         return;
       }
+      if (event.target.closest('[data-mobile-controls-action="exit-fullscreen"]')) {
+        onExitFullscreen?.();
+        closeMenu({ restoreFocus: false });
+        return;
+      }
       if (event.target.closest('#environments-toggle, #tours-toggle')) {
         closeMenu({ restoreFocus: false });
       }
     });
     mediaQuery.addEventListener('change', handleBreakpointChange);
     window.addEventListener('keydown', handleKeydown);
+    document.addEventListener('fullscreenchange', updateFullscreenState);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenState);
   }
 
   function handleBreakpointChange() {
@@ -105,6 +115,11 @@ export function createMobileControlsMenu({ onResetOrientation }) {
       closeMenu();
     }
   }
+
+  function updateFullscreenState() {
+    const isFullscreen = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    elements.exitFullscreen.hidden = !isFullscreen;
+  }
 }
 
 function createMenuElements() {
@@ -132,6 +147,9 @@ function createMenuElements() {
       </header>
       <div class="mobile-controls-actions"></div>
       <div class="mobile-controls-content">
+        <button class="mobile-exit-fullscreen" type="button" data-mobile-controls-action="exit-fullscreen" hidden>
+          Esci da schermo intero
+        </button>
         <button class="mobile-orientation-reset" type="button" data-mobile-controls-action="reset">
           Reimposta orientamento
         </button>
@@ -149,6 +167,7 @@ function createMenuElements() {
     actions: layer.querySelector('.mobile-controls-actions'),
     content: layer.querySelector('.mobile-controls-content'),
     closeIcon: layer.querySelector('header [data-mobile-controls-action="close"]'),
+    exitFullscreen: layer.querySelector('[data-mobile-controls-action="exit-fullscreen"]'),
     resetOrientation: layer.querySelector('[data-mobile-controls-action="reset"]'),
   };
 }

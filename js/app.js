@@ -98,6 +98,24 @@ function toggleEnvironmentsPanel() {
   else openEnvironmentsPanel();
 }
 
+function exitFullscreen(viewer) {
+  if (document.fullscreenElement && typeof document.exitFullscreen === 'function') {
+    document.exitFullscreen();
+    return;
+  }
+  if (document.webkitFullscreenElement && typeof document.webkitExitFullscreen === 'function') {
+    document.webkitExitFullscreen();
+    return;
+  }
+  if (typeof viewer?.exitFullscreen === 'function') {
+    viewer.exitFullscreen();
+    return;
+  }
+  if (typeof viewer?.toggleFullscreen === 'function') {
+    viewer.toggleFullscreen();
+  }
+}
+
 async function changeScene(sceneId, { pushHistory = true } = {}) {
   const storedScene = getSceneById(state.project, sceneId);
   const scene = storedScene ? resolveSceneMedia(state.project, storedScene) : null;
@@ -240,11 +258,13 @@ async function initialize() {
       createDynamicHotspotAppearance(viewer);
 
       createMobileControlsMenu({
+        mount: viewer.container,
         onResetOrientation: () => state.viewer.animate({
           yaw: state.activeScene.defaultYaw || 0,
           pitch: state.activeScene.defaultPitch || 0,
           speed: '3rpm',
         }),
+        onExitFullscreen: () => exitFullscreen(state.viewer),
       });
 
       state.hotspotViewer = await createHotspotViewer({
