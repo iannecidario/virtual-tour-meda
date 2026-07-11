@@ -28,6 +28,8 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
       restoreControls();
       elements.toggle.remove();
       elements.layer.remove();
+      elements.toggle.removeEventListener('pointerdown', handleToggleActivation);
+      elements.toggle.removeEventListener('click', handleToggleActivation);
       mediaQuery.removeEventListener('change', handleBreakpointChange);
       window.removeEventListener('keydown', handleKeydown);
       document.removeEventListener('fullscreenchange', updateFullscreenState);
@@ -36,7 +38,8 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
   };
 
   function bindMenu() {
-    elements.toggle.addEventListener('click', openMenu);
+    elements.toggle.addEventListener('pointerdown', handleToggleActivation);
+    elements.toggle.addEventListener('click', handleToggleActivation);
     elements.layer.addEventListener('click', (event) => {
       if (event.target === elements.layer || event.target.closest('[data-mobile-controls-action="close"]')) {
         closeMenu();
@@ -96,6 +99,12 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
     elements.toggle.setAttribute('aria-expanded', 'true');
     document.body.classList.add('is-mobile-controls-menu-open');
     requestAnimationFrame(() => elements.closeIcon.focus());
+  }
+
+  function handleToggleActivation(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    openMenu();
   }
 
   function closeMenu({ restoreFocus = true } = {}) {

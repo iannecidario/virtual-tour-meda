@@ -4,7 +4,7 @@ import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260709-7';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260711-2';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 
 const state = {
