@@ -6,6 +6,7 @@ import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
 import { createMobileControlsMenu } from './mobile-controls.js?v=20260709-7';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 
 const state = {
   project: null,
@@ -239,6 +240,7 @@ async function initialize() {
         blocks: elements.infoPanelBlocks,
       });
       state.informationPanel = informationPanel;
+      createDynamicHotspotAppearance(viewer);
 
       createMobileControlsMenu({
         onResetOrientation: () => state.viewer.animate({
