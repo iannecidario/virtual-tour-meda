@@ -831,6 +831,80 @@ body:not(.is-editor-active) .editor-toolbar {
   min-height: auto;
 }
 
+.initial-view-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #f7f5f2;
+}
+
+.initial-view-section h3,
+.initial-view-section p {
+  margin: 0;
+}
+
+.initial-view-section h3 {
+  color: var(--accent);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+}
+
+.initial-view-section p {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.initial-view-config {
+  position: fixed;
+  left: max(18px, env(safe-area-inset-left));
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 80;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: min(720px, calc(100vw - 36px));
+  margin: 0 auto;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 20px 50px rgba(31, 35, 42, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.initial-view-config[hidden] {
+  display: none;
+}
+
+.initial-view-config div {
+  display: grid;
+  min-width: min(100%, 260px);
+  margin-right: auto;
+}
+
+.initial-view-config strong {
+  color: var(--accent);
+}
+
+.initial-view-config span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+body.is-initial-view-mode .hotspot-marker,
+body.is-initial-view-mode .editor-toolbar,
+body.is-initial-view-mode .tour-navigation {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .scene-list {
   display: grid;
   gap: 10px;
@@ -1045,6 +1119,21 @@ body:not(.is-editor-active) .editor-toolbar {
 
 .media-search {
   width: min(100%, 310px);
+}
+
+.media-sort {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.media-sort select {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
 }
 
 .media-filters {
@@ -2182,6 +2271,19 @@ body:not(.is-editor-active) .editor-toolbar {
 
   .field-grid {
     grid-template-columns: 1fr;
+  }
+
+  .initial-view-section {
+    grid-template-columns: 1fr;
+  }
+
+  .initial-view-config {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .initial-view-config div {
+    margin-right: 0;
   }
 
   .scene-card {

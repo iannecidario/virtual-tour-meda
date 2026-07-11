@@ -50,6 +50,36 @@ export function uniqueMediaId(project, name = 'media') {
   return candidate;
 }
 
+export function mergeAssetManifest(project, manifest = {}) {
+  const items = Array.isArray(manifest.items) ? manifest.items.map(normalizeMediaItem) : [];
+  if (!items.length) return normalizeMediaLibrary(project.media);
+
+  const currentItems = project.media?.items || [];
+  const paths = new Set(currentItems.map((item) => item.path).filter(Boolean));
+  const ids = new Set(currentItems.map((item) => item.id).filter(Boolean));
+  const additions = items
+    .filter((item) => item.path && !paths.has(item.path))
+    .map((item) => {
+      let id = item.id || slugify(item.name || item.fileName);
+      let index = 2;
+      while (ids.has(id)) {
+        id = `${item.id || slugify(item.name || item.fileName)}-${index}`;
+        index += 1;
+      }
+      ids.add(id);
+      return normalizeMediaItem({
+        ...item,
+        id,
+        description: item.description || 'Risorsa rilevata automaticamente nella cartella assets.',
+      });
+    });
+
+  return normalizeMediaLibrary({
+    ...(project.media || {}),
+    items: [...currentItems, ...additions],
+  });
+}
+
 export function getMediaItem(project, mediaId) {
   return project.media?.items?.find((item) => item.id === mediaId) || null;
 }
@@ -207,6 +237,10 @@ export function formatFileSize(bytes = 0) {
 
 function inferCategory(item) {
   const mime = String(item.mimeType || inferMimeType(item.path || '')).toLowerCase();
+  const path = String(item.path || '').toLowerCase();
+  if (path.includes('/panorami/')) return 'Panorami 360';
+  if (path.includes('/icons/')) return 'Icone';
+  if (path.includes('/documents/')) return 'Documenti';
   if (mime.startsWith('image/')) return 'Fotografie';
   if (mime.startsWith('audio/')) return 'Audio';
   if (mime.startsWith('video/')) return 'Video';

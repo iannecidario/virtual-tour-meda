@@ -55,6 +55,8 @@ export function normalizeScene(scene = {}) {
     order: Number(scene.order) || 1,
     defaultYaw: scene.defaultYaw || '0deg',
     defaultPitch: scene.defaultPitch || '0deg',
+    defaultZoomLvl: normalizeZoomLevel(scene.defaultZoomLvl),
+    defaultFov: scene.defaultFov === undefined ? '' : String(scene.defaultFov).trim(),
     settings: scene.settings && typeof scene.settings === 'object' ? scene.settings : {},
     links: Array.isArray(scene.links) ? scene.links : [],
     hotspots: Array.isArray(scene.hotspots) ? scene.hotspots.map(normalizeHotspot) : [],
@@ -185,6 +187,12 @@ function createFallbackProject() {
       hotspots: [],
     })),
   });
+}
+
+function normalizeZoomLevel(value) {
+  if (value === undefined || value === null || value === '') return 28;
+  const zoom = Number(value);
+  return Number.isFinite(zoom) ? Math.max(0, Math.min(100, zoom)) : 28;
 }
 
 function migrateLegacyMedia(project = {}) {

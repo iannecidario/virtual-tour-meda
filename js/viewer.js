@@ -21,8 +21,9 @@ export function createPanoramaViewer({ container, scene, onReady, onError }) {
     container,
     panorama: scene.panorama,
     caption: scene.description,
-    defaultYaw: scene.defaultYaw,
-    defaultPitch: scene.defaultPitch,
+  defaultYaw: scene.defaultYaw,
+  defaultPitch: scene.defaultPitch,
+  defaultZoomLvl: scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl,
     plugins: [
       [
         MarkersPlugin,
@@ -64,4 +65,15 @@ export async function setViewerScene(viewer, scene) {
     yaw: scene.defaultYaw || '0deg',
     pitch: scene.defaultPitch || '0deg',
   });
+  setViewerZoom(viewer, scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl);
+}
+
+export function setViewerZoom(viewer, zoomLevel = viewerDefaults.defaultZoomLvl) {
+  const numericZoom = Number(zoomLevel);
+  const normalizedZoom = Number.isFinite(numericZoom)
+    ? Math.max(0, Math.min(100, numericZoom))
+    : viewerDefaults.defaultZoomLvl;
+  if (typeof viewer.zoom === 'function') {
+    viewer.zoom(normalizedZoom);
+  }
 }
