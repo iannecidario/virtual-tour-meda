@@ -5,7 +5,6 @@ export function createMobileControlsMenu({ onResetOrientation }) {
   const elements = createMenuElements();
   const movableControls = [
     document.querySelector('#environments-toggle'),
-    document.querySelector('#explore-toggle'),
     document.querySelector('#tours-toggle'),
     document.querySelector('.psv-navbar'),
     document.querySelector('.guided-tour-bar'),
@@ -45,7 +44,7 @@ export function createMobileControlsMenu({ onResetOrientation }) {
         closeMenu();
         return;
       }
-      if (event.target.closest('#environments-toggle, #explore-toggle, #tours-toggle')) {
+      if (event.target.closest('#environments-toggle, #tours-toggle')) {
         closeMenu({ restoreFocus: false });
       }
     });
@@ -58,7 +57,7 @@ export function createMobileControlsMenu({ onResetOrientation }) {
     if (mediaQuery.matches) {
       elements.actions.replaceChildren(
         ...placements
-          .filter(({ element }) => element.matches('#environments-toggle, #explore-toggle, #tours-toggle'))
+          .filter(({ element }) => element.matches('#environments-toggle, #tours-toggle'))
           .map(({ element }) => element),
       );
       const navbar = placements.find(({ element }) => element.matches('.psv-navbar'))?.element;

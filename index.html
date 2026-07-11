@@ -43,9 +43,6 @@
         <button class="environments-toggle" id="environments-toggle" type="button" aria-controls="environments-panel" aria-expanded="false">
           Ambienti
         </button>
-        <button class="explore-toggle" id="explore-toggle" type="button" aria-controls="exploration-panel" aria-expanded="false">
-          Esplora
-        </button>
         <button class="tours-toggle" id="tours-toggle" type="button">
           Percorsi
         </button>
@@ -102,73 +99,6 @@
         <div class="tour-catalog-list" id="tour-catalog-list"></div>
       </form>
     </dialog>
-
-    <aside class="exploration-panel" id="exploration-panel" aria-labelledby="exploration-title" aria-hidden="true" inert>
-      <div class="exploration-panel__sheet">
-        <header>
-          <div>
-            <span>Centro Esplorazione</span>
-            <h2 id="exploration-title">Esplora il museo</h2>
-          </div>
-          <button class="icon-action" type="button" data-exploration-action="close" aria-label="Chiudi">
-            <span aria-hidden="true">x</span>
-          </button>
-        </header>
-
-        <form class="exploration-filters" id="exploration-filters" role="search">
-          <label class="exploration-search">
-            <span>Cerca nel museo</span>
-            <input id="exploration-search" type="search" autocomplete="off" placeholder="Cerca oggetti, temi, sale...">
-          </label>
-          <div class="exploration-filter-grid">
-            <label>
-              Categoria
-              <select id="exploration-category"></select>
-            </label>
-            <label>
-              Tipologia
-              <select id="exploration-kind">
-                <option value="">Tutti i contenuti</option>
-                <option value="hotspot">Hotspot</option>
-                <option value="scene">Scene</option>
-                <option value="media">Media</option>
-                <option value="link">Collegamenti</option>
-              </select>
-            </label>
-            <label>
-              Scena
-              <select id="exploration-scene"></select>
-            </label>
-          </div>
-          <fieldset>
-            <legend>Contenuti presenti</legend>
-            <label><input name="image" type="checkbox"> Immagine</label>
-            <label><input name="audio" type="checkbox"> Audio</label>
-            <label><input name="video" type="checkbox"> Video</label>
-            <label><input name="document" type="checkbox"> Documento</label>
-          </fieldset>
-          <button type="button" data-exploration-action="reset">Azzera filtri</button>
-        </form>
-
-        <div class="exploration-panel__content">
-          <section>
-            <h3>Esplora per categoria</h3>
-            <div class="exploration-chips" id="exploration-categories"></div>
-          </section>
-          <section>
-            <h3>Scene del museo</h3>
-            <div class="exploration-scenes" id="exploration-scenes"></div>
-          </section>
-          <section class="exploration-results-section">
-            <div class="exploration-results-heading">
-              <h3>Risultati</h3>
-              <span id="exploration-result-count" aria-live="polite"></span>
-            </div>
-            <div class="exploration-results" id="exploration-results"></div>
-          </section>
-        </div>
-      </div>
-    </aside>
 
     <aside class="info-panel" id="info-panel" aria-labelledby="info-panel-title" aria-live="polite" aria-hidden="true" inert>
       <div class="info-panel__sheet">

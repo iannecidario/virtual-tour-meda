@@ -1,7 +1,6 @@
 import { createHotspotViewer } from './hotspot-viewer.js';
 import { createInformationPanel } from './information-panel.js';
 import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js';
-import { createExplorationCenter } from './exploration-center.js';
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
@@ -13,7 +12,6 @@ const state = {
   viewer: null,
   activeScene: null,
   hotspotViewer: null,
-  explorationCenter: null,
   guidedTourPlayer: null,
   history: [],
 };
@@ -141,7 +139,7 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
   }
 }
 
-async function openExplorationEntry(entry) {
+async function openTargetEntry(entry) {
   if (entry.kind === 'scene') {
     await changeScene(entry.sceneId);
     return;
@@ -199,7 +197,6 @@ function preloadScene(sceneId) {
 }
 
 async function openGuidedTourStep(step) {
-  state.explorationCenter?.close();
   if (step.type === 'scene') {
     await changeScene(step.sceneId);
     return;
@@ -207,7 +204,7 @@ async function openGuidedTourStep(step) {
   const scene = getSceneById(state.project, step.sceneId);
   const hotspot = scene?.hotspots.find((item) => item.id === step.hotspotId);
   if (!hotspot) return;
-  await openExplorationEntry({
+  await openTargetEntry({
     kind: hotspot.type === 'navigation' ? 'link' : 'hotspot',
     sceneId: step.sceneId,
     hotspotId: step.hotspotId,
@@ -257,14 +254,6 @@ async function initialize() {
         project: state.project,
         onNavigate: (sceneId) => changeScene(sceneId),
         popup: informationPanel,
-      });
-
-      state.explorationCenter = createExplorationCenter({
-        project: state.project,
-        admin: false,
-        onOpenEntry: openExplorationEntry,
-        onOpenScene: (sceneId) => changeScene(sceneId),
-        onMatchesChange: (matches, active) => state.hotspotViewer?.setSearchMatches(matches, active),
       });
 
       state.guidedTourPlayer = createGuidedTourPlayer({
