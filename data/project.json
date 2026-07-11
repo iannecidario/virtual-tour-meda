@@ -87,6 +87,10 @@
       "order": 1,
       "panoramaMediaId": "casa-contadina-360",
       "coverMediaId": "casa-contadina-360",
+      "defaultYaw": "2.260736127391203",
+      "defaultPitch": "-0.012432202258439773",
+      "defaultZoomLvl": 3,
+      "defaultFov": "93.01",
       "hotspots": [
         {
           "id": "collegamento-001",
@@ -114,11 +118,7 @@
         }
       ],
       "settings": {},
-      "links": [],
-      "defaultYaw": "0deg",
-      "defaultPitch": "0deg",
-      "defaultZoomLvl": 28,
-      "defaultFov": ""
+      "links": []
     },
     {
       "id": "s",
@@ -129,6 +129,10 @@
       "order": 2,
       "panoramaMediaId": "stalla-360",
       "coverMediaId": "stalla-360",
+      "defaultYaw": "3.0193978757768716",
+      "defaultPitch": "-0.07824057210687352",
+      "defaultZoomLvl": 28,
+      "defaultFov": "78.20",
       "hotspots": [
         {
           "id": "collegamento-001",
@@ -156,11 +160,7 @@
         }
       ],
       "settings": {},
-      "links": [],
-      "defaultYaw": "0deg",
-      "defaultPitch": "0deg",
-      "defaultZoomLvl": 28,
-      "defaultFov": ""
+      "links": []
     }
   ]
 }
