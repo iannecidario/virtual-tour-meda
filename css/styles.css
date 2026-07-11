@@ -2176,7 +2176,7 @@ body.is-initial-view-mode .tour-navigation {
   }
 
   .mobile-controls-toggle {
-    position: absolute;
+    position: fixed;
     z-index: 92;
     right: max(12px, env(safe-area-inset-right));
     bottom: max(12px, env(safe-area-inset-bottom));
@@ -2210,7 +2210,7 @@ body.is-initial-view-mode .tour-navigation {
   }
 
   .mobile-controls-layer {
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: 94;
     display: flex;

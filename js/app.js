@@ -4,7 +4,7 @@ import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer
 import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260711-2';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260711-5';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 
 const state = {
@@ -258,7 +258,7 @@ async function initialize() {
       createDynamicHotspotAppearance(viewer);
 
       createMobileControlsMenu({
-        mount: viewer.container,
+        fullscreenMount: viewer.container,
         onResetOrientation: () => state.viewer.animate({
           yaw: state.activeScene.defaultYaw || 0,
           pitch: state.activeScene.defaultPitch || 0,

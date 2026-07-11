@@ -1,6 +1,11 @@
 const MOBILE_QUERY = '(max-width: 760px)';
 
-export function createMobileControlsMenu({ mount = document.body, onResetOrientation, onExitFullscreen }) {
+export function createMobileControlsMenu({
+  mount = document.body,
+  fullscreenMount = mount,
+  onResetOrientation,
+  onExitFullscreen,
+}) {
   const mediaQuery = window.matchMedia(MOBILE_QUERY);
   const elements = createMenuElements();
   const movableControls = [
@@ -15,7 +20,7 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
     return { element, placeholder };
   });
 
-  mount.append(elements.toggle, elements.layer);
+  mountControls(mount);
   bindMenu();
   handleBreakpointChange();
   updateFullscreenState();
@@ -29,6 +34,8 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
       elements.toggle.remove();
       elements.layer.remove();
       elements.toggle.removeEventListener('pointerdown', handleToggleActivation);
+      elements.toggle.removeEventListener('touchstart', handleToggleActivation);
+      elements.toggle.removeEventListener('mousedown', handleToggleActivation);
       elements.toggle.removeEventListener('click', handleToggleActivation);
       mediaQuery.removeEventListener('change', handleBreakpointChange);
       window.removeEventListener('keydown', handleKeydown);
@@ -39,26 +46,14 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
 
   function bindMenu() {
     elements.toggle.addEventListener('pointerdown', handleToggleActivation);
+    elements.toggle.addEventListener('touchstart', handleToggleActivation, { passive: false });
+    elements.toggle.addEventListener('mousedown', handleToggleActivation);
     elements.toggle.addEventListener('click', handleToggleActivation);
-    elements.layer.addEventListener('click', (event) => {
-      if (event.target === elements.layer || event.target.closest('[data-mobile-controls-action="close"]')) {
-        closeMenu();
-        return;
-      }
-      if (event.target.closest('[data-mobile-controls-action="reset"]')) {
-        onResetOrientation?.();
-        closeMenu();
-        return;
-      }
-      if (event.target.closest('[data-mobile-controls-action="exit-fullscreen"]')) {
-        onExitFullscreen?.();
-        closeMenu({ restoreFocus: false });
-        return;
-      }
-      if (event.target.closest('#environments-toggle, #tours-toggle')) {
-        closeMenu({ restoreFocus: false });
-      }
-    });
+    elements.panel.addEventListener('pointerdown', stopViewerGesture);
+    elements.panel.addEventListener('touchstart', stopViewerGesture, { passive: true });
+    elements.panel.addEventListener('touchmove', stopViewerGesture, { passive: true });
+    elements.layer.addEventListener('click', handleLayerAction);
+    elements.layer.addEventListener('touchend', handleLayerAction, { passive: false });
     mediaQuery.addEventListener('change', handleBreakpointChange);
     window.addEventListener('keydown', handleKeydown);
     document.addEventListener('fullscreenchange', updateFullscreenState);
@@ -107,6 +102,42 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
     openMenu();
   }
 
+  function handleLayerAction(event) {
+    const closeControl = event.target.closest('[data-mobile-controls-action="close"]');
+    const resetControl = event.target.closest('[data-mobile-controls-action="reset"]');
+    const fullscreenControl = event.target.closest('[data-mobile-controls-action="exit-fullscreen"]');
+    const movedControl = event.target.closest('#environments-toggle, #tours-toggle');
+    const isBackdrop = event.target === elements.layer;
+    const isTouch = event.type === 'touchend';
+
+    if (isTouch && (closeControl || resetControl || fullscreenControl || movedControl || isBackdrop)) {
+      event.preventDefault();
+    }
+
+    if (isBackdrop || closeControl) {
+      closeMenu();
+      return;
+    }
+    if (resetControl) {
+      onResetOrientation?.();
+      closeMenu();
+      return;
+    }
+    if (fullscreenControl) {
+      onExitFullscreen?.();
+      closeMenu({ restoreFocus: false });
+      return;
+    }
+    if (movedControl) {
+      if (isTouch) movedControl.click();
+      closeMenu({ restoreFocus: false });
+    }
+  }
+
+  function stopViewerGesture(event) {
+    event.stopPropagation();
+  }
+
   function closeMenu({ restoreFocus = true } = {}) {
     const wasOpen = elements.layer.getAttribute('aria-hidden') === 'false';
     elements.layer.setAttribute('aria-hidden', 'true');
@@ -127,7 +158,13 @@ export function createMobileControlsMenu({ mount = document.body, onResetOrienta
 
   function updateFullscreenState() {
     const isFullscreen = Boolean(document.fullscreenElement || document.webkitFullscreenElement);
+    mountControls(isFullscreen ? fullscreenMount : mount);
     elements.exitFullscreen.hidden = !isFullscreen;
+  }
+
+  function mountControls(target) {
+    if (!target) return;
+    target.append(elements.toggle, elements.layer);
   }
 }
 
