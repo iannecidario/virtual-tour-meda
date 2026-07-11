@@ -25,8 +25,9 @@ const elements = {
   infoPanelTitle: document.querySelector('#info-panel-title'),
   infoPanelCategory: document.querySelector('#info-panel-category'),
   infoPanelBlocks: document.querySelector('#info-panel-blocks'),
-  sceneBack: document.querySelector('#scene-back'),
-  sceneJump: document.querySelector('#scene-jump'),
+  environmentsToggle: document.querySelector('#environments-toggle'),
+  environmentsPanel: document.querySelector('#environments-panel'),
+  environmentsList: document.querySelector('#environments-list'),
   message: document.querySelector('#app-message'),
 };
 
@@ -60,15 +61,42 @@ function setActiveScene(scene) {
   }
 }
 
-function renderSceneJump() {
-  elements.sceneJump.replaceChildren(...state.project.scenes.map((scene) => {
-    const option = document.createElement('option');
-    option.value = scene.id;
-    option.textContent = scene.title;
-    option.selected = scene.id === state.activeScene?.id;
-    return option;
+function renderEnvironments() {
+  if (!elements.environmentsList) return;
+  elements.environmentsList.replaceChildren(...state.project.scenes.map((scene) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.dataset.environmentSceneId = scene.id;
+    button.className = scene.id === state.activeScene?.id ? 'is-active' : '';
+    button.textContent = scene.title;
+    return button;
   }));
-  elements.sceneBack.disabled = state.history.length === 0;
+}
+
+function openEnvironmentsPanel() {
+  if (!elements.environmentsPanel || !elements.environmentsToggle) return;
+  elements.environmentsPanel.hidden = false;
+  elements.environmentsPanel.setAttribute('aria-hidden', 'false');
+  elements.environmentsToggle.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('is-environments-open');
+}
+
+function closeEnvironmentsPanel() {
+  if (!elements.environmentsPanel || !elements.environmentsToggle) return;
+  elements.environmentsPanel.setAttribute('aria-hidden', 'true');
+  elements.environmentsToggle.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('is-environments-open');
+  window.setTimeout(() => {
+    if (elements.environmentsPanel?.getAttribute('aria-hidden') === 'true') {
+      elements.environmentsPanel.hidden = true;
+    }
+  }, 220);
+}
+
+function toggleEnvironmentsPanel() {
+  const isOpen = elements.environmentsPanel?.getAttribute('aria-hidden') === 'false';
+  if (isOpen) closeEnvironmentsPanel();
+  else openEnvironmentsPanel();
 }
 
 async function changeScene(sceneId, { pushHistory = true } = {}) {
@@ -98,7 +126,7 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
     setActiveScene(scene);
     state.informationPanel?.close();
     state.hotspotViewer.setScene(scene, state.project);
-    renderSceneJump();
+    renderEnvironments();
     preloadLinkedScenes(scene);
     return true;
   } catch (error) {
@@ -243,16 +271,27 @@ async function initialize() {
         onPreloadScene: preloadScene,
       });
 
-      elements.sceneBack.addEventListener('click', () => {
-        const previousSceneId = state.history.pop();
-        if (previousSceneId) {
-          changeScene(previousSceneId, { pushHistory: false });
+      elements.environmentsToggle?.addEventListener('click', toggleEnvironmentsPanel);
+      elements.environmentsPanel?.addEventListener('click', (event) => {
+        if (event.target.closest('[data-environments-action="close"]')) {
+          closeEnvironmentsPanel();
+          return;
+        }
+        const button = event.target.closest('[data-environment-scene-id]');
+        if (button) {
+          changeScene(button.dataset.environmentSceneId);
+          closeEnvironmentsPanel();
         }
       });
-      elements.sceneJump.addEventListener('change', () => {
-        changeScene(elements.sceneJump.value);
+      document.addEventListener('click', (event) => {
+        if (elements.environmentsPanel?.getAttribute('aria-hidden') !== 'false') return;
+        if (event.target.closest('#environments-panel, #environments-toggle')) return;
+        closeEnvironmentsPanel();
       });
-      renderSceneJump();
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeEnvironmentsPanel();
+      });
+      renderEnvironments();
       preloadLinkedScenes(state.activeScene);
     },
       onError: () => {

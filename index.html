@@ -40,6 +40,9 @@
             >
           </picture>
         </a>
+        <button class="environments-toggle" id="environments-toggle" type="button" aria-controls="environments-panel" aria-expanded="false">
+          Ambienti
+        </button>
         <button class="explore-toggle" id="explore-toggle" type="button" aria-controls="exploration-panel" aria-expanded="false">
           Esplora
         </button>
@@ -51,13 +54,15 @@
 
       <main class="viewer-stage" aria-label="Visualizzatore panoramico a 360 gradi">
         <p class="app-message" id="app-message" role="status" aria-live="polite" hidden></p>
-        <nav class="tour-navigation" aria-label="Navigazione tra scene">
-          <button type="button" id="scene-back" disabled>Torna alla scena precedente</button>
-          <label>
-            Vai a...
-            <select id="scene-jump"></select>
-          </label>
-        </nav>
+        <aside class="environments-panel" id="environments-panel" aria-labelledby="environments-title" aria-hidden="true" hidden>
+          <header>
+            <h2 id="environments-title">Ambienti</h2>
+            <button class="icon-action" type="button" data-environments-action="close" aria-label="Chiudi">
+              <span aria-hidden="true">x</span>
+            </button>
+          </header>
+          <div class="environments-list" id="environments-list"></div>
+        </aside>
         <section class="viewer-panel" aria-labelledby="scene-title">
           <div class="loading-overlay" id="loading-overlay" aria-live="polite">
             <div class="loading-mark" aria-hidden="true"></div>
