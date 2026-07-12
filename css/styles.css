@@ -351,6 +351,12 @@ body.is-scene-transitioning .viewer-panel::after {
   opacity: 0.72;
 }
 
+body.is-cinematic-transitioning .viewer-panel::after {
+  background: radial-gradient(circle at center, rgba(31, 35, 40, 0.48), rgba(31, 35, 40, 0.86));
+  opacity: 1;
+  transition-duration: var(--scene-transition-fade-ms, 280ms);
+}
+
 .viewer-panel {
   position: relative;
   width: 100%;
@@ -502,6 +508,13 @@ body.is-scene-transitioning .viewer-panel::after {
 
 .hotspot-marker.is-search-target {
   animation: search-target-pulse 600ms ease-in-out 3;
+}
+
+.hotspot-marker.is-transition-target {
+  animation: transition-target-pulse 360ms ease-in-out 2;
+  opacity: 1 !important;
+  transform: scale(1.18);
+  box-shadow: 0 12px 32px rgba(31, 35, 40, 0.38), 0 0 0 8px rgba(255, 255, 255, 0.48), 0 0 0 13px rgba(190, 22, 34, 0.48);
 }
 
 .hotspot-marker svg {
@@ -2044,6 +2057,17 @@ body.is-initial-view-mode .tour-navigation {
   50% {
     transform: scale(1.24);
     box-shadow: 0 0 0 12px rgba(190, 22, 34, 0.28);
+  }
+}
+
+@keyframes transition-target-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
   }
 }
 

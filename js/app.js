@@ -5,6 +5,7 @@ import { getInitialScene, getSceneById, loadProjectDocument } from './project-st
 import { resolveSceneMedia } from './media-store.js';
 import { createMobileControlsMenu } from './mobile-controls.js?v=20260712-1';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
+import { SCENE_TRANSITION } from './scene-transition-config.js';
 
 const state = {
   project: null,
@@ -114,7 +115,7 @@ function exitFullscreen(viewer) {
   }
 }
 
-async function changeScene(sceneId, { pushHistory = true } = {}) {
+async function changeScene(sceneId, { pushHistory = true, transitionHotspot = null } = {}) {
   const storedScene = getSceneById(state.project, sceneId);
   const scene = storedScene ? resolveSceneMedia(state.project, storedScene) : null;
   if (!scene) {
@@ -132,10 +133,16 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
     state.history.push(state.activeScene.id);
   }
 
+  const cinematic = Boolean(transitionHotspot);
+  if (cinematic) {
+    await runExitTransition(transitionHotspot);
+  }
+
   document.body.classList.add('is-scene-transitioning');
-  setLoading(true, 'Caricamento scena');
+  document.body.classList.toggle('is-cinematic-transitioning', cinematic);
+  setLoading(!cinematic, 'Caricamento scena');
   try {
-    await new Promise((resolve) => setTimeout(resolve, 140));
+    if (!cinematic) await wait(140);
     await setViewerScene(state.viewer, scene);
     state.activeScene = scene;
     setActiveScene(scene);
@@ -143,6 +150,11 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
     state.hotspotViewer.setScene(scene, state.project);
     renderEnvironments();
     preloadLinkedScenes(scene);
+    if (cinematic) {
+      setLoading(false);
+      document.body.classList.remove('is-scene-transitioning');
+      await runEntryTransition(scene);
+    }
     return true;
   } catch (error) {
     console.error(error);
@@ -152,7 +164,60 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
   } finally {
     setLoading(false);
     document.body.classList.remove('is-scene-transitioning');
+    document.body.classList.remove('is-cinematic-transitioning');
   }
+}
+
+async function runExitTransition(hotspot) {
+  highlightHotspot(hotspot.id);
+  await wait(SCENE_TRANSITION.highlightMs);
+  try {
+    await Promise.race([
+      state.viewer.animate({
+        yaw: hotspot.yaw,
+        pitch: hotspot.pitch,
+        zoom: SCENE_TRANSITION.approachZoomLevel,
+        speed: SCENE_TRANSITION.advanceSpeed,
+      }),
+      wait(SCENE_TRANSITION.advanceMs),
+    ]);
+  } catch {
+    state.viewer.rotate({ yaw: hotspot.yaw, pitch: hotspot.pitch });
+  }
+  await wait(SCENE_TRANSITION.fadeMs);
+}
+
+async function runEntryTransition(scene) {
+  const baseZoom = Number(scene.defaultZoomLvl);
+  const currentZoom = Number.isFinite(baseZoom) ? baseZoom : 28;
+  const entryZoom = Math.min(100, currentZoom + SCENE_TRANSITION.entryZoomOffset);
+  try {
+    state.viewer.zoom(entryZoom);
+    await Promise.race([
+      state.viewer.animate({
+        yaw: scene.defaultYaw || '0deg',
+        pitch: scene.defaultPitch || '0deg',
+        zoom: currentZoom,
+        speed: SCENE_TRANSITION.settleSpeed,
+      }),
+      wait(SCENE_TRANSITION.settleMs),
+    ]);
+  } catch {
+    state.viewer.rotate({
+      yaw: scene.defaultYaw || '0deg',
+      pitch: scene.defaultPitch || '0deg',
+    });
+  }
+}
+
+function highlightHotspot(hotspotId) {
+  const marker = elements.viewer.querySelector(`.hotspot-marker[data-hotspot-id="${CSS.escape(hotspotId)}"]`);
+  marker?.classList.add('is-transition-target');
+  window.setTimeout(() => marker?.classList.remove('is-transition-target'), SCENE_TRANSITION.highlightMs + SCENE_TRANSITION.advanceMs);
+}
+
+function wait(ms) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
 
 function preloadLinkedScenes(scene) {
@@ -170,6 +235,7 @@ function preloadLinkedScenes(scene) {
 }
 
 async function initialize() {
+  applyTransitionConfig();
   state.project = await loadProjectDocument();
   const initialScene = getInitialScene(state.project);
   state.activeScene = initialScene ? resolveSceneMedia(state.project, initialScene) : null;
@@ -212,7 +278,7 @@ async function initialize() {
         markersPlugin: getMarkersPlugin(viewer),
         scene: state.activeScene,
         project: state.project,
-        onNavigate: (sceneId) => changeScene(sceneId),
+        onNavigate: (sceneId, options) => changeScene(sceneId, { transitionHotspot: options?.fromHotspot }),
         popup: informationPanel,
       });
 
@@ -252,3 +318,7 @@ async function initialize() {
 }
 
 initialize();
+
+function applyTransitionConfig() {
+  document.documentElement.style.setProperty('--scene-transition-fade-ms', `${SCENE_TRANSITION.fadeMs}ms`);
+}
