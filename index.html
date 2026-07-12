@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.3/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5.14.3/index.css">
-    <link rel="stylesheet" href="./css/styles.css?v=20260711-5">
+    <link rel="stylesheet" href="./css/styles.css?v=20260712-1">
     <script type="importmap">
       {
         "imports": {
@@ -43,9 +43,6 @@
         <button class="environments-toggle" id="environments-toggle" type="button" aria-controls="environments-panel" aria-expanded="false">
           Ambienti
         </button>
-        <button class="tours-toggle" id="tours-toggle" type="button">
-          Percorsi
-        </button>
         <p class="scene-title" id="scene-title">Casa Contadina</p>
       </header>
 
@@ -68,18 +65,6 @@
           <div id="viewer" class="panorama-viewer"></div>
         </section>
 
-        <section class="guided-tour-bar" id="guided-tour-bar" aria-label="Visita guidata" hidden>
-          <div class="guided-tour-bar__heading">
-            <strong id="guided-tour-title"></strong>
-            <span id="guided-tour-position"></span>
-          </div>
-          <progress id="guided-tour-progress" value="0" max="1"></progress>
-          <div class="guided-tour-bar__actions">
-            <button type="button" data-guided-tour-action="previous">Precedente</button>
-            <button type="button" class="primary-action" data-guided-tour-action="next">Successiva</button>
-            <button type="button" data-guided-tour-action="stop">Interrompi percorso</button>
-          </div>
-        </section>
       </main>
 
       <footer class="statusbar" aria-label="Informazioni sul visualizzatore">
@@ -87,18 +72,6 @@
         <span>Schermo intero disponibile dai controlli</span>
       </footer>
     </div>
-
-    <dialog class="manager-dialog tour-catalog-dialog" id="tour-catalog-dialog" aria-labelledby="tour-catalog-title">
-      <form method="dialog">
-        <header>
-          <h2 id="tour-catalog-title">Visite Guidate</h2>
-          <button class="icon-action" type="button" data-tour-catalog-action="close" aria-label="Chiudi">
-            <span aria-hidden="true">x</span>
-          </button>
-        </header>
-        <div class="tour-catalog-list" id="tour-catalog-list"></div>
-      </form>
-    </dialog>
 
     <aside class="info-panel" id="info-panel" aria-labelledby="info-panel-title" aria-live="polite" aria-hidden="true" inert>
       <div class="info-panel__sheet">
@@ -121,6 +94,6 @@
       </div>
     </aside>
 
-    <script type="module" src="./js/app.js?v=20260711-5"></script>
+    <script type="module" src="./js/app.js?v=20260712-1"></script>
   </body>
 </html>

@@ -1,10 +1,9 @@
 import { createHotspotViewer } from './hotspot-viewer.js';
 import { createInformationPanel } from './information-panel.js';
 import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js';
-import { createGuidedTourPlayer } from './guided-tour-player.js';
 import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
 import { resolveSceneMedia } from './media-store.js';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260711-5';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260712-1';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 
 const state = {
@@ -12,7 +11,6 @@ const state = {
   viewer: null,
   activeScene: null,
   hotspotViewer: null,
-  guidedTourPlayer: null,
   history: [],
 };
 
@@ -157,41 +155,6 @@ async function changeScene(sceneId, { pushHistory = true } = {}) {
   }
 }
 
-async function openTargetEntry(entry) {
-  if (entry.kind === 'scene') {
-    await changeScene(entry.sceneId);
-    return;
-  }
-  if (!entry.sceneId) return;
-  const sceneOpened = await changeScene(entry.sceneId);
-  if (!sceneOpened) return;
-
-  if (!entry.hotspotId) return;
-  const scene = getSceneById(state.project, entry.sceneId);
-  const hotspot = scene?.hotspots.find((item) => item.id === entry.hotspotId);
-  if (!hotspot) {
-    showMessage('L’hotspot richiesto non e disponibile.');
-    return;
-  }
-
-  try {
-    await state.viewer.animate({
-      yaw: hotspot.yaw,
-      pitch: hotspot.pitch,
-      speed: '3rpm',
-    });
-  } catch {
-    state.viewer.rotate({ yaw: hotspot.yaw, pitch: hotspot.pitch });
-  }
-  if (entry.kind === 'link') {
-    const marker = elements.viewer.querySelector(`.hotspot-marker[data-hotspot-id="${CSS.escape(hotspot.id)}"]`);
-    marker?.classList.add('is-search-target');
-    window.setTimeout(() => marker?.classList.remove('is-search-target'), 1800);
-    return;
-  }
-  state.hotspotViewer.openHotspot(hotspot.id);
-}
-
 function preloadLinkedScenes(scene) {
   const targets = new Set((scene.hotspots || [])
     .filter((hotspot) => hotspot.type === 'navigation' && hotspot.targetSceneId)
@@ -203,29 +166,6 @@ function preloadLinkedScenes(scene) {
       const image = new Image();
       image.src = target.panorama;
     }
-  });
-}
-
-function preloadScene(sceneId) {
-  const storedScene = getSceneById(state.project, sceneId);
-  const scene = storedScene ? resolveSceneMedia(state.project, storedScene) : null;
-  if (!scene?.panorama) return;
-  const image = new Image();
-  image.src = scene.panorama;
-}
-
-async function openGuidedTourStep(step) {
-  if (step.type === 'scene') {
-    await changeScene(step.sceneId);
-    return;
-  }
-  const scene = getSceneById(state.project, step.sceneId);
-  const hotspot = scene?.hotspots.find((item) => item.id === step.hotspotId);
-  if (!hotspot) return;
-  await openTargetEntry({
-    kind: hotspot.type === 'navigation' ? 'link' : 'hotspot',
-    sceneId: step.sceneId,
-    hotspotId: step.hotspotId,
   });
 }
 
@@ -274,12 +214,6 @@ async function initialize() {
         project: state.project,
         onNavigate: (sceneId) => changeScene(sceneId),
         popup: informationPanel,
-      });
-
-      state.guidedTourPlayer = createGuidedTourPlayer({
-        project: state.project,
-        onOpenStep: openGuidedTourStep,
-        onPreloadScene: preloadScene,
       });
 
       elements.environmentsToggle?.addEventListener('click', toggleEnvironmentsPanel);
