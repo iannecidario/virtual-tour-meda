@@ -449,20 +449,31 @@ body.is-cinematic-transitioning .viewer-panel::after {
   width: var(--hotspot-size, 36px);
   height: var(--hotspot-size, 36px);
   padding: 0;
-  border: 2px solid var(--hotspot-border-color, rgba(255, 255, 255, 0.95));
+  border: 1px solid var(--marker-info-border, rgba(232, 230, 224, 0.82));
   border-radius: 50%;
-  background: var(--hotspot-color, var(--accent));
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(31, 35, 40, 0.28);
+  background: var(--marker-info-background, rgba(255, 253, 247, 0.72));
+  color: var(--marker-info-icon, #3f4248);
+  box-shadow: var(--marker-info-shadow, 0 8px 22px rgba(31, 35, 40, 0.16));
+  backdrop-filter: blur(var(--marker-info-blur, 10px)) saturate(1.08);
+  -webkit-backdrop-filter: blur(var(--marker-info-blur, 10px)) saturate(1.08);
   cursor: pointer;
   touch-action: none;
-  transition: transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    border-color var(--marker-animation-ms, 180ms) ease,
+    color var(--marker-animation-ms, 180ms) ease,
+    opacity var(--marker-animation-ms, 180ms) ease,
+    transform var(--marker-animation-ms, 180ms) ease,
+    box-shadow var(--marker-animation-ms, 180ms) ease,
+    background var(--marker-animation-ms, 180ms) ease;
 }
 
 .hotspot-marker:hover,
 .hotspot-marker.is-selected {
-  transform: scale(1.08);
-  box-shadow: 0 10px 26px rgba(31, 35, 40, 0.34), 0 0 0 5px rgba(190, 22, 34, 0.2);
+  border-color: var(--marker-info-active-border, var(--accent));
+  color: var(--marker-info-active-icon, var(--accent));
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(var(--marker-active-scale, 1.14));
+  box-shadow: var(--marker-info-active-shadow, 0 12px 30px rgba(31, 35, 40, 0.22), 0 0 0 5px rgba(190, 22, 34, 0.16));
 }
 
 .has-dynamic-hotspot-markers .hotspot-marker {
@@ -470,7 +481,15 @@ body.is-cinematic-transitioning .viewer-panel::after {
   width: max(28px, calc(var(--hotspot-size, 36px) * var(--marker-device-scale, 1) * var(--marker-zoom-scale, 1)));
   height: max(28px, calc(var(--hotspot-size, 36px) * var(--marker-device-scale, 1) * var(--marker-zoom-scale, 1)));
   opacity: var(--marker-opacity, 0.82);
-  transition: width 180ms ease, height 180ms ease, opacity 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    width var(--marker-animation-ms, 180ms) ease,
+    height var(--marker-animation-ms, 180ms) ease,
+    border-color var(--marker-animation-ms, 180ms) ease,
+    color var(--marker-animation-ms, 180ms) ease,
+    opacity var(--marker-animation-ms, 180ms) ease,
+    transform var(--marker-animation-ms, 180ms) ease,
+    box-shadow var(--marker-animation-ms, 180ms) ease,
+    background var(--marker-animation-ms, 180ms) ease;
 }
 
 .has-dynamic-hotspot-markers .hotspot-marker::before {
@@ -483,13 +502,55 @@ body.is-cinematic-transitioning .viewer-panel::after {
 .has-dynamic-hotspot-markers .hotspot-marker:active,
 .has-dynamic-hotspot-markers .hotspot-marker.is-selected {
   opacity: var(--marker-active-opacity, 1);
+  border-color: var(--marker-info-active-border, var(--accent));
+  color: var(--marker-info-active-icon, var(--accent));
+  background: rgba(255, 255, 255, 0.9);
   transform: scale(var(--marker-active-scale, 1.12));
-  box-shadow: 0 10px 26px rgba(31, 35, 40, 0.34), 0 0 0 5px rgba(190, 22, 34, 0.2);
+  box-shadow: var(--marker-info-active-shadow, 0 12px 30px rgba(31, 35, 40, 0.22), 0 0 0 5px rgba(190, 22, 34, 0.16));
 }
 
 .hotspot-marker.is-navigation {
+  border: 3px solid var(--hotspot-border-color, rgba(255, 255, 255, 0.95));
   border-width: 3px;
+  background: var(--hotspot-color, var(--accent));
+  color: #fff;
+  opacity: 1;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   box-shadow: 0 10px 28px rgba(31, 35, 40, 0.32), 0 0 0 6px rgba(255, 255, 255, 0.26);
+}
+
+.hotspot-marker.is-navigation:hover,
+.hotspot-marker.is-navigation:active,
+.hotspot-marker.is-navigation.is-selected {
+  border-color: var(--hotspot-border-color, rgba(255, 255, 255, 0.95));
+  background: var(--hotspot-color, var(--accent));
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(31, 35, 40, 0.38), 0 0 0 7px rgba(255, 255, 255, 0.3);
+}
+
+.has-dynamic-hotspot-markers .hotspot-marker.is-navigation {
+  opacity: 1;
+}
+
+.has-dynamic-hotspot-markers .hotspot-marker.is-navigation:hover,
+.has-dynamic-hotspot-markers .hotspot-marker.is-navigation:active,
+.has-dynamic-hotspot-markers .hotspot-marker.is-navigation.is-selected {
+  border-color: var(--hotspot-border-color, rgba(255, 255, 255, 0.95));
+  background: var(--hotspot-color, var(--accent));
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(31, 35, 40, 0.38), 0 0 0 7px rgba(255, 255, 255, 0.3);
+}
+
+.hotspot-marker.is-info-open {
+  border-color: var(--marker-info-active-border, var(--accent));
+  color: var(--marker-info-active-icon, var(--accent));
+  background: rgba(255, 255, 255, 0.9);
+  opacity: var(--marker-active-opacity, 1);
+  transform: scale(var(--marker-active-scale, 1.14));
+  box-shadow: var(--marker-info-active-shadow, 0 12px 30px rgba(31, 35, 40, 0.22), 0 0 0 5px rgba(190, 22, 34, 0.16));
 }
 
 .hotspot-marker.is-search-dimmed {
@@ -531,6 +592,25 @@ body.is-cinematic-transitioning .viewer-panel::after {
   width: var(--hotspot-icon-size, 19px);
   height: var(--hotspot-icon-size, 19px);
   object-fit: contain;
+  filter: grayscale(1) brightness(0.42);
+  opacity: 0.82;
+  transition: filter var(--marker-animation-ms, 180ms) ease, opacity var(--marker-animation-ms, 180ms) ease;
+}
+
+.hotspot-marker:hover img,
+.hotspot-marker:active img,
+.hotspot-marker.is-selected img,
+.hotspot-marker.is-info-open img {
+  filter: grayscale(1) sepia(0.35) saturate(5) hue-rotate(315deg) brightness(0.82);
+  opacity: 1;
+}
+
+.hotspot-marker.is-navigation img,
+.hotspot-marker.is-navigation:hover img,
+.hotspot-marker.is-navigation:active img,
+.hotspot-marker.is-navigation.is-selected img {
+  filter: none;
+  opacity: 1;
 }
 
 .has-dynamic-hotspot-markers .hotspot-marker svg,

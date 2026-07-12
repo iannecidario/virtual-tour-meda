@@ -54,10 +54,17 @@ export async function createHotspotViewer({ viewer, markersPlugin, scene, projec
       return;
     }
 
+    showInfoMarkerState(viewer, hotspot.id);
     popup.open(resolveHotspotMedia(state.project, hotspot), event.marker.domElement);
   });
 
   return api;
+}
+
+function showInfoMarkerState(viewer, id) {
+  const marker = viewer.container.querySelector(`.hotspot-marker[data-hotspot-id="${CSS.escape(id)}"]`);
+  marker?.classList.add('is-info-open');
+  window.setTimeout(() => marker?.classList.remove('is-info-open'), 900);
 }
 
 function renderResolvedHotspots(markersPlugin, state) {
