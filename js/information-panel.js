@@ -34,6 +34,8 @@ const blockRenderers = [
 export function createInformationPanel({ element, title, category, blocks }) {
   const fields = { title, category, blocks };
   let previousFocus = null;
+  const pronunciationPlayer = new Audio();
+  pronunciationPlayer.preload = 'auto';
 
   function open(hotspot) {
     stopMedia();
@@ -44,6 +46,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
     element.inert = false;
     element.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-info-panel-open');
+    playPronunciation(hotspot.pronunciation);
     requestAnimationFrame(() => element.querySelector('[data-info-panel-action="close"]')?.focus());
   }
 
@@ -58,11 +61,27 @@ export function createInformationPanel({ element, title, category, blocks }) {
   }
 
   function stopMedia() {
+    stopPronunciation();
     fields.blocks.querySelectorAll('audio, video').forEach((player) => {
       player.pause();
       player.currentTime = 0;
     });
     fields.blocks.replaceChildren();
+  }
+
+  function playPronunciation(src) {
+    if (!src) return;
+    pronunciationPlayer.src = src;
+    pronunciationPlayer.currentTime = 0;
+    pronunciationPlayer.play().catch(() => {
+      stopPronunciation();
+    });
+  }
+
+  function stopPronunciation() {
+    pronunciationPlayer.pause();
+    pronunciationPlayer.removeAttribute('src');
+    pronunciationPlayer.load();
   }
 
   element.querySelectorAll('[data-info-panel-action="close"]').forEach((button) => {

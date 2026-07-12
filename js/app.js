@@ -1,8 +1,8 @@
-import { createHotspotViewer } from './hotspot-viewer.js';
-import { createInformationPanel } from './information-panel.js';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260712-5';
+import { createInformationPanel } from './information-panel.js?v=20260712-5';
 import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js';
-import { resolveSceneMedia } from './media-store.js';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260712-5';
+import { resolveSceneMedia } from './media-store.js?v=20260712-5';
 import { createMobileControlsMenu } from './mobile-controls.js?v=20260712-1';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 import { SCENE_TRANSITION } from './scene-transition-config.js';

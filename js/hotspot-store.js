@@ -18,6 +18,7 @@ export function normalizeHotspot(hotspot = {}) {
     size: Math.min(Math.max(size, 24), 72),
     imageMediaId: String(hotspot.imageMediaId || '').trim(),
     audioMediaId: String(hotspot.audioMediaId || '').trim(),
+    pronunciationMediaId: String(hotspot.pronunciationMediaId || '').trim(),
     documentMediaId: String(hotspot.documentMediaId || '').trim(),
     youtube: String(hotspot.youtube || '').trim(),
     externalUrl: String(hotspot.externalUrl || '').trim(),

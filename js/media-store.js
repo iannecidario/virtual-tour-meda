@@ -93,6 +93,7 @@ export function resolveHotspotMedia(project, hotspot) {
     ...hotspot,
     image: resolveMediaUrl(project, hotspot.imageMediaId, hotspot.image),
     audio: resolveMediaUrl(project, hotspot.audioMediaId, hotspot.audio),
+    pronunciation: resolveMediaUrl(project, hotspot.pronunciationMediaId, hotspot.pronunciation),
     customIcon: resolveMediaUrl(project, hotspot.iconMediaId, hotspot.customIcon),
     document: resolveMediaUrl(project, hotspot.documentMediaId, hotspot.document),
   };
@@ -125,6 +126,7 @@ export function collectMediaUsage(project, mediaId) {
       const fields = [
         ['imageMediaId', 'Immagine'],
         ['audioMediaId', 'Audio'],
+        ['pronunciationMediaId', 'Pronuncia dialettale'],
         ['iconMediaId', 'Icona'],
         ['documentMediaId', 'Documento'],
       ];
@@ -163,6 +165,7 @@ export function replaceMediaReferences(project, sourceId, replacementId = '') {
         ...hotspot,
         imageMediaId: replace(hotspot.imageMediaId),
         audioMediaId: replace(hotspot.audioMediaId),
+        pronunciationMediaId: replace(hotspot.pronunciationMediaId),
         iconMediaId: replace(hotspot.iconMediaId),
         documentMediaId: replace(hotspot.documentMediaId),
       })),
@@ -201,7 +204,7 @@ export function validateMediaLibrary(project, availableFiles = new Map()) {
 
   project.scenes.forEach((scene) => {
     scene.hotspots.forEach((hotspot) => {
-      ['imageMediaId', 'audioMediaId', 'iconMediaId', 'documentMediaId'].forEach((field) => {
+      ['imageMediaId', 'audioMediaId', 'pronunciationMediaId', 'iconMediaId', 'documentMediaId'].forEach((field) => {
         if (hotspot[field] && !getMediaItem(project, hotspot[field])) {
           issues.push({
             type: 'invalid',
