@@ -1,6 +1,6 @@
 import { initialSceneId, scenes as fallbackScenes } from './scenes.js';
-import { normalizeHotspot } from './hotspot-store.js?v=20260720-4';
-import { normalizeMediaItem, normalizeMediaLibrary } from './media-store.js?v=20260720-4';
+import { normalizeHotspot } from './hotspot-store.js?v=20260720-5';
+import { normalizeMediaItem, normalizeMediaLibrary } from './media-store.js?v=20260720-5';
 import { normalizeGuidedTours } from './guided-tour-store.js';
 
 const PROJECT_URL = './data/project.json';

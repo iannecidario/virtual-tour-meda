@@ -1764,7 +1764,7 @@ body.is-initial-view-mode .tour-navigation {
   border: 0;
   border-radius: 8px;
   background: #f2f0ec;
-  cursor: zoom-in;
+  cursor: default;
 }
 
 .info-panel__image-trigger:focus-visible {
@@ -2816,6 +2816,10 @@ body.is-image-viewer-open {
 
   .info-panel__image-block img {
     max-height: min(62svh, 520px);
+  }
+
+  .info-panel__image-trigger {
+    cursor: zoom-in;
   }
 }
 

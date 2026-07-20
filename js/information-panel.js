@@ -132,6 +132,7 @@ function renderImageBlock(hotspot) {
 
   trigger.append(image);
   trigger.addEventListener('click', () => {
+    if (!isMobileImageViewerEnabled()) return;
     window.dispatchEvent(new CustomEvent('meda:open-image-viewer', {
       detail: {
         src: hotspot.image,
@@ -142,6 +143,10 @@ function renderImageBlock(hotspot) {
 
   figure.append(trigger);
   return figure;
+}
+
+function isMobileImageViewerEnabled() {
+  return window.matchMedia('(max-width: 760px), (pointer: coarse)').matches;
 }
 
 function createImageViewer() {
