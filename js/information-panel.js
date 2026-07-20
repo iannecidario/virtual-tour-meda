@@ -35,6 +35,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
   const fields = { title, category, blocks };
   let previousFocus = null;
   const pronunciationPlayer = new Audio();
+  const imageViewer = createImageViewer();
   pronunciationPlayer.preload = 'auto';
 
   function open(hotspot) {
@@ -52,6 +53,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
 
   function close() {
     stopMedia();
+    imageViewer.close();
     element.setAttribute('aria-hidden', 'true');
     element.inert = true;
     document.body.classList.remove('is-info-panel-open');
@@ -61,6 +63,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
   }
 
   function stopMedia() {
+    imageViewer.close();
     stopPronunciation();
     fields.blocks.querySelectorAll('audio, video').forEach((player) => {
       player.pause();
@@ -111,6 +114,11 @@ function renderImageBlock(hotspot) {
   const figure = document.createElement('figure');
   figure.className = 'info-panel__image-block';
 
+  const trigger = document.createElement('button');
+  trigger.className = 'info-panel__image-trigger';
+  trigger.type = 'button';
+  trigger.setAttribute('aria-label', 'Apri immagine a schermo intero');
+
   const image = document.createElement('img');
   image.src = hotspot.image;
   image.alt = hotspot.title || 'Immagine hotspot';
@@ -119,11 +127,212 @@ function renderImageBlock(hotspot) {
     const message = document.createElement('p');
     message.className = 'media-error';
     message.textContent = 'Immagine non disponibile.';
-    image.replaceWith(message);
+    trigger.replaceWith(message);
   }, { once: true });
 
-  figure.append(image);
+  trigger.append(image);
+  trigger.addEventListener('click', () => {
+    window.dispatchEvent(new CustomEvent('meda:open-image-viewer', {
+      detail: {
+        src: hotspot.image,
+        alt: image.alt,
+      },
+    }));
+  });
+
+  figure.append(trigger);
   return figure;
+}
+
+function createImageViewer() {
+  let overlay = null;
+  let image = null;
+  let previousFocus = null;
+  const pointers = new Map();
+  const state = {
+    scale: 1,
+    x: 0,
+    y: 0,
+    startX: 0,
+    startY: 0,
+    startScale: 1,
+    startDistance: 0,
+    dragStartX: 0,
+    dragStartY: 0,
+    moved: false,
+  };
+
+  function ensure() {
+    if (overlay) return;
+
+    overlay = document.createElement('aside');
+    overlay.className = 'image-viewer';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-label', 'Visualizzazione immagine');
+    overlay.inert = true;
+
+    const closeButton = document.createElement('button');
+    closeButton.className = 'image-viewer__close';
+    closeButton.type = 'button';
+    closeButton.setAttribute('aria-label', 'Chiudi immagine');
+    closeButton.textContent = 'x';
+
+    const stage = document.createElement('div');
+    stage.className = 'image-viewer__stage';
+
+    image = document.createElement('img');
+    image.className = 'image-viewer__image';
+    image.draggable = false;
+    image.alt = '';
+
+    stage.append(image);
+    overlay.append(stage, closeButton);
+    document.body.append(overlay);
+
+    closeButton.addEventListener('click', close);
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay || event.target === stage) close();
+    });
+    overlay.addEventListener('wheel', onWheel, { passive: false });
+    overlay.addEventListener('pointerdown', onPointerDown);
+    overlay.addEventListener('pointermove', onPointerMove);
+    overlay.addEventListener('pointerup', onPointerUp);
+    overlay.addEventListener('pointercancel', onPointerUp);
+    overlay.addEventListener('dblclick', toggleZoom);
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') close();
+    });
+    window.addEventListener('meda:open-image-viewer', (event) => {
+      open(event.detail || {});
+    });
+  }
+
+  function open({ src, alt }) {
+    ensure();
+    if (!src) return;
+    previousFocus = document.activeElement;
+    resetTransform();
+    image.src = src;
+    image.alt = alt || 'Immagine';
+    overlay.inert = false;
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-image-viewer-open');
+    requestAnimationFrame(() => overlay.querySelector('.image-viewer__close')?.focus());
+  }
+
+  function close() {
+    if (!overlay || overlay.getAttribute('aria-hidden') === 'true') return;
+    pointers.clear();
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.inert = true;
+    image.removeAttribute('src');
+    document.body.classList.remove('is-image-viewer-open');
+    if (previousFocus instanceof HTMLElement && document.contains(previousFocus) && !previousFocus.closest('[inert]')) {
+      previousFocus.focus();
+    }
+  }
+
+  function resetTransform() {
+    state.scale = 1;
+    state.x = 0;
+    state.y = 0;
+    state.moved = false;
+    applyTransform();
+  }
+
+  function applyTransform() {
+    if (!image) return;
+    image.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) scale(${state.scale})`;
+  }
+
+  function onWheel(event) {
+    if (!image) return;
+    event.preventDefault();
+    const nextScale = clamp(state.scale + (-event.deltaY * 0.002), 1, 5);
+    setScale(nextScale);
+  }
+
+  function onPointerDown(event) {
+    if (!image || event.target.closest('.image-viewer__close')) return;
+    event.preventDefault();
+    overlay.setPointerCapture?.(event.pointerId);
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    state.moved = false;
+    state.startX = state.x;
+    state.startY = state.y;
+    state.dragStartX = event.clientX;
+    state.dragStartY = event.clientY;
+    state.startScale = state.scale;
+    state.startDistance = distanceBetweenPointers();
+  }
+
+  function onPointerMove(event) {
+    if (!pointers.has(event.pointerId)) return;
+    event.preventDefault();
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (pointers.size >= 2) {
+      const nextDistance = distanceBetweenPointers();
+      if (state.startDistance > 0) {
+        setScale(state.startScale * (nextDistance / state.startDistance));
+      }
+      return;
+    }
+
+    const dx = event.clientX - state.dragStartX;
+    const dy = event.clientY - state.dragStartY;
+    state.moved = Math.abs(dx) > 6 || Math.abs(dy) > 6;
+    if (state.scale > 1) {
+      state.x = state.startX + dx;
+      state.y = state.startY + dy;
+      applyTransform();
+    } else if (dy > 90 && Math.abs(dx) < 70) {
+      close();
+    }
+  }
+
+  function onPointerUp(event) {
+    if (pointers.has(event.pointerId)) {
+      pointers.delete(event.pointerId);
+    }
+    try {
+      overlay?.releasePointerCapture?.(event.pointerId);
+    } catch {
+      // Safari puo rilasciare automaticamente il puntatore quando cambia gesto.
+    }
+    state.startX = state.x;
+    state.startY = state.y;
+    state.startScale = state.scale;
+    state.startDistance = distanceBetweenPointers();
+  }
+
+  function toggleZoom(event) {
+    event.preventDefault();
+    setScale(state.scale > 1 ? 1 : 2.4);
+  }
+
+  function setScale(value) {
+    const nextScale = clamp(value, 1, 5);
+    state.scale = nextScale;
+    if (nextScale === 1) {
+      state.x = 0;
+      state.y = 0;
+    }
+    applyTransform();
+  }
+
+  function distanceBetweenPointers() {
+    const values = Array.from(pointers.values());
+    if (values.length < 2) return 0;
+    return Math.hypot(values[0].x - values[1].x, values[0].y - values[1].y);
+  }
+
+  ensure();
+  return { close };
+}
+
+function clamp(value, min, max) {
+  return Math.min(max, Math.max(min, value));
 }
 
 function renderDescriptionBlock(hotspot) {

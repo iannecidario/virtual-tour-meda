@@ -1756,12 +1756,28 @@ body.is-initial-view-mode .tour-navigation {
   margin: 0;
 }
 
+.info-panel__image-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 8px;
+  background: #f2f0ec;
+  cursor: zoom-in;
+}
+
+.info-panel__image-trigger:focus-visible {
+  outline: 3px solid rgba(190, 22, 34, 0.34);
+  outline-offset: 3px;
+}
+
 .info-panel__image-block img {
   display: block;
   width: 100%;
-  max-height: 310px;
-  border-radius: 8px;
-  object-fit: cover;
+  height: auto;
+  max-height: min(440px, 54vh);
+  object-fit: contain;
 }
 
 .info-panel__description {
@@ -1841,6 +1857,72 @@ body.is-initial-view-mode .tour-navigation {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 800;
+}
+
+.image-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: max(18px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right)) max(18px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  overflow: hidden;
+  background: rgba(8, 9, 11, 0.96);
+  opacity: 1;
+  transition: opacity 220ms ease;
+  touch-action: none;
+}
+
+.image-viewer[aria-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.image-viewer__stage {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.image-viewer__stage:active {
+  cursor: grabbing;
+}
+
+.image-viewer__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  transition: transform 90ms linear;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.image-viewer__close {
+  position: fixed;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  width: 42px;
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.35rem;
+  line-height: 1;
+  backdrop-filter: blur(12px);
+}
+
+body.is-image-viewer-open {
+  overflow: hidden;
 }
 
 .exploration-panel {
@@ -2717,7 +2799,7 @@ body.is-initial-view-mode .tour-navigation {
   }
 
   .info-panel__image-block img {
-    max-height: 220px;
+    max-height: min(62svh, 520px);
   }
 }
 
@@ -2752,7 +2834,16 @@ body.is-initial-view-mode .tour-navigation {
   }
 
   .info-panel__image-block img {
-    max-height: 170px;
+    max-height: min(58svh, 480px);
+  }
+
+  .image-viewer {
+    padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  }
+
+  .image-viewer__close {
+    width: 40px;
+    min-height: 40px;
   }
 }
 
