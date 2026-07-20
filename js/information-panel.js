@@ -197,6 +197,9 @@ function createImageViewer() {
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') close();
     });
+    window.addEventListener('resize', () => {
+      if (overlay.getAttribute('aria-hidden') === 'false') resetTransform();
+    });
     window.addEventListener('meda:open-image-viewer', (event) => {
       open(event.detail || {});
     });
