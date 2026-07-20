@@ -160,6 +160,7 @@ function createImageViewer() {
     dragStartX: 0,
     dragStartY: 0,
     moved: false,
+    lastTapTime: 0,
   };
 
   function ensure() {
@@ -198,7 +199,7 @@ function createImageViewer() {
     overlay.addEventListener('pointermove', onPointerMove);
     overlay.addEventListener('pointerup', onPointerUp);
     overlay.addEventListener('pointercancel', onPointerUp);
-    overlay.addEventListener('dblclick', toggleZoom);
+    overlay.addEventListener('dblclick', resetFromGesture);
     window.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && overlay.getAttribute('aria-hidden') === 'false') close();
     });
@@ -214,6 +215,7 @@ function createImageViewer() {
     resetTransform();
     image.src = src;
     image.alt = alt || 'Immagine';
+    image.addEventListener('load', resetTransform, { once: true });
     overlay.inert = false;
     overlay.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-image-viewer-open');
@@ -236,6 +238,10 @@ function createImageViewer() {
     state.scale = 1;
     state.x = 0;
     state.y = 0;
+    state.startX = 0;
+    state.startY = 0;
+    state.startScale = 1;
+    state.startDistance = 0;
     state.moved = false;
     applyTransform();
   }
@@ -255,6 +261,10 @@ function createImageViewer() {
   function onPointerDown(event) {
     if (!image || event.target.closest('.image-viewer__close')) return;
     event.preventDefault();
+    if (event.pointerType === 'touch' && isDoubleTap()) {
+      resetTransform();
+      return;
+    }
     overlay.setPointerCapture?.(event.pointerId);
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
     state.moved = false;
@@ -306,9 +316,9 @@ function createImageViewer() {
     state.startDistance = distanceBetweenPointers();
   }
 
-  function toggleZoom(event) {
+  function resetFromGesture(event) {
     event.preventDefault();
-    setScale(state.scale > 1 ? 1 : 2.4);
+    resetTransform();
   }
 
   function setScale(value) {
@@ -319,6 +329,13 @@ function createImageViewer() {
       state.y = 0;
     }
     applyTransform();
+  }
+
+  function isDoubleTap() {
+    const now = Date.now();
+    const isDouble = now - state.lastTapTime < 320;
+    state.lastTapTime = now;
+    return isDouble;
   }
 
   function distanceBetweenPointers() {
