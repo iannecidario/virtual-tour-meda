@@ -1924,6 +1924,17 @@ body.is-initial-view-mode .tour-navigation {
   backdrop-filter: blur(12px);
 }
 
+.image-viewer__error {
+  max-width: min(420px, 90vw);
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-align: center;
+}
+
 body.is-image-viewer-open {
   overflow: hidden;
 }

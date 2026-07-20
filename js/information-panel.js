@@ -146,6 +146,7 @@ function renderImageBlock(hotspot) {
 
 function createImageViewer() {
   let overlay = null;
+  let stage = null;
   let image = null;
   let previousFocus = null;
   const pointers = new Map();
@@ -178,15 +179,8 @@ function createImageViewer() {
     closeButton.setAttribute('aria-label', 'Chiudi immagine');
     closeButton.textContent = 'x';
 
-    const stage = document.createElement('div');
+    stage = document.createElement('div');
     stage.className = 'image-viewer__stage';
-
-    image = document.createElement('img');
-    image.className = 'image-viewer__image';
-    image.draggable = false;
-    image.alt = '';
-
-    stage.append(image);
     overlay.append(stage, closeButton);
     document.body.append(overlay);
 
@@ -212,10 +206,25 @@ function createImageViewer() {
     ensure();
     if (!src) return;
     previousFocus = document.activeElement;
+    pointers.clear();
     resetTransform();
-    image.src = src;
+    state.lastTapTime = 0;
+    stage.replaceChildren();
+    image = document.createElement('img');
+    image.className = 'image-viewer__image';
+    image.draggable = false;
     image.alt = alt || 'Immagine';
+    image.decoding = 'async';
     image.addEventListener('load', resetTransform, { once: true });
+    image.addEventListener('error', () => {
+      const message = document.createElement('p');
+      message.className = 'image-viewer__error';
+      message.textContent = 'Immagine non disponibile.';
+      stage.replaceChildren(message);
+      image = null;
+    }, { once: true });
+    stage.append(image);
+    image.src = src;
     overlay.inert = false;
     overlay.setAttribute('aria-hidden', 'false');
     document.body.classList.add('is-image-viewer-open');
@@ -227,7 +236,8 @@ function createImageViewer() {
     pointers.clear();
     overlay.setAttribute('aria-hidden', 'true');
     overlay.inert = true;
-    image.removeAttribute('src');
+    stage?.replaceChildren();
+    image = null;
     document.body.classList.remove('is-image-viewer-open');
     if (previousFocus instanceof HTMLElement && document.contains(previousFocus) && !previousFocus.closest('[inert]')) {
       previousFocus.focus();
@@ -252,14 +262,14 @@ function createImageViewer() {
   }
 
   function onWheel(event) {
-    if (!image) return;
+    if (!image || overlay?.getAttribute('aria-hidden') === 'true') return;
     event.preventDefault();
     const nextScale = clamp(state.scale + (-event.deltaY * 0.002), 1, 5);
     setScale(nextScale);
   }
 
   function onPointerDown(event) {
-    if (!image || event.target.closest('.image-viewer__close')) return;
+    if (!image || overlay?.getAttribute('aria-hidden') === 'true' || event.target.closest('.image-viewer__close')) return;
     event.preventDefault();
     if (event.pointerType === 'touch' && isDoubleTap()) {
       resetTransform();
