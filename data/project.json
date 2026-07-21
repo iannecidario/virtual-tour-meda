@@ -2517,6 +2517,45 @@
         "uploadedAt": "2026-07-21T12:21:20+00:00",
         "path": "./assets/panorami/360 CALZOLAIO2 3.jpg",
         "fileName": "360 CALZOLAIO2 3.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-4-jpg",
+        "name": "360 CALZOLAIO2 4",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T12:21:20+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 4.jpg",
+        "fileName": "360 CALZOLAIO2 4.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-5-jpg",
+        "name": "360 CALZOLAIO2 5",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T12:42:40+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 5.jpg",
+        "fileName": "360 CALZOLAIO2 5.jpg"
+      },
+      {
+        "id": "rocco-scotellaro",
+        "name": "rocco scotellaro",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 31933,
+        "uploadedAt": "2026-07-21T16:23:39.172Z",
+        "path": "./assets/immagini/rocco-scotellaro.jpeg",
+        "fileName": "rocco scotellaro.jpeg"
       }
     ]
   },
@@ -5776,7 +5815,7 @@
         {
           "id": "scodellato-1",
           "type": "info",
-          "title": "R. Scotellaro - La scuola",
+          "title": "Rocco Scotellaro, La scuola (Contadini del Sud)",
           "description": "E arrivato all'età di sei anni, incominciai a frequentare la prima classe elementare. Avevo tutti i giorni consigli e incoraggiamento dai miei che, raccomandandosi che io mi portassi bene, mi spiegavano quale utilità è nella vita avere un titolo di studio: specie nei tempi di allora era sufficiente la quinta elementare per il nostro ceto, e io mi sforzavo di fare più di quello che potevo. Alla fine dell'anno fui promosso alla seconda classe: ne ero molto soddisfatto e, contento di essere riuscito ne1 mio primo sforzo, incominciai ad avere fiducia in me. \n\nMa nel secondo anno di scuola non fu così. I casi furono due che mi sbarrarono il passo. Per primo dopo esser andato un paio ai mesi alla scuola, scoppiò una malattia contagiosa fra gli alunni, incominciarono a morire i primi, e venne un ordine di sospendere l'anno scolastico ed attendere sino a nuovo ordine. Per secondo, già da due anni mio padre aveva incominciato a fare un mal raccolto e quell'anno finì di rimetterci anche un po' di risparmio che aveva. I tempi si presentavano difficili e incominciò ad affacciarsi la miseria. \n\nAllora mio padre decise che per me non più scuole per mancanza di denaro. Ecco come su di me svanirono le speranze, speranze dei miei, che mi volevano preparare una strada nell'avvenire o almeno far completare le scuole elementari. Niente: tutto lì finì. La mia delusione fu abbastanza grande, da così piccolo che ero, perché già capivo in quale cerchio ero caduto io e la mia famiglia. \n\nMio padre sin da allora mi incominciò a portare con sé in campagna. Mi poteva insegnare un altro mestiere ma siccome gli altamurani sono tutti agricoltori mio padre conservava lo spirito di tradizione e così dovetti ubbidire. È triste il pensare che un bambino di tenera età, quando è proprio il momento dell'insegnamento della conoscenza, quando ha bisogno ancora del gioco, ha bisogno ancora della guida materna ecc. ecc., viene portato in campagna, per sfruttargli quel poco della salute che ha, allo scopo di economia finanziaria.",
           "category": "Letteratura",
           "keywords": [],
@@ -5795,8 +5834,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.2783792291047775,
-          "pitch": -0.07939974775614012
+          "yaw": 3.464939495809464,
+          "pitch": -0.016304432598597263
         }
       ],
       "settings": {},

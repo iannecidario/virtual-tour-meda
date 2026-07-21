@@ -43,6 +43,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
     previousFocus = document.activeElement;
     fields.title.textContent = hotspot.title || hotspot.id;
     fields.category.textContent = hotspot.category || 'Hotspot';
+    element.classList.toggle('is-literary-panel', isLiteraryHotspot(hotspot));
     renderBlocks(fields.blocks, hotspot);
     element.inert = false;
     element.setAttribute('aria-hidden', 'false');
@@ -56,6 +57,7 @@ export function createInformationPanel({ element, title, category, blocks }) {
     imageViewer.close();
     element.setAttribute('aria-hidden', 'true');
     element.inert = true;
+    element.classList.remove('is-literary-panel');
     document.body.classList.remove('is-info-panel-open');
     if (previousFocus instanceof HTMLElement && document.contains(previousFocus) && !previousFocus.closest('[inert]')) {
       previousFocus.focus();
@@ -98,6 +100,11 @@ export function createInformationPanel({ element, title, category, blocks }) {
   });
 
   return { open, close };
+}
+
+function isLiteraryHotspot(hotspot) {
+  const category = String(hotspot.category || '').trim().toLowerCase();
+  return category === 'letteratura' || hotspot.icon === 'book';
 }
 
 function renderBlocks(container, hotspot) {
