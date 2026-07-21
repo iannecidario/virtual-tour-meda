@@ -54,11 +54,26 @@ export function mergeAssetManifest(project, manifest = {}) {
   const items = Array.isArray(manifest.items) ? manifest.items.map(normalizeMediaItem) : [];
   if (!items.length) return normalizeMediaLibrary(project.media);
 
-  const currentItems = project.media?.items || [];
+  const currentItems = (project.media?.items || []).map(normalizeMediaItem);
   const paths = new Set(currentItems.map((item) => item.path).filter(Boolean));
   const ids = new Set(currentItems.map((item) => item.id).filter(Boolean));
+  const byFileKey = new Map(currentItems.map((item) => [mediaFileKey(item), item]).filter(([key]) => key));
   const additions = items
-    .filter((item) => item.path && !paths.has(item.path))
+    .filter((item) => {
+      if (!item.path || paths.has(item.path)) return false;
+      const existing = byFileKey.get(mediaFileKey(item));
+      if (existing) {
+        existing.path = item.path;
+        existing.fileName = item.fileName || existing.fileName;
+        existing.category = item.category || existing.category;
+        existing.mimeType = item.mimeType || existing.mimeType;
+        existing.size = item.size || existing.size;
+        existing.uploadedAt = item.uploadedAt || existing.uploadedAt;
+        paths.add(item.path);
+        return false;
+      }
+      return true;
+    })
     .map((item) => {
       let id = item.id || slugify(item.name || item.fileName);
       let index = 2;
@@ -78,6 +93,12 @@ export function mergeAssetManifest(project, manifest = {}) {
     ...(project.media || {}),
     items: [...currentItems, ...additions],
   });
+}
+
+function mediaFileKey(item = {}) {
+  const fileName = String(item.fileName || fileNameFromPath(item.path) || '').trim().toLowerCase();
+  const category = String(item.category || inferCategory(item) || '').trim().toLowerCase();
+  return fileName ? `${category}:${fileName}` : '';
 }
 
 export function getMediaItem(project, mediaId) {
