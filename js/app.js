@@ -1,11 +1,12 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260721-3';
-import { createInformationPanel } from './information-panel.js?v=20260721-3';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260722-6';
+import { createInformationPanel } from './information-panel.js?v=20260722-6';
 import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260721-3';
-import { resolveSceneMedia } from './media-store.js?v=20260721-3';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260712-1';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260722-6';
+import { resolveSceneMedia } from './media-store.js?v=20260722-6';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260722-6';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js';
 import { SCENE_TRANSITION } from './scene-transition-config.js';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js';
 
 const state = {
   project: null,
@@ -13,6 +14,7 @@ const state = {
   activeScene: null,
   hotspotViewer: null,
   history: [],
+  audioPlayer: null,
 };
 
 const elements = {
@@ -116,6 +118,7 @@ function exitFullscreen(viewer) {
 }
 
 async function changeScene(sceneId, { pushHistory = true, transitionHotspot = null } = {}) {
+  state.audioPlayer?.stop();
   const storedScene = getSceneById(state.project, sceneId);
   const scene = storedScene ? resolveSceneMedia(state.project, storedScene) : null;
   if (!scene) {
@@ -261,6 +264,7 @@ async function initialize() {
         blocks: elements.infoPanelBlocks,
       });
       state.informationPanel = informationPanel;
+      state.audioPlayer = createAudioHotspotPlayer();
       createDynamicHotspotAppearance(viewer);
 
       createMobileControlsMenu({
@@ -280,6 +284,7 @@ async function initialize() {
         project: state.project,
         onNavigate: (sceneId, options) => changeScene(sceneId, { transitionHotspot: options?.fromHotspot }),
         popup: informationPanel,
+        audioPlayer: state.audioPlayer,
       });
 
       elements.environmentsToggle?.addEventListener('click', toggleEnvironmentsPanel);

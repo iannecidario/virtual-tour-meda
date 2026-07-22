@@ -1,8 +1,8 @@
-import { renderHotspots } from './hotspot-markers.js';
+import { renderHotspots } from './hotspot-markers.js?v=20260722-6';
 import { normalizeHotspot } from './hotspot-store.js';
-import { resolveHotspotMedia } from './media-store.js?v=20260721-3';
+import { resolveHotspotMedia } from './media-store.js?v=20260722-6';
 
-export async function createHotspotViewer({ viewer, markersPlugin, scene, project, onNavigate, popup }) {
+export async function createHotspotViewer({ viewer, markersPlugin, scene, project, onNavigate, popup, audioPlayer }) {
   const state = {
     project,
     scene,
@@ -51,6 +51,13 @@ export async function createHotspotViewer({ viewer, markersPlugin, scene, projec
 
     if (hotspot.type === 'navigation') {
       onNavigate?.(hotspot.targetSceneId, { fromHotspot: hotspot });
+      return;
+    }
+
+    if (hotspot.type === 'audio') {
+      const resolved = resolveHotspotMedia(state.project, hotspot);
+      const marker = event.marker.domElement?.querySelector?.('.hotspot-marker') || event.marker.domElement;
+      audioPlayer?.play(resolved, resolved.audio, marker);
       return;
     }
 

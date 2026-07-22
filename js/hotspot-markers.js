@@ -4,6 +4,7 @@ const iconPaths = {
   room: '<path d="M5 11.5 12 6l7 5.5"></path><path d="M7 10.5V18h10v-7.5"></path>',
   story: '<path d="M7 6h10v12H7z"></path><path d="M9.5 9h5"></path><path d="M9.5 12h5"></path><path d="M9.5 15h3"></path>',
   book: '<path d="M4.5 5.5h5.2c1.3 0 2.3.4 2.3 1.5v11c0-1.1-1-1.5-2.3-1.5H4.5z"></path><path d="M19.5 5.5h-5.2c-1.3 0-2.3.4-2.3 1.5v11c0-1.1 1-1.5 2.3-1.5h5.2z"></path><path d="M12 7v11"></path><path d="M7 8.5h2.3"></path><path d="M14.7 8.5H17"></path>',
+  speaker: '<path d="M5 9.5v5h3.2L13 18V6L8.2 9.5z"></path><path d="M16 9.2a4 4 0 0 1 0 5.6"></path><path d="M18.4 7a7.4 7.4 0 0 1 0 10"></path>',
   look: '<path d="M3.5 12s3-5 8.5-5 8.5 5 8.5 5-3 5-8.5 5-8.5-5-8.5-5z"></path><circle cx="12" cy="12" r="2.5"></circle>',
   door: '<path d="M8 20V5.5A1.5 1.5 0 0 1 9.5 4H17v16"></path><path d="M6 20h14"></path><path d="M13 12h.01"></path>',
   compass: '<circle cx="12" cy="12" r="9"></circle><path d="m15 9-2 5-5 2 2-5z"></path>',
@@ -18,10 +19,12 @@ const iconPaths = {
 
 export function renderHotspots(markersPlugin, hotspots, selectedId = null) {
   markersPlugin.setMarkers(hotspots.map((hotspot) => hotspotToMarker(hotspot, selectedId)));
+  requestAnimationFrame(() => applyMarkerDomFallbacks(hotspots, selectedId));
 }
 
 export function updateHotspotMarker(markersPlugin, hotspot, selectedId = null) {
   markersPlugin.updateMarker(hotspotToMarker(hotspot, selectedId));
+  requestAnimationFrame(() => applyMarkerDomFallbacks([hotspot], selectedId));
 }
 
 export function hotspotToMarker(hotspot, selectedId = null) {
@@ -29,6 +32,7 @@ export function hotspotToMarker(hotspot, selectedId = null) {
   const selectedClass = hotspot.id === selectedId ? ' is-selected' : '';
   const navigationClass = hotspot.type === 'navigation' ? ' is-navigation' : '';
   const literaryClass = isLiteraryHotspot(hotspot) ? ' is-literary' : '';
+  const audioClass = hotspot.type === 'audio' ? ' is-audio' : '';
   const searchClass = hotspot.searchState === 'match'
     ? ' is-search-match'
     : hotspot.searchState === 'dim' ? ' is-search-dimmed' : '';
@@ -42,7 +46,7 @@ export function hotspotToMarker(hotspot, selectedId = null) {
     id: hotspot.id,
     position: { yaw: hotspot.yaw, pitch: hotspot.pitch },
     html: `
-      <button class="hotspot-marker${selectedClass}${navigationClass}${literaryClass}${searchClass}" type="button" data-hotspot-id="${escapeHtml(hotspot.id)}" style="--hotspot-size: ${size}px; --hotspot-icon-size: ${iconSize}px; --hotspot-color: ${escapeHtml(hotspot.color)}; --hotspot-border-color: ${escapeHtml(hotspot.borderColor || '#FFFFFF')}" aria-label="${label}">
+      <button class="hotspot-marker${selectedClass}${navigationClass}${literaryClass}${audioClass}${searchClass}" type="button" data-hotspot-id="${escapeHtml(hotspot.id)}" style="--hotspot-size: ${size}px; --hotspot-icon-size: ${iconSize}px; --hotspot-color: ${escapeHtml(hotspot.color)}; --hotspot-border-color: ${escapeHtml(hotspot.borderColor || '#FFFFFF')}" aria-label="${label}">
         ${iconMarkup}
       </button>
     `,
@@ -60,6 +64,34 @@ export function hotspotToMarker(hotspot, selectedId = null) {
 function isLiteraryHotspot(hotspot) {
   const category = String(hotspot.category || '').trim().toLowerCase();
   return hotspot.type !== 'navigation' && (category === 'letteratura' || hotspot.icon === 'book');
+}
+
+function applyMarkerDomFallbacks(hotspots, selectedId = null) {
+  hotspots.forEach((hotspot) => {
+    if (hotspot.type !== 'audio') return;
+
+    const marker = document.querySelector(`.hotspot-marker[data-hotspot-id="${cssEscape(hotspot.id)}"]`);
+    if (!marker) return;
+
+    const size = Number(hotspot.size) || 42;
+    const iconSize = Math.max(16, Math.round(size * 0.53));
+    marker.classList.add('is-audio');
+    marker.classList.toggle('is-selected', hotspot.id === selectedId);
+    marker.classList.remove('is-literary', 'is-navigation');
+    marker.style.setProperty('--hotspot-size', `${size}px`);
+    marker.style.setProperty('--hotspot-icon-size', `${iconSize}px`);
+    marker.style.setProperty('--hotspot-color', hotspot.color || '#D6AA56');
+    marker.style.setProperty('--hotspot-border-color', hotspot.borderColor || '#FFFFFF');
+
+    if (!hotspot.customIcon) {
+      marker.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${iconPaths.speaker}</svg>`;
+    }
+  });
+}
+
+function cssEscape(value) {
+  if (window.CSS?.escape) return CSS.escape(String(value));
+  return String(value).replaceAll('"', '\\"');
 }
 
 function escapeHtml(value) {
