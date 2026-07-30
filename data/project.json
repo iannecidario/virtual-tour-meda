@@ -3479,6 +3479,214 @@
         "uploadedAt": "2026-07-30T14:42:50.804Z",
         "path": "./assets/panorami/Barbiere_1.JPG",
         "fileName": "Barbiere_1.JPG"
+      },
+      {
+        "id": "bottaio-3",
+        "name": "Bottaio 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 3940249,
+        "uploadedAt": "2026-07-30T15:14:22.684Z",
+        "path": "./assets/panorami/Bottaio_3.JPG",
+        "fileName": "Bottaio_3.JPG"
+      },
+      {
+        "id": "cantina-3",
+        "name": "Cantina 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4208043,
+        "uploadedAt": "2026-07-30T15:22:11.467Z",
+        "path": "./assets/panorami/Cantina_3.JPG",
+        "fileName": "Cantina_3.JPG"
+      },
+      {
+        "id": "trebbiatura-2",
+        "name": "Trebbiatura 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4259965,
+        "uploadedAt": "2026-07-30T15:23:49.398Z",
+        "path": "./assets/panorami/Trebbiatura_2.JPG",
+        "fileName": "Trebbiatura_2.JPG"
+      },
+      {
+        "id": "conciapiatti-1",
+        "name": "Conciapiatti 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4209544,
+        "uploadedAt": "2026-07-30T15:25:20.542Z",
+        "path": "./assets/panorami/Conciapiatti_1.JPG",
+        "fileName": "Conciapiatti_1.JPG"
+      },
+      {
+        "id": "fabbro-1",
+        "name": "Fabbro 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4223602,
+        "uploadedAt": "2026-07-30T15:26:52.086Z",
+        "path": "./assets/panorami/Fabbro_1.JPG",
+        "fileName": "Fabbro_1.JPG"
+      },
+      {
+        "id": "pastore-2",
+        "name": "Pastore e casaro 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4006106,
+        "uploadedAt": "2026-07-30T15:32:30.289Z",
+        "path": "./assets/panorami/Pastore_2.JPG",
+        "fileName": "Pastore_2.JPG"
+      },
+      {
+        "id": "olio-5",
+        "name": "Frantoio 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 3361802,
+        "uploadedAt": "2026-07-30T15:35:08.170Z",
+        "path": "./assets/panorami/Olio_5.JPG",
+        "fileName": "Olio_5.JPG"
+      },
+      {
+        "id": "vino-c",
+        "name": "Vinificazione 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4317531,
+        "uploadedAt": "2026-07-30T15:37:28.549Z",
+        "path": "./assets/panorami/Vino_C.JPG",
+        "fileName": "Vino_C.JPG"
+      },
+      {
+        "id": "mulino-forno-1",
+        "name": "Mulino e pane 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4205493,
+        "uploadedAt": "2026-07-30T15:41:17.933Z",
+        "path": "./assets/panorami/Mulino_forno_1.JPG",
+        "fileName": "Mulino_forno_1.JPG"
+      },
+      {
+        "id": "calzolaio-5",
+        "name": "Calzolaio 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4244272,
+        "uploadedAt": "2026-07-30T15:45:06.303Z",
+        "path": "./assets/panorami/Calzolaio_5.JPG",
+        "fileName": "Calzolaio_5.JPG"
+      },
+      {
+        "id": "stalla-1",
+        "name": "Stalla 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4184970,
+        "uploadedAt": "2026-07-30T16:01:48.829Z",
+        "path": "./assets/panorami/Stalla_1.JPG",
+        "fileName": "Stalla_1.JPG"
+      },
+      {
+        "id": "fazzatora-1",
+        "name": "fazzatora_1",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 6917021,
+        "uploadedAt": "2026-07-30T16:28:44.051Z",
+        "path": "./assets/immagini/fazzatora_1.jpg",
+        "fileName": "fazzatora_1.jpg"
+      },
+      {
+        "id": "cascione",
+        "name": "cascione",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 5266024,
+        "uploadedAt": "2026-07-30T16:30:49.988Z",
+        "path": "./assets/immagini/cascione.JPG",
+        "fileName": "cascione.JPG"
+      },
+      {
+        "id": "culla-pensile",
+        "name": "culla pensile",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4330771,
+        "uploadedAt": "2026-07-30T16:33:19.501Z",
+        "path": "./assets/immagini/culla-pensile.JPG",
+        "fileName": "culla pensile.JPG"
+      },
+      {
+        "id": "perteca",
+        "name": "perteca",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4738831,
+        "uploadedAt": "2026-07-30T16:34:30.515Z",
+        "path": "./assets/immagini/perteca.JPG",
+        "fileName": "perteca.JPG"
+      },
+      {
+        "id": "frantoio",
+        "name": "frantoio",
+        "description": "",
+        "category": "Fotografie",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 7424516,
+        "uploadedAt": "2026-07-30T16:35:33.865Z",
+        "path": "./assets/immagini/frantoio.JPG",
+        "fileName": "frantoio.JPG"
       }
     ]
   },
@@ -3648,8 +3856,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.987041298027061,
-          "pitch": -0.196351116462957
+          "yaw": 0.0236313194017769,
+          "pitch": -0.1381389368854935
         },
         {
           "id": "casa-3",
@@ -3683,12 +3891,12 @@
           "description": "",
           "category": "Approfondimento",
           "keywords": [],
-          "icon": "info",
+          "icon": "look",
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
           "size": 36,
-          "imageMediaId": "asset-assets-immagini-casa-contadina-culla-pensile-jpg",
+          "imageMediaId": "culla-pensile",
           "audioMediaId": "",
           "pronunciationMediaId": "asset-assets-audio-co-nnela-mp3",
           "documentMediaId": "",
@@ -3887,7 +4095,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 60,
           "imageMediaId": "carlolevi",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -3898,8 +4106,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.5596760911670815,
-          "pitch": 0.28354397338988835
+          "yaw": 2.9570711836450223,
+          "pitch": -0.2547289383101079
         },
         {
           "type": "info",
@@ -3925,6 +4133,81 @@
           "label": "",
           "orientation": "",
           "visible": true
+        },
+        {
+          "id": "casa-20",
+          "type": "info",
+          "title": "Fazzatora",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "look",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "fazzatora-1",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 5.94969651774038,
+          "pitch": -0.18392504744961147
+        },
+        {
+          "id": "casa-22",
+          "type": "info",
+          "title": "Casciòne",
+          "description": "Contenitore domestico per il grano",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "look",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "cascione",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 3.8915639976107412,
+          "pitch": -0.04158327289150554
+        },
+        {
+          "id": "casa-23",
+          "type": "info",
+          "title": "Pertica",
+          "description": "Dispensa alimentare pensile della famiglia",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "look",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "perteca",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 5.0810854323453025,
+          "pitch": 0.6498588569105777
         }
       ],
       "settings": {},
@@ -3934,15 +4217,15 @@
       "id": "s",
       "title": "Stalla",
       "description": "La stalla per la custodia degli animali e per gli attrezzi da lavoro era comunicante con la casa contadina",
-      "panorama": "./assets/media/stalla-360-360-STALLA.jpg",
+      "panorama": "./assets/panorami/Stalla_1.JPG",
       "cover": "./assets/media/stalla-360-360-STALLA.jpg",
       "order": 2,
-      "panoramaMediaId": "stalla-360",
+      "panoramaMediaId": "stalla-1",
       "coverMediaId": "stalla-360",
-      "defaultYaw": "3.0193978757768716",
-      "defaultPitch": "-0.07824057210687352",
+      "defaultYaw": "3.6486265480430324",
+      "defaultPitch": "0.10800096564781736",
       "defaultZoomLvl": 28,
-      "defaultFov": "78.20",
+      "defaultFov": "95.00",
       "hotspots": [
         {
           "id": "collegamento-001",
@@ -4098,7 +4381,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 50,
           "imageMediaId": "",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -4109,8 +4392,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.1515959723022435,
-          "pitch": 0.048178902797937795
+          "yaw": 2.2310865328512617,
+          "pitch": -0.017926395232407355
         }
       ],
       "settings": {},
@@ -4227,8 +4510,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.4070436745010384,
-          "pitch": -0.34075317381647063
+          "yaw": 0.4357923313035378,
+          "pitch": 0.12510887759549494
         },
         {
           "id": "barbiere-2",
@@ -4302,8 +4585,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.7637425531788238,
-          "pitch": -0.5166586695903836
+          "yaw": 1.4137954637721815,
+          "pitch": -0.6344785632358798
         },
         {
           "id": "letteratura-1",
@@ -4315,7 +4598,7 @@
           "icon": "book",
           "iconMediaId": "",
           "color": "#be1622",
-          "borderColor": "#ffffff",
+          "borderColor": "#831100",
           "size": 50,
           "imageMediaId": "carlolevi",
           "audioMediaId": "",
@@ -4327,8 +4610,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.3769218273340822,
-          "pitch": -0.05829966527602348
+          "yaw": 1.1985495209476713,
+          "pitch": -0.2647812223446939
         },
         {
           "id": "hotspot-001",
@@ -4363,13 +4646,13 @@
       "id": "bottaio",
       "title": "Bottaio",
       "description": "Bottaio",
-      "panorama": "./assets/panorami/360 BOTTAIO2.jpg",
+      "panorama": "./assets/panorami/Bottaio_3.JPG",
       "cover": "./assets/panorami/360 BOTTAIO2.jpg",
       "order": 5,
-      "panoramaMediaId": "asset-assets-panorami-360-bottaio2-jpg",
+      "panoramaMediaId": "bottaio-3",
       "coverMediaId": "asset-assets-panorami-360-bottaio2-jpg",
-      "defaultYaw": "5.01026457891627",
-      "defaultPitch": "-0.10021163409887057",
+      "defaultYaw": "6.118177536432977",
+      "defaultPitch": "-0.06332844818243677",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -4395,8 +4678,8 @@
           "label": "Pastore e casaro",
           "orientation": "",
           "visible": true,
-          "yaw": 1.318908533141771,
-          "pitch": -0.10052520367236406
+          "yaw": 2.5011401187071676,
+          "pitch": -0.20726088423726075
         },
         {
           "id": "to-frantoio",
@@ -4420,8 +4703,8 @@
           "label": "Frantoio",
           "orientation": "",
           "visible": true,
-          "yaw": 1.4645276574125816,
-          "pitch": -0.05728963500562423
+          "yaw": 2.601738674317096,
+          "pitch": -0.03587417667668169
         },
         {
           "id": "to-cantina",
@@ -4445,8 +4728,8 @@
           "label": "Cantina",
           "orientation": "",
           "visible": true,
-          "yaw": 2.3590019472599444,
-          "pitch": -0.20397674349318873
+          "yaw": 2.012408735188698,
+          "pitch": -0.34317050980229324
         },
         {
           "id": "to-vino",
@@ -4470,8 +4753,8 @@
           "label": "Vinificazione",
           "orientation": "",
           "visible": true,
-          "yaw": 3.1908605339607954,
-          "pitch": -0.12314742799134049
+          "yaw": 4.648906072070998,
+          "pitch": -0.07525183638455579
         },
         {
           "id": "bottaio-1",
@@ -4495,8 +4778,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.920761904785643,
-          "pitch": -0.12869347151220878
+          "yaw": 5.488127212650166,
+          "pitch": -0.4149541163766355
         },
         {
           "id": "bottaio-2",
@@ -4520,8 +4803,33 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.5216580959880726,
-          "pitch": -0.6106377445322893
+          "yaw": 5.685836381959544,
+          "pitch": -0.09689715857671866
+        },
+        {
+          "id": "to_cantina",
+          "type": "navigation",
+          "title": "Cantina",
+          "description": "",
+          "category": "Navigazione",
+          "keywords": [],
+          "icon": "arrow-up",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "vinificazione",
+          "label": "Vinificazione",
+          "orientation": "",
+          "visible": true,
+          "yaw": 3.79862215971489,
+          "pitch": -0.2913825705062174
         }
       ],
       "settings": {},
@@ -4531,13 +4839,13 @@
       "id": "cantina",
       "title": "Cantina",
       "description": "Cantina",
-      "panorama": "./assets/panorami/360 CANTINA2.jpg",
+      "panorama": "./assets/panorami/Cantina_3.JPG",
       "cover": "./assets/panorami/360 CANTINA2.jpg",
       "order": 6,
-      "panoramaMediaId": "asset-assets-panorami-360-cantina2-jpg",
+      "panoramaMediaId": "cantina-3",
       "coverMediaId": "asset-assets-panorami-360-cantina2-jpg",
-      "defaultYaw": "6.129403047470162",
-      "defaultPitch": "-0.10012284384766668",
+      "defaultYaw": "3.6719983246117676",
+      "defaultPitch": "-0.09619966447639516",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -4563,8 +4871,8 @@
           "label": "Vinificazione",
           "orientation": "",
           "visible": true,
-          "yaw": 3.7084361751790222,
-          "pitch": -0.3486547120486694
+          "yaw": 4.340743193232074,
+          "pitch": 0.03388784739405737
         },
         {
           "id": "to-bottaio",
@@ -4588,8 +4896,8 @@
           "label": "Bottaio",
           "orientation": "",
           "visible": true,
-          "yaw": 4.069460814973505,
-          "pitch": -0.21203866326933696
+          "yaw": 6.18129619300678,
+          "pitch": -0.3382345158357132
         },
         {
           "id": "to-fabbro",
@@ -4613,8 +4921,8 @@
           "label": "Fabbro",
           "orientation": "",
           "visible": true,
-          "yaw": 4.429793541003642,
-          "pitch": -0.09045008417624789
+          "yaw": 0.5172277902067103,
+          "pitch": -0.056653586674952905
         },
         {
           "id": "to-conciapiatti",
@@ -4638,8 +4946,8 @@
           "label": "Conciapiatti",
           "orientation": "",
           "visible": true,
-          "yaw": 4.638378100396256,
-          "pitch": -0.07348885263584193
+          "yaw": 0.710390250586029,
+          "pitch": -0.12983991434745978
         },
         {
           "id": "to-pastore-casaro",
@@ -4663,8 +4971,8 @@
           "label": "Pastore e casaro",
           "orientation": "",
           "visible": true,
-          "yaw": 4.799429763103209,
-          "pitch": -0.18413287010290236
+          "yaw": 1.0233554058011662,
+          "pitch": -0.17103111403076365
         },
         {
           "id": "cantina-1",
@@ -4688,33 +4996,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.708291151932698,
-          "pitch": -0.3453173943303669
-        },
-        {
-          "id": "cantina-2",
-          "type": "info",
-          "title": "Cucòzza saliera",
-          "description": "A volte il sale, necessario a condire i cibi che gli avventori della taverna consumavano, veniva conservato in zucche svuotate e cave al loro interno.",
-          "category": "Approfondimento",
-          "keywords": [],
-          "icon": "look",
-          "iconMediaId": "",
-          "color": "#be1622",
-          "borderColor": "#ffffff",
-          "size": 36,
-          "imageMediaId": "asset-assets-immagini-cantina-tag4-jpg",
-          "audioMediaId": "",
-          "pronunciationMediaId": "asset-assets-audio-cuco-zza-mp3",
-          "documentMediaId": "",
-          "youtube": "",
-          "externalUrl": "",
-          "targetSceneId": "",
-          "label": "",
-          "orientation": "",
-          "visible": true,
-          "yaw": 0.8042628941607083,
-          "pitch": 0.27214540582897384
+          "yaw": 3.4445599530397732,
+          "pitch": -0.4825603200182096
         },
         {
           "id": "cantina-3",
@@ -4738,83 +5021,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.316575340034793,
-          "pitch": -0.2125069065027445
-        },
-        {
-          "id": "cantina-4",
-          "type": "info",
-          "title": "Férla",
-          "description": "Una semplice canna o un pezzo di legno, diviso in due parti combacianti, sul quale con un'incisione di contabilizzavano le consumazioni dei clienti. Una metà rimaneva nella mani del cantiniere, l'altra la teneva l'avventore: al momento del pagamento si poteva facilmente, e senza inganni, contare i pagamenti dovuti.",
-          "category": "Approfondimento",
-          "keywords": [],
-          "icon": "look",
-          "iconMediaId": "",
-          "color": "#be1622",
-          "borderColor": "#ffffff",
-          "size": 36,
-          "imageMediaId": "asset-assets-immagini-cantina-tag-8-jpg",
-          "audioMediaId": "",
-          "pronunciationMediaId": "asset-assets-audio-fe-rla-mp3",
-          "documentMediaId": "",
-          "youtube": "",
-          "externalUrl": "",
-          "targetSceneId": "",
-          "label": "",
-          "orientation": "",
-          "visible": true,
-          "yaw": 6.282658175310496,
-          "pitch": 0.38900730455936383
-        },
-        {
-          "id": "cantina-5",
-          "type": "info",
-          "title": "Cucòzza saliera",
-          "description": "A volte il sale, necessario a condire i cibi che gli avventori della taverna consumavano, veniva conservato in zucche svuotate e cave al loro interno.",
-          "category": "Approfondimento",
-          "keywords": [],
-          "icon": "look",
-          "iconMediaId": "",
-          "color": "#be1622",
-          "borderColor": "#ffffff",
-          "size": 36,
-          "imageMediaId": "asset-assets-immagini-cantina-tag4-jpg",
-          "audioMediaId": "",
-          "pronunciationMediaId": "",
-          "documentMediaId": "",
-          "youtube": "",
-          "externalUrl": "",
-          "targetSceneId": "",
-          "label": "",
-          "orientation": "",
-          "visible": true,
-          "yaw": 6.196656990865895,
-          "pitch": 0.577772189209772
-        },
-        {
-          "id": "cantina-10",
-          "type": "info",
-          "title": "Frasca",
-          "description": "Un ramo frondoso appeso alla porta della cantina segnalava la presenza di vino nuovo e di ottima qualità, invitando gli avventori ad entrare e a consumare",
-          "category": "Approfondimento",
-          "keywords": [],
-          "icon": "info",
-          "iconMediaId": "",
-          "color": "#be1622",
-          "borderColor": "#ffffff",
-          "size": 36,
-          "imageMediaId": "cantina-tag-9",
-          "audioMediaId": "",
-          "pronunciationMediaId": "frasca",
-          "documentMediaId": "",
-          "youtube": "",
-          "externalUrl": "",
-          "targetSceneId": "",
-          "label": "",
-          "orientation": "",
-          "visible": true,
-          "yaw": 1.028100896849518,
-          "pitch": 0.39077400352184677
+          "yaw": 3.591601393001314,
+          "pitch": -0.4070597600858239
         },
         {
           "id": "audio-001",
@@ -4827,7 +5035,7 @@
           "iconMediaId": "",
           "color": "#d6aa56",
           "borderColor": "#ffffff",
-          "size": 42,
+          "size": 70,
           "imageMediaId": "",
           "audioMediaId": "la-cantina-soundtrack",
           "pronunciationMediaId": "",
@@ -4838,8 +5046,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 6.013670830672111,
-          "pitch": 0.10943552954426439
+          "yaw": 3.296043156908299,
+          "pitch": 0.09882792737962176
         }
       ],
       "settings": {},
@@ -4849,13 +5057,13 @@
       "id": "trebbiatura",
       "title": "Trebbiatura",
       "description": "Trebbiatura",
-      "panorama": "./assets/panorami/360 COLTIVAZIONE CAMPI2.jpg",
+      "panorama": "./assets/panorami/Trebbiatura_2.JPG",
       "cover": "./assets/panorami/360 COLTIVAZIONE CAMPI2.jpg",
       "order": 7,
-      "panoramaMediaId": "asset-assets-panorami-360-coltivazione-campi2-jpg",
+      "panoramaMediaId": "trebbiatura-2",
       "coverMediaId": "asset-assets-panorami-360-coltivazione-campi2-jpg",
-      "defaultYaw": "4.176651263672555",
-      "defaultPitch": "0.086372185658242",
+      "defaultYaw": "0.5768067237026178",
+      "defaultPitch": "-0.2042621008403449",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -4881,8 +5089,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.8362693618384736,
-          "pitch": -0.3558016808235873
+          "yaw": 3.714421188334828,
+          "pitch": 0.05269215664619198
         },
         {
           "id": "trebbiatura-2",
@@ -4906,8 +5114,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.5182032385445448,
-          "pitch": -0.18798050635753882
+          "yaw": 6.244154533422366,
+          "pitch": -0.35699679803292295
         },
         {
           "id": "trebbiatura-3",
@@ -4931,8 +5139,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.89360109413335,
-          "pitch": -0.7564684912450703
+          "yaw": 2.278489568843236,
+          "pitch": 0.18842655622021676
         },
         {
           "id": "trebbiatura-3-copia-001",
@@ -4956,8 +5164,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.048374399001192,
-          "pitch": -0.2037902407588117
+          "yaw": 2.0799989599298327,
+          "pitch": -0.3395897847331395
         },
         {
           "id": "trebbiatura-6",
@@ -4981,8 +5189,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.3182175878426143,
-          "pitch": 0.07888033228022873
+          "yaw": 2.9243857462253438,
+          "pitch": 0.07308712316201782
         },
         {
           "id": "hotspot-001",
@@ -4995,7 +5203,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 70,
           "imageMediaId": "verga",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -5006,8 +5214,58 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.423321046702854,
-          "pitch": -0.04397293212129094
+          "yaw": 0.6601742472557721,
+          "pitch": -0.31277574444342493
+        },
+        {
+          "id": "trebbiatura-8",
+          "type": "info",
+          "title": "Mezzètto",
+          "description": "Unità di misura per il grano e altri aridi",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "asset-assets-immagini-coltivazione-campi-14-jpg",
+          "audioMediaId": "",
+          "pronunciationMediaId": "mezzett",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 1.8490738986008306,
+          "pitch": -0.7343974630495498
+        },
+        {
+          "id": "trebbiatura-9",
+          "type": "info",
+          "title": "Trebbia a motore",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 1.3283514356365282,
+          "pitch": 0.06908352966841913
         }
       ],
       "settings": {},
@@ -5017,15 +5275,15 @@
       "id": "conciapiatti",
       "title": "Conciapiatti",
       "description": "Conciapiatti",
-      "panorama": "./assets/panorami/360 CONCIAPIATTI.jpg",
+      "panorama": "./assets/panorami/Conciapiatti_1.JPG",
       "cover": "./assets/panorami/360 CONCIAPIATTI.jpg",
       "order": 8,
-      "panoramaMediaId": "asset-assets-panorami-360-conciapiatti-jpg",
+      "panoramaMediaId": "conciapiatti-1",
       "coverMediaId": "asset-assets-panorami-360-conciapiatti-jpg",
-      "defaultYaw": "3.513812114495379",
-      "defaultPitch": "-0.11202080057038977",
+      "defaultYaw": "0.7288527099158175",
+      "defaultPitch": "-0.3196941951308139",
       "defaultZoomLvl": 31,
-      "defaultFov": "76.22",
+      "defaultFov": "76.40",
       "hotspots": [
         {
           "id": "to-pastore",
@@ -5049,8 +5307,8 @@
           "label": "Pastore e casaro",
           "orientation": "",
           "visible": true,
-          "yaw": 0.5273458592853909,
-          "pitch": -0.18583635997233428
+          "yaw": 3.9792039172552625,
+          "pitch": -0.10445848074219866
         },
         {
           "id": "to-fabbro",
@@ -5059,7 +5317,7 @@
           "description": "",
           "category": "Navigazione",
           "keywords": [],
-          "icon": "arrow-right",
+          "icon": "arrow-up",
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
@@ -5074,8 +5332,8 @@
           "label": "Fabbro",
           "orientation": "",
           "visible": true,
-          "yaw": 0.5675903883325568,
-          "pitch": 0.08621979868717511
+          "yaw": 3.976423181333562,
+          "pitch": 0.048231718508403354
         },
         {
           "id": "to-trebbiatura",
@@ -5099,8 +5357,8 @@
           "label": "Trebbiatura",
           "orientation": "",
           "visible": true,
-          "yaw": 2.7955319960122007,
-          "pitch": -0.11096846705088548
+          "yaw": 5.988142015179616,
+          "pitch": 0.048928042100867986
         },
         {
           "id": "conciapiatti-1",
@@ -5124,8 +5382,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.0659396030623323,
-          "pitch": -0.3950745968842886
+          "yaw": 0.6513153401683901,
+          "pitch": -0.7723961063916231
         },
         {
           "id": "conciapiatti-2",
@@ -5149,8 +5407,158 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.1645643370105585,
-          "pitch": -0.1349018897278602
+          "yaw": 0.9257141839171613,
+          "pitch": -0.5970982063436416
+        },
+        {
+          "id": "arrotino-1",
+          "type": "info",
+          "title": "Arrotino",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 5.134017469828153,
+          "pitch": -0.15579243405847398
+        },
+        {
+          "id": "setacciare-1",
+          "type": "info",
+          "title": "Setacciaro",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 4.7185063441825505,
+          "pitch": 0.08665111406051129
+        },
+        {
+          "id": "ombrellaio-1",
+          "type": "info",
+          "title": "Ombrellaio",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 4.44183664092596,
+          "pitch": -0.0051882262292504144
+        },
+        {
+          "id": "mulino-1",
+          "type": "info",
+          "title": "Mulino elettrico",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 5.725395079847844,
+          "pitch": 0.010429372692548622
+        },
+        {
+          "id": "conciapiatti-4",
+          "type": "info",
+          "title": "Trapano a strappo per ceramica",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 0.6504606804303782,
+          "pitch": -0.27318238804006656
+        },
+        {
+          "id": "cestaio-1",
+          "type": "info",
+          "title": "Cestaio",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 1.5883615420698165,
+          "pitch": -0.05644525265537137
         }
       ],
       "settings": {},
@@ -5160,13 +5568,13 @@
       "id": "fabbro",
       "title": "Fabbro",
       "description": "Fabbro",
-      "panorama": "./assets/panorami/360 FABBRO3.jpg",
+      "panorama": "./assets/panorami/Fabbro_1.JPG",
       "cover": "./assets/panorami/360 FABBRO3.jpg",
       "order": 9,
-      "panoramaMediaId": "asset-assets-panorami-360-fabbro3-jpg",
+      "panoramaMediaId": "fabbro-1",
       "coverMediaId": "asset-assets-panorami-360-fabbro3-jpg",
-      "defaultYaw": "2.8503571441878957",
-      "defaultPitch": "-0.00975383707220212",
+      "defaultYaw": "0.09588140179334333",
+      "defaultPitch": "-0.02455431003820907",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -5192,8 +5600,8 @@
           "label": "Cantina",
           "orientation": "",
           "visible": true,
-          "yaw": 0.4285058671988508,
-          "pitch": -0.1481216157219971
+          "yaw": 2.855803891205459,
+          "pitch": -0.17235774029809625
         },
         {
           "id": "to-calzolaio",
@@ -5217,8 +5625,8 @@
           "label": "Calzolaio",
           "orientation": "",
           "visible": true,
-          "yaw": 0.6377440645452576,
-          "pitch": -0.05880680540634797
+          "yaw": 2.922520460905333,
+          "pitch": -0.027484361437838833
         },
         {
           "id": "to-barbiere",
@@ -5242,8 +5650,8 @@
           "label": "Barbiere",
           "orientation": "",
           "visible": true,
-          "yaw": 0.8794528546646102,
-          "pitch": -0.13034459689393096
+          "yaw": 3.5854353361686995,
+          "pitch": -0.16240185702451848
         },
         {
           "id": "fabbro-1",
@@ -5267,8 +5675,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 6.251871753186615,
-          "pitch": -0.3073782933122513
+          "yaw": 0.33820351947145094,
+          "pitch": -0.41745403892174515
         },
         {
           "id": "fabbro-2",
@@ -5292,8 +5700,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.831232416285301,
-          "pitch": 0.12297461926539643
+          "yaw": 0.574176041311692,
+          "pitch": 0.21261626859403648
         },
         {
           "id": "fabbro-3",
@@ -5317,8 +5725,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.130973095402797,
-          "pitch": -0.09070496309268772
+          "yaw": 5.572306741260043,
+          "pitch": -0.14064120619482057
         },
         {
           "id": "fabbro-4",
@@ -5367,8 +5775,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.5491277980509,
-          "pitch": -0.20254778948322283
+          "yaw": 0.11666272369497435,
+          "pitch": -0.11751052351523605
         },
         {
           "id": "fabbro-6",
@@ -5392,8 +5800,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.8538969940877665,
-          "pitch": -0.7112959104442425
+          "yaw": 0.6761993807745975,
+          "pitch": -0.6967492379464826
         },
         {
           "id": "fabbro-7",
@@ -5417,8 +5825,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.8370225395512088,
-          "pitch": 0.29891958900979443
+          "yaw": 5.7714611455529745,
+          "pitch": 0.06807603803530649
         },
         {
           "id": "fabbro-7-copia-001",
@@ -5442,8 +5850,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.6625165859952578,
-          "pitch": 0.6389562476103895
+          "yaw": 6.138820659589599,
+          "pitch": 0.19697939354847005
         },
         {
           "id": "hotspot-001",
@@ -5456,7 +5864,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 60,
           "imageMediaId": "verga",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -5467,8 +5875,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.0974252981852316,
-          "pitch": 0.18037241073027177
+          "yaw": 2.540540238414781,
+          "pitch": -0.48410716540726906
         },
         {
           "id": "hotspot-002",
@@ -5481,7 +5889,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 60,
           "imageMediaId": "d-annunzio",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -5492,8 +5900,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.1176890451292165,
-          "pitch": -0.2982950204771875
+          "yaw": 5.800698523624565,
+          "pitch": 0.27764704438301835
         },
         {
           "id": "audio-001",
@@ -5506,7 +5914,7 @@
           "iconMediaId": "",
           "color": "#d6aa56",
           "borderColor": "#ffffff",
-          "size": 42,
+          "size": 60,
           "imageMediaId": "",
           "audioMediaId": "fabbro-soundtrack",
           "pronunciationMediaId": "",
@@ -5517,8 +5925,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.0233546268691196,
-          "pitch": -0.03326430893016341
+          "yaw": 5.916109154631653,
+          "pitch": -0.2800076481764162
         }
       ],
       "settings": {},
@@ -5528,13 +5936,13 @@
       "id": "pastore",
       "title": "Pastore e casaro",
       "description": "Pastore e casaro",
-      "panorama": "./assets/panorami/360 PASTORE.jpg",
+      "panorama": "./assets/panorami/Pastore_2.JPG",
       "cover": "./assets/panorami/360 PASTORE.jpg",
       "order": 10,
-      "panoramaMediaId": "asset-assets-panorami-360-pastore-jpg",
+      "panoramaMediaId": "pastore-2",
       "coverMediaId": "asset-assets-panorami-360-pastore-jpg",
-      "defaultYaw": "2.8791515263535596",
-      "defaultPitch": "0.01129671332128579",
+      "defaultYaw": "3.0014100341957195",
+      "defaultPitch": "0.045768365749450535",
       "defaultZoomLvl": 10,
       "defaultFov": "89.00",
       "hotspots": [
@@ -5560,8 +5968,8 @@
           "label": "Cantina",
           "orientation": "",
           "visible": true,
-          "yaw": 4.032193737842999,
-          "pitch": -0.2686437869762257
+          "yaw": 4.406867466803799,
+          "pitch": -0.3114919061380461
         },
         {
           "id": "to-bottaio",
@@ -5585,8 +5993,8 @@
           "label": "Bottaio",
           "orientation": "",
           "visible": true,
-          "yaw": 4.3242210732231685,
-          "pitch": -0.1554623018183774
+          "yaw": 4.687564831971208,
+          "pitch": -0.1706080529099563
         },
         {
           "id": "to-fabbro",
@@ -5610,8 +6018,8 @@
           "label": "Fabbro",
           "orientation": "",
           "visible": true,
-          "yaw": 4.891832995230369,
-          "pitch": -0.25303145849936115
+          "yaw": 5.2644648195917005,
+          "pitch": -0.2320074399440959
         },
         {
           "id": "to-frantoio",
@@ -5635,8 +6043,8 @@
           "label": "Frantoio",
           "orientation": "",
           "visible": true,
-          "yaw": 0.8204842624905944,
-          "pitch": -0.35027240700793394
+          "yaw": 1.1454426216498566,
+          "pitch": -0.14934353643677234
         },
         {
           "id": "to-mulino-forno",
@@ -5660,8 +6068,8 @@
           "label": "Mulino e pane",
           "orientation": "",
           "visible": true,
-          "yaw": 1.5494425936319636,
-          "pitch": -0.27231240441048365
+          "yaw": 1.751617901853558,
+          "pitch": -0.24649536672474026
         },
         {
           "id": "casaro-1",
@@ -5685,8 +6093,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.96640291381612,
-          "pitch": 0.12433794565275491
+          "yaw": 3.3883404160754815,
+          "pitch": 0.04238900288797409
         },
         {
           "id": "casaro-2",
@@ -5710,8 +6118,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.615726184556667,
-          "pitch": -0.18492957884696404
+          "yaw": 3.631952742106202,
+          "pitch": -0.3804579690954646
         },
         {
           "id": "casaro-3",
@@ -5735,8 +6143,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.2287232389218556,
-          "pitch": -0.15195983212231434
+          "yaw": 2.4490633497674312,
+          "pitch": -0.3493556574428851
         },
         {
           "id": "casaro-4",
@@ -5760,8 +6168,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.57943042813495,
-          "pitch": 0.3677471571110409
+          "yaw": 2.6293731874810997,
+          "pitch": 0.20793871423230592
         },
         {
           "id": "casaro-5",
@@ -5785,8 +6193,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.8131162829929757,
-          "pitch": 0.4279104317553941
+          "yaw": 3.152916993924958,
+          "pitch": 0.17749807898001313
         },
         {
           "id": "casaro-6",
@@ -5810,8 +6218,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.19132068498388,
-          "pitch": -0.01343904090464676
+          "yaw": 3.541970094582669,
+          "pitch": -0.011807052653358907
         },
         {
           "id": "casaro-7",
@@ -5835,8 +6243,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.890235416696832,
-          "pitch": -0.18432087742922598
+          "yaw": 2.133581583133847,
+          "pitch": -0.34369036596760694
         },
         {
           "id": "pastore-1",
@@ -5896,15 +6304,15 @@
       "id": "frantoio",
       "title": "Frantoio",
       "description": "Frantoio",
-      "panorama": "./assets/panorami/360 OLIO2.jpg",
+      "panorama": "./assets/panorami/Olio_5.JPG",
       "cover": "./assets/panorami/360 OLIO2.jpg",
       "order": 11,
-      "panoramaMediaId": "asset-assets-panorami-360-olio2-jpg",
+      "panoramaMediaId": "olio-5",
       "coverMediaId": "asset-assets-panorami-360-olio2-jpg",
-      "defaultYaw": "5.368171398993157",
-      "defaultPitch": "-0.04302026493061906",
-      "defaultZoomLvl": 20,
-      "defaultFov": "83.00",
+      "defaultYaw": "6.208124778723584",
+      "defaultPitch": "-0.03717221368412593",
+      "defaultZoomLvl": 28,
+      "defaultFov": "95.00",
       "hotspots": [
         {
           "id": "to-mulino",
@@ -5928,8 +6336,8 @@
           "label": "Mulino e pane",
           "orientation": "",
           "visible": true,
-          "yaw": 3.8250781597740815,
-          "pitch": -0.27615710904592694
+          "yaw": 4.492958354346511,
+          "pitch": -0.2967756474635155
         },
         {
           "id": "to-scuola",
@@ -5953,8 +6361,8 @@
           "label": "Scuola",
           "orientation": "",
           "visible": true,
-          "yaw": 6.130308559533132,
-          "pitch": -0.21893562310000836
+          "yaw": 1.0172406544051529,
+          "pitch": -0.2809172175952266
         },
         {
           "id": "to-primo-piano-casa",
@@ -5978,8 +6386,8 @@
           "label": "Casa contadina - primo piano",
           "orientation": "",
           "visible": true,
-          "yaw": 0.22685029462670298,
-          "pitch": -0.17097113402549668
+          "yaw": 1.3472463087891664,
+          "pitch": -0.0683125566721241
         },
         {
           "id": "frantoio-1",
@@ -5993,7 +6401,7 @@
           "color": "#be1622",
           "borderColor": "#ffffff",
           "size": 36,
-          "imageMediaId": "asset-assets-immagini-trappito-10-jpg",
+          "imageMediaId": "frantoio",
           "audioMediaId": "",
           "pronunciationMediaId": "",
           "documentMediaId": "",
@@ -6003,8 +6411,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.9939049143050085,
-          "pitch": -0.367066890105084
+          "yaw": 2.440517675331252,
+          "pitch": -0.40167243107887707
         },
         {
           "id": "frantoio-2",
@@ -6028,8 +6436,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.1175769239409012,
-          "pitch": -0.11532446510925398
+          "yaw": 6.170239354299222,
+          "pitch": -0.05737943528689815
         },
         {
           "id": "frantoio-3",
@@ -6053,8 +6461,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.188085935283937,
-          "pitch": -0.0970683693048513
+          "yaw": 3.8089918885136993,
+          "pitch": -0.21947777064870055
         },
         {
           "id": "frantoio-4",
@@ -6078,8 +6486,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.288129670068097,
-          "pitch": -0.37542839339647527
+          "yaw": 6.204302150960447,
+          "pitch": -0.5196271206080576
         },
         {
           "id": "frantoio-6",
@@ -6103,8 +6511,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.453704528666424,
-          "pitch": 0.09234493912369346
+          "yaw": 0.16348692923121572,
+          "pitch": 0.2446494595958848
         },
         {
           "id": "frantoio-7",
@@ -6128,8 +6536,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.54168537674674,
-          "pitch": -0.30059812838671207
+          "yaw": 0.30952335358338834,
+          "pitch": -0.61788381575467
         },
         {
           "id": "frantoio-8",
@@ -6153,8 +6561,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.386751149573752,
-          "pitch": -0.5811545454601057
+          "yaw": 6.228452339267453,
+          "pitch": -0.7447913163962085
         },
         {
           "id": "frantoio-9",
@@ -6178,8 +6586,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.716749962755227,
-          "pitch": -0.3769057507616247
+          "yaw": 5.290328935797479,
+          "pitch": -0.45432821897188447
         },
         {
           "id": "frantoio-1-copia-001",
@@ -6203,8 +6611,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.221781814494492,
-          "pitch": 0.08972711441492875
+          "yaw": 2.6296120341399165,
+          "pitch": -0.1388339580293072
         },
         {
           "id": "letteratura-1",
@@ -6217,7 +6625,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 60,
           "imageMediaId": "d-annunzio",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -6228,8 +6636,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.445522987391085,
-          "pitch": 0.00020047029362202373
+          "yaw": 4.124309649296695,
+          "pitch": 0.12363173380677672
         }
       ],
       "settings": {},
@@ -6239,13 +6647,13 @@
       "id": "vinificazione",
       "title": "Vinificazione",
       "description": "Vinificazione",
-      "panorama": "./assets/panorami/360 VINO.jpg",
+      "panorama": "./assets/panorami/Vino_C.JPG",
       "cover": "./assets/panorami/360 VINO.jpg",
       "order": 12,
-      "panoramaMediaId": "asset-assets-panorami-360-vino-jpg",
+      "panoramaMediaId": "vino-c",
       "coverMediaId": "asset-assets-panorami-360-vino-jpg",
-      "defaultYaw": "1.5749387546964786",
-      "defaultPitch": "-0.034463285271874255",
+      "defaultYaw": "3.371412379993847",
+      "defaultPitch": "-0.03270514182187245",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -6271,8 +6679,8 @@
           "label": "Cantina",
           "orientation": "",
           "visible": true,
-          "yaw": 3.7318269806327122,
-          "pitch": -0.28814041787249756
+          "yaw": 1.1892976391879055,
+          "pitch": -0.32249668351858674
         },
         {
           "id": "to-bottaio",
@@ -6281,7 +6689,7 @@
           "description": "",
           "category": "Navigazione",
           "keywords": [],
-          "icon": "arrow-right",
+          "icon": "arrow-up",
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
@@ -6296,8 +6704,8 @@
           "label": "Bottaio",
           "orientation": "",
           "visible": true,
-          "yaw": 3.8561856495063624,
-          "pitch": -0.1815682516203585
+          "yaw": 1.1008400623000454,
+          "pitch": -0.13764851669577638
         },
         {
           "id": "to-fabbro",
@@ -6321,8 +6729,8 @@
           "label": "Fabbro",
           "orientation": "",
           "visible": true,
-          "yaw": 3.9307946024472535,
-          "pitch": 0.26318295907623157
+          "yaw": 1.2209289867544988,
+          "pitch": -0.17955286321100905
         },
         {
           "id": "vino-1",
@@ -6371,8 +6779,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.5970829303395675,
-          "pitch": 0.3228758419806259
+          "yaw": 2.871056230192537,
+          "pitch": 0.16205086909628963
         },
         {
           "id": "vino-4",
@@ -6396,8 +6804,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.8532491117236451,
-          "pitch": -0.23061627320950495
+          "yaw": 5.140729020477142,
+          "pitch": -0.16193912816131495
         },
         {
           "id": "vino-6",
@@ -6421,8 +6829,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.804269262207908,
-          "pitch": 0.23199030527368514
+          "yaw": 5.001463032091282,
+          "pitch": 0.1348723662770135
         },
         {
           "id": "vino-7",
@@ -6446,8 +6854,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.246104636788181,
-          "pitch": 0.024412895772432996
+          "yaw": 1.5993885586760759,
+          "pitch": -0.31486403335055835
         },
         {
           "id": "letteratura-1",
@@ -7193,13 +7601,13 @@
       "id": "mulino",
       "title": "Mulino e pane",
       "description": "Mulino e pane",
-      "panorama": "./assets/panorami/360 PANE.jpg",
+      "panorama": "./assets/panorami/Mulino_forno_1.JPG",
       "cover": "./assets/panorami/360 PANE.jpg",
       "order": 15,
-      "panoramaMediaId": "asset-assets-panorami-360-pane-jpg",
+      "panoramaMediaId": "mulino-forno-1",
       "coverMediaId": "asset-assets-panorami-360-pane-jpg",
-      "defaultYaw": "1.672413204155719",
-      "defaultPitch": "-0.007336338690778543",
+      "defaultYaw": "3.3729482070602304",
+      "defaultPitch": "0.0191868466349443",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -7225,8 +7633,8 @@
           "label": "Pastore e casaro",
           "orientation": "",
           "visible": true,
-          "yaw": 2.891637331139507,
-          "pitch": -0.1726410262756506
+          "yaw": 4.541751867893952,
+          "pitch": -0.20015779408746237
         },
         {
           "id": "to-bottaio",
@@ -7250,8 +7658,8 @@
           "label": "Bottaio",
           "orientation": "",
           "visible": true,
-          "yaw": 3.1598834807531584,
-          "pitch": -0.0921500681989651
+          "yaw": 4.8276896655902535,
+          "pitch": -0.07564754192001444
         },
         {
           "id": "hotspot-001",
@@ -7275,8 +7683,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.0804294596269384,
-          "pitch": 0.10974778994406131
+          "yaw": 3.136394049960065,
+          "pitch": -0.06508658996118233
         },
         {
           "id": "pane-2",
@@ -7300,8 +7708,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.4439118484316236,
-          "pitch": 0.2818337645106104
+          "yaw": 3.4772109239533453,
+          "pitch": 0.2707465349056619
         },
         {
           "id": "pane-3",
@@ -7325,8 +7733,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.2345835847561264,
-          "pitch": -0.10868687419691425
+          "yaw": 4.055866110829086,
+          "pitch": -0.1673027224956103
         },
         {
           "id": "pane-4",
@@ -7400,8 +7808,33 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.4326380447260694,
-          "pitch": -0.366955171652406
+          "yaw": 3.3964574508270746,
+          "pitch": -0.3558455132879357
+        },
+        {
+          "id": "macine_mano",
+          "type": "info",
+          "title": "Macine a mano",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#be1622",
+          "borderColor": "#ffffff",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true,
+          "yaw": 2.1378520250743085,
+          "pitch": -0.33004233859546317
         }
       ],
       "settings": {},
@@ -7411,13 +7844,13 @@
       "id": "calzolaio",
       "title": "Calzolaio",
       "description": "Calzolaio",
-      "panorama": "./assets/panorami/360 CALZOLAIO2 2.jpg",
+      "panorama": "./assets/panorami/Calzolaio_5.JPG",
       "cover": "./assets/panorami/360 CALZOLAIO2 2.jpg",
       "order": 16,
-      "panoramaMediaId": "asset-assets-panorami-360-calzolaio2-2-jpg",
+      "panoramaMediaId": "calzolaio-5",
       "coverMediaId": "asset-assets-panorami-360-calzolaio2-2-jpg",
-      "defaultYaw": "4.920072940204863",
-      "defaultPitch": "-0.16819855854544308",
+      "defaultYaw": "6.169394921914753",
+      "defaultPitch": "-0.17714426244394987",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -7443,8 +7876,8 @@
           "label": "Fabbro",
           "orientation": "",
           "visible": true,
-          "yaw": 0.8329210681558393,
-          "pitch": -0.2491151470168238
+          "yaw": 1.74565660128355,
+          "pitch": -0.16060070782279778
         },
         {
           "id": "to-pastore",
@@ -7468,8 +7901,8 @@
           "label": "Pastore e casaro",
           "orientation": "",
           "visible": true,
-          "yaw": 1.8424013324393786,
-          "pitch": -0.09870586364591172
+          "yaw": 3.723062629365554,
+          "pitch": -0.13065952397217617
         },
         {
           "id": "calzolaio-1",
@@ -7493,8 +7926,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.417735161086967,
-          "pitch": -0.37873926196462326
+          "yaw": 0.38276305532933985,
+          "pitch": -0.49510265473250215
         },
         {
           "id": "hotspot-001",
@@ -7518,8 +7951,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.26779925643180774,
-          "pitch": 0.07676701451168277
+          "yaw": 1.1218178094354379,
+          "pitch": -0.19948710041852546
         },
         {
           "id": "calzolaio-2",
@@ -7543,8 +7976,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.8382038165420633,
-          "pitch": -0.5690534955623274
+          "yaw": 0.6177499347893993,
+          "pitch": -0.6509358210434004
         },
         {
           "id": "hotspot-002",
@@ -7568,8 +8001,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.130346279621236,
-          "pitch": -0.08664920974388313
+          "yaw": 0.09478269923762457,
+          "pitch": -0.11021496254888463
         },
         {
           "id": "calzolaio-4",
@@ -7593,8 +8026,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.7964690491142754,
-          "pitch": -0.08814309208133331
+          "yaw": 5.512539878992202,
+          "pitch": -0.12177273683346801
         },
         {
           "id": "calzolaio-6",
@@ -7618,8 +8051,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.0938996403563968,
-          "pitch": -0.1475302646042962
+          "yaw": 3.7552247544558415,
+          "pitch": -0.3665479157152145
         },
         {
           "id": "letteratura-1",
@@ -7632,7 +8065,7 @@
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
-          "size": 36,
+          "size": 60,
           "imageMediaId": "rocco-scotellaro",
           "audioMediaId": "",
           "pronunciationMediaId": "",
@@ -7643,8 +8076,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 6.195300864764553,
-          "pitch": -0.2451720773292223
+          "yaw": 6.205723479402179,
+          "pitch": -0.1146713671432229
         }
       ],
       "settings": {},
@@ -7659,8 +8092,8 @@
       "order": 17,
       "panoramaMediaId": "ruggiero-2",
       "coverMediaId": "asset-assets-panorami-360-miniatura-jpg",
-      "defaultYaw": "3.475402124259284",
-      "defaultPitch": "0.054251700020290006",
+      "defaultYaw": "3.0664671118591",
+      "defaultPitch": "0.05663809566433997",
       "defaultZoomLvl": 28,
       "defaultFov": "95.00",
       "hotspots": [
@@ -7711,8 +8144,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.83396006413105,
-          "pitch": -0.29949901133322965
+          "yaw": 3.8085207160996015,
+          "pitch": -0.33706584603864087
         },
         {
           "id": "ruggiero-3",
@@ -7736,8 +8169,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.1722389984746027,
-          "pitch": 0.0999068426711569
+          "yaw": 3.2036824741564223,
+          "pitch": 0.021939604985831807
         },
         {
           "id": "hotspot-002",
@@ -7761,8 +8194,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.9831789788306056,
-          "pitch": 0.08036427243303712
+          "yaw": 2.9271668550571146,
+          "pitch": 0.07851543642238878
         },
         {
           "id": "Ruggero-5",
@@ -7786,8 +8219,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.4340311281605524,
-          "pitch": -0.17870444286751863
+          "yaw": 3.44632697530941,
+          "pitch": -0.23194354535021988
         }
       ],
       "settings": {},
