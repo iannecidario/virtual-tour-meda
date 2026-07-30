@@ -65,6 +65,34 @@
           <div id="viewer" class="panorama-viewer"></div>
         </section>
 
+        <section
+          class="welcome-overlay"
+          id="welcome-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="welcome-overlay-title"
+          aria-describedby="welcome-overlay-subtitle"
+          aria-hidden="true"
+          hidden
+        >
+          <div class="welcome-overlay__card" role="document">
+            <picture class="welcome-overlay__logo">
+              <source media="(min-width: 1024px)" srcset="./assets/brand/meda-orizzontale-rosso.png">
+              <img
+                src="./assets/brand/meda-verticale-rosso.png"
+                alt="MEdA - Museo Etnografico di Aquilonia"
+                width="846"
+                height="828"
+              >
+            </picture>
+            <h1 id="welcome-overlay-title">Benvenuti al Museo Etnografico di Aquilonia</h1>
+            <p id="welcome-overlay-subtitle">Esplora gli ambienti e scopri la civiltà contadina.</p>
+            <button class="welcome-overlay__action" type="button" data-welcome-overlay-action="close">
+              Inizia la visita
+            </button>
+          </div>
+        </section>
+
       </main>
 
       <footer class="statusbar" aria-label="Informazioni sul visualizzatore">
