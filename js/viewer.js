@@ -43,7 +43,7 @@ export function createPanoramaViewer({ container, scene, onReady, onError }) {
   });
 
   viewer.addEventListener('ready', () => {
-    applySceneInitialView(viewer, scene);
+    applySceneInitialView(viewer, scene, { stabilize: true });
     onReady?.(viewer);
   }, { once: true });
 
@@ -62,10 +62,20 @@ export async function setViewerScene(viewer, scene) {
   await viewer.setPanorama(scene.panorama, {
     caption: scene.description,
   });
-  applySceneInitialView(viewer, scene);
+  applySceneInitialView(viewer, scene, { stabilize: true });
 }
 
-export function applySceneInitialView(viewer, scene) {
+export function applySceneInitialView(viewer, scene, { stabilize = false } = {}) {
+  applySceneViewOnce(viewer, scene);
+
+  if (!stabilize) {
+    return;
+  }
+
+  scheduleSceneViewStabilization(viewer, scene);
+}
+
+function applySceneViewOnce(viewer, scene) {
   viewer.rotate({
     yaw: normalizeAngle(scene.defaultYaw),
     pitch: normalizeAngle(scene.defaultPitch),
@@ -104,4 +114,22 @@ function zoomLevelFromFov(viewer, fov) {
   }
 
   return null;
+}
+
+function scheduleSceneViewStabilization(viewer, scene) {
+  const apply = () => applySceneViewOnce(viewer, scene);
+  const browserWindow = globalThis.window;
+
+  if (typeof browserWindow?.requestAnimationFrame === 'function') {
+    browserWindow.requestAnimationFrame(() => {
+      apply();
+      browserWindow.requestAnimationFrame(apply);
+    });
+  }
+
+  if (typeof browserWindow?.setTimeout === 'function') {
+    [120, 360, 720].forEach((delay) => {
+      browserWindow.setTimeout(apply, delay);
+    });
+  }
 }

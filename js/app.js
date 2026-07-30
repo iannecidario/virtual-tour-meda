@@ -1,12 +1,12 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-4';
-import { createInformationPanel } from './information-panel.js?v=20260730-4';
-import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-4';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-4';
-import { resolveSceneMedia } from './media-store.js?v=20260730-4';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-4';
-import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-4';
-import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-4';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-4';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-6';
+import { createInformationPanel } from './information-panel.js?v=20260730-6';
+import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-6';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-6';
+import { resolveSceneMedia } from './media-store.js?v=20260730-6';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-6';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-6';
+import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-6';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-6';
 
 const state = {
   project: null,
@@ -256,6 +256,7 @@ async function initialize() {
     container: elements.viewer,
     scene: state.activeScene,
     onReady: async (viewer) => {
+      await setViewerScene(viewer, state.activeScene);
       setLoading(false);
       const informationPanel = createInformationPanel({
         element: elements.infoPanel,
