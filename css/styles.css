@@ -393,6 +393,104 @@ body.is-cinematic-transitioning .viewer-panel::after {
   pointer-events: none;
 }
 
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  padding:
+    max(18px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(18px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+  overflow: hidden;
+  background: rgba(17, 17, 17, 0.42);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 280ms ease, visibility 280ms ease;
+}
+
+.welcome-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.welcome-overlay__card {
+  width: min(520px, 90vw);
+  max-height: calc(100svh - max(36px, env(safe-area-inset-top)) - max(36px, env(safe-area-inset-bottom)));
+  display: grid;
+  gap: clamp(12px, 2.2vw, 20px);
+  justify-items: center;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 70px rgba(20, 18, 16, 0.24);
+  color: var(--ink);
+  text-align: center;
+}
+
+.welcome-overlay__logo {
+  display: block;
+  width: min(300px, 62vw);
+}
+
+.welcome-overlay__logo img {
+  display: block;
+  width: 100%;
+  max-height: clamp(76px, 18vh, 118px);
+  object-fit: contain;
+}
+
+.welcome-overlay h1 {
+  max-width: 15ch;
+  margin: 0;
+  color: #171717;
+  font-size: clamp(1.65rem, 4.8vw, 2.7rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.welcome-overlay p {
+  max-width: 32ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 2.6vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.welcome-overlay__action {
+  position: sticky;
+  bottom: 0;
+  min-height: 48px;
+  padding: 0.78rem 1.25rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(190, 22, 34, 0.22);
+}
+
+.welcome-overlay__action:hover {
+  background: var(--accent-dark);
+}
+
+body.is-welcome-overlay-open {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-overlay {
+    transition: none;
+  }
+}
+
 .loading-mark {
   width: 34px;
   height: 34px;

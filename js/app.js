@@ -1,12 +1,13 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-6';
-import { createInformationPanel } from './information-panel.js?v=20260730-6';
-import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-6';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-6';
-import { resolveSceneMedia } from './media-store.js?v=20260730-6';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-6';
-import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-6';
-import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-6';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-6';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-7';
+import { createInformationPanel } from './information-panel.js?v=20260730-7';
+import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-7';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-7';
+import { resolveSceneMedia } from './media-store.js?v=20260730-7';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-7';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-7';
+import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-7';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-7';
+import { createWelcomeOverlay } from './welcome-overlay.js?v=20260730-7';
 
 const state = {
   project: null,
@@ -28,6 +29,7 @@ const elements = {
   environmentsToggle: document.querySelector('#environments-toggle'),
   environmentsPanel: document.querySelector('#environments-panel'),
   environmentsList: document.querySelector('#environments-list'),
+  welcomeOverlay: document.querySelector('#welcome-overlay'),
   message: document.querySelector('#app-message'),
 };
 
@@ -310,6 +312,11 @@ async function initialize() {
       });
       renderEnvironments();
       preloadLinkedScenes(state.activeScene);
+      createWelcomeOverlay({
+        element: elements.welcomeOverlay,
+        initialScene: state.activeScene,
+        restoreFocusElement: elements.environmentsToggle,
+      });
     },
       onError: () => {
         setLoading(false);
