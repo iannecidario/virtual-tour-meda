@@ -2816,6 +2816,19 @@
         "uploadedAt": "2026-07-30T10:10:03.863Z",
         "path": "./assets/panorami/Ruggiero_2.JPG",
         "fileName": "Ruggiero_2.JPG"
+      },
+      {
+        "id": "casa-4",
+        "name": "Casa Contadina 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4221946,
+        "uploadedAt": "2026-07-30T10:22:42.503Z",
+        "path": "./assets/panorami/Casa_4.JPG",
+        "fileName": "Casa_4.JPG"
       }
     ]
   },
@@ -2825,10 +2838,10 @@
       "id": "casa-contadina",
       "title": "Casa Contadina",
       "description": "Ambiente domestico della tradizione contadina aquiloniese.",
-      "panorama": "./assets/panorami/casa-contadina-360.jpeg",
+      "panorama": "./assets/panorami/Casa_4.JPG",
       "cover": "./assets/panorami/casa-contadina-360.jpeg",
       "order": 1,
-      "panoramaMediaId": "casa-contadina-360",
+      "panoramaMediaId": "casa-4",
       "coverMediaId": "casa-contadina-360",
       "defaultYaw": "2.260736127391203",
       "defaultPitch": "-0.012432202258439773",
@@ -2857,8 +2870,8 @@
           "label": "Stalla",
           "orientation": "",
           "visible": true,
-          "yaw": 5.2157272305839735,
-          "pitch": -0.2970835062439212
+          "yaw": 6.093835189038419,
+          "pitch": -0.40395247922676836
         },
         {
           "id": "casa-1",
@@ -2909,8 +2922,8 @@
           "label": "",
           "orientation": "sinistra",
           "visible": true,
-          "yaw": 4.0903917677920365,
-          "pitch": -0.24461270837704308,
+          "yaw": 4.087052400893059,
+          "pitch": -0.17748240031956874,
           "pronunciationMediaId": ""
         },
         {
@@ -2920,7 +2933,7 @@
           "description": "Ambienti di lavoro e cicli produttivi",
           "category": "Navigazione",
           "keywords": [],
-          "icon": "arrow-up",
+          "icon": "arrow-down",
           "iconMediaId": "",
           "color": "#be1622",
           "borderColor": "#ffffff",
@@ -2935,8 +2948,8 @@
           "label": "Frantoio",
           "orientation": "",
           "visible": true,
-          "yaw": 4.252008323307122,
-          "pitch": -0.2356448505220352
+          "yaw": 4.301270729092016,
+          "pitch": -0.29033249557835306
         },
         {
           "id": "to-religione",
@@ -3010,8 +3023,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.625450754019392,
-          "pitch": -0.2517085813210096
+          "yaw": 5.9637228076004245,
+          "pitch": -0.3948214837320929
         },
         {
           "id": "casa-5",
