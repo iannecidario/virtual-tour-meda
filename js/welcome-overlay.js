@@ -1,7 +1,7 @@
 const AUTO_CLOSE_DELAY = 8000;
 const CLOSE_ANIMATION_MS = 280;
 
-export function createWelcomeOverlay({ element, initialScene, restoreFocusElement }) {
+export function createWelcomeOverlay({ element, initialScene, restoreFocusElement, defer = false }) {
   if (!element || !initialScene || createWelcomeOverlay.wasShown) {
     return null;
   }
@@ -54,16 +54,30 @@ export function createWelcomeOverlay({ element, initialScene, restoreFocusElemen
     }
   };
 
-  element.hidden = false;
-  element.setAttribute('aria-hidden', 'false');
-  document.body.classList.add('is-welcome-overlay-open');
-  element.addEventListener('click', handleOverlayClick);
-  element.addEventListener('keydown', handleKeydown);
-  window.requestAnimationFrame(() => element.classList.add('is-visible'));
-  closeButton?.focus({ preventScroll: true });
-  closeTimer = window.setTimeout(close, AUTO_CLOSE_DELAY);
+  const show = () => {
+    if (closed || !element.hidden) return;
+    element.hidden = false;
+    element.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('is-welcome-overlay-open');
+    element.addEventListener('click', handleOverlayClick);
+    element.addEventListener('keydown', handleKeydown);
+    window.requestAnimationFrame(() => element.classList.add('is-visible'));
+    focusCloseButton(closeButton);
+    closeTimer = window.setTimeout(close, AUTO_CLOSE_DELAY);
+  };
 
-  return { close };
+  if (!defer) {
+    show();
+  }
+
+  return { close, show };
+}
+
+function focusCloseButton(closeButton) {
+  if (!closeButton || typeof closeButton.focus !== 'function') return;
+  closeButton.focus({ preventScroll: true });
+  window.requestAnimationFrame(() => closeButton.focus({ preventScroll: true }));
+  window.setTimeout(() => closeButton.focus({ preventScroll: true }), 60);
 }
 
 createWelcomeOverlay.wasShown = false;

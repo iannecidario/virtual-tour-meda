@@ -252,6 +252,12 @@ async function initialize() {
 
   setActiveScene(state.activeScene);
   setLoading(true);
+  const welcomeOverlay = createWelcomeOverlay({
+    element: elements.welcomeOverlay,
+    initialScene: state.activeScene,
+    restoreFocusElement: elements.environmentsToggle,
+    defer: true,
+  });
 
   try {
     state.viewer = createPanoramaViewer({
@@ -311,12 +317,8 @@ async function initialize() {
         if (event.key === 'Escape') closeEnvironmentsPanel();
       });
       renderEnvironments();
+      welcomeOverlay?.show();
       preloadLinkedScenes(state.activeScene);
-      createWelcomeOverlay({
-        element: elements.welcomeOverlay,
-        initialScene: state.activeScene,
-        restoreFocusElement: elements.environmentsToggle,
-      });
     },
       onError: () => {
         setLoading(false);
