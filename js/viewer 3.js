@@ -21,9 +21,9 @@ export function createPanoramaViewer({ container, scene, onReady, onError }) {
     container,
     panorama: scene.panorama,
     caption: scene.description,
-    defaultYaw: normalizeAngle(scene.defaultYaw),
-    defaultPitch: normalizeAngle(scene.defaultPitch),
-    defaultZoomLvl: scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl,
+  defaultYaw: scene.defaultYaw,
+  defaultPitch: scene.defaultPitch,
+  defaultZoomLvl: scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl,
     plugins: [
       [
         MarkersPlugin,
@@ -43,7 +43,6 @@ export function createPanoramaViewer({ container, scene, onReady, onError }) {
   });
 
   viewer.addEventListener('ready', () => {
-    applySceneInitialView(viewer, scene);
     onReady?.(viewer);
   }, { once: true });
 
@@ -62,13 +61,9 @@ export async function setViewerScene(viewer, scene) {
   await viewer.setPanorama(scene.panorama, {
     caption: scene.description,
   });
-  applySceneInitialView(viewer, scene);
-}
-
-export function applySceneInitialView(viewer, scene) {
   viewer.rotate({
-    yaw: normalizeAngle(scene.defaultYaw),
-    pitch: normalizeAngle(scene.defaultPitch),
+    yaw: scene.defaultYaw || '0deg',
+    pitch: scene.defaultPitch || '0deg',
   });
   setViewerZoom(viewer, scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl);
 }
@@ -81,13 +76,4 @@ export function setViewerZoom(viewer, zoomLevel = viewerDefaults.defaultZoomLvl)
   if (typeof viewer.zoom === 'function') {
     viewer.zoom(normalizedZoom);
   }
-}
-
-function normalizeAngle(value, fallback = '0deg') {
-  if (value === undefined || value === null || value === '') {
-    return fallback;
-  }
-
-  const numericValue = Number(value);
-  return Number.isFinite(numericValue) ? numericValue : value;
 }
