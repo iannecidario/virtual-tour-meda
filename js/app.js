@@ -1,13 +1,14 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-7';
-import { createInformationPanel } from './information-panel.js?v=20260730-7';
-import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-7';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-7';
-import { resolveSceneMedia } from './media-store.js?v=20260730-7';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-7';
-import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-7';
-import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-7';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-7';
-import { createWelcomeOverlay } from './welcome-overlay.js?v=20260730-7';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-8';
+import { createInformationPanel } from './information-panel.js?v=20260730-8';
+import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-8';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-8';
+import { resolveSceneMedia } from './media-store.js?v=20260730-8';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-8';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-8';
+import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-8';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-8';
+import { createWelcomeOverlay } from './welcome-overlay.js?v=20260730-8';
+import { setupEmbedMode } from './embed-mode.js?v=20260730-8';
 
 const state = {
   project: null,
@@ -34,6 +35,9 @@ const elements = {
 };
 
 let messageTimer = null;
+const embedMode = setupEmbedMode({
+  stage: document.querySelector('.viewer-stage'),
+});
 
 function setLoading(isLoading, message = 'Caricamento panorama') {
   elements.loading?.classList.toggle('is-hidden', !isLoading);
@@ -257,6 +261,7 @@ async function initialize() {
     initialScene: state.activeScene,
     restoreFocusElement: elements.environmentsToggle,
     defer: true,
+    onStartVisit: () => embedMode.unlockAudio(),
   });
 
   try {

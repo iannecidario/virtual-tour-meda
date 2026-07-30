@@ -1,7 +1,13 @@
 const AUTO_CLOSE_DELAY = 8000;
 const CLOSE_ANIMATION_MS = 280;
 
-export function createWelcomeOverlay({ element, initialScene, restoreFocusElement, defer = false }) {
+export function createWelcomeOverlay({
+  element,
+  initialScene,
+  restoreFocusElement,
+  defer = false,
+  onStartVisit,
+}) {
   if (!element || !initialScene || createWelcomeOverlay.wasShown) {
     return null;
   }
@@ -16,7 +22,7 @@ export function createWelcomeOverlay({ element, initialScene, restoreFocusElemen
   let closeTimer = null;
   let closed = false;
 
-  const close = () => {
+  const close = (reason = 'manual') => {
     if (closed) return;
     closed = true;
     window.clearTimeout(closeTimer);
@@ -33,19 +39,28 @@ export function createWelcomeOverlay({ element, initialScene, restoreFocusElemen
         target.focus({ preventScroll: true });
       }
     }, CLOSE_ANIMATION_MS);
+
+    if (reason === 'start') {
+      onStartVisit?.();
+    }
   };
 
   const handleOverlayClick = (event) => {
     event.stopPropagation();
-    if (event.target === element || event.target.closest('[data-welcome-overlay-action="close"]')) {
-      close();
+    if (event.target.closest('[data-welcome-overlay-action="close"]')) {
+      close('start');
+      return;
+    }
+
+    if (event.target === element) {
+      close('backdrop');
     }
   };
 
   const handleKeydown = (event) => {
     if (event.key === 'Escape') {
       event.preventDefault();
-      close();
+      close('escape');
       return;
     }
 
@@ -63,7 +78,7 @@ export function createWelcomeOverlay({ element, initialScene, restoreFocusElemen
     element.addEventListener('keydown', handleKeydown);
     window.requestAnimationFrame(() => element.classList.add('is-visible'));
     focusCloseButton(closeButton);
-    closeTimer = window.setTimeout(close, AUTO_CLOSE_DELAY);
+    closeTimer = window.setTimeout(() => close('timer'), AUTO_CLOSE_DELAY);
   };
 
   if (!defer) {

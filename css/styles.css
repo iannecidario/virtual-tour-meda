@@ -26,6 +26,14 @@ body {
   margin: 0;
 }
 
+html.embed-mode,
+html.embed-mode body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
 body {
   background: var(--page);
   color: var(--ink);
@@ -52,6 +60,39 @@ textarea:focus-visible {
   min-height: 100dvh;
   padding: max(8px, env(safe-area-inset-top)) 0 max(6px, env(safe-area-inset-bottom));
   gap: var(--layout-gap);
+}
+
+.embed-mode .app-shell {
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+.embed-mode .topbar {
+  min-height: clamp(40px, 8vh, 56px);
+  padding-top: max(4px, env(safe-area-inset-top));
+  padding-bottom: 4px;
+  background: rgba(247, 245, 242, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.embed-mode .statusbar {
+  display: none;
+}
+
+.embed-mode .viewer-stage {
+  min-height: 0;
+}
+
+.embed-mode .brand-logo {
+  height: clamp(36px, 8vh, 50px);
+}
+
+.embed-mode .scene-title {
+  max-width: min(34vw, 260px);
 }
 
 body.is-info-panel-open {
@@ -483,6 +524,41 @@ body.is-cinematic-transitioning .viewer-panel::after {
 
 body.is-welcome-overlay-open {
   overflow: hidden;
+}
+
+.embed-audio-activation,
+.embed-full-page-link {
+  position: fixed;
+  z-index: 96;
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+  box-shadow: 0 12px 32px rgba(31, 35, 40, 0.18);
+  backdrop-filter: blur(14px);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.embed-audio-activation {
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.embed-full-page-link {
+  left: max(12px, env(safe-area-inset-left));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.embed-audio-activation[hidden],
+.embed-full-page-link[hidden] {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2599,6 +2675,18 @@ body.is-image-viewer-open {
     gap: 5px;
   }
 
+  .embed-mode .app-shell {
+    height: 100svh;
+    min-height: 100svh;
+    padding: 0;
+    gap: 0;
+  }
+
+  .embed-mode .topbar {
+    min-height: clamp(38px, 11svh, 52px);
+    padding-top: max(3px, env(safe-area-inset-top));
+  }
+
   .topbar {
     min-height: 38px;
   }
@@ -2654,6 +2742,33 @@ body.is-image-viewer-open {
 
   .statusbar {
     display: none;
+  }
+
+  .welcome-overlay {
+    padding:
+      max(12px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right))
+      max(12px, env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .welcome-overlay__card {
+    width: min(90vw, 430px);
+    max-height: calc(100svh - max(24px, env(safe-area-inset-top)) - max(24px, env(safe-area-inset-bottom)));
+    padding: clamp(18px, 5vw, 28px);
+  }
+
+  .welcome-overlay__logo {
+    width: min(220px, 56vw);
+  }
+
+  .embed-full-page-link {
+    max-width: calc(100vw - max(24px, env(safe-area-inset-left)) - max(72px, env(safe-area-inset-right)));
+    min-height: 44px;
+    overflow: hidden;
+    font-size: 0.74rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .psv-navbar {

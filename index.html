@@ -10,10 +10,21 @@
     >
     <title>MEdA | Visualizzatore 360</title>
     <link rel="icon" href="./assets/icons/meda-mark.svg" type="image/svg+xml">
+    <script>
+      (() => {
+        try {
+          if (new URLSearchParams(window.location.search).get('embed') === '1') {
+            document.documentElement.classList.add('embed-mode');
+          }
+        } catch {
+          /* La modalita embed resta opzionale: in caso di URL non valido si usa la vista standard. */
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/core@5.14.3/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@photo-sphere-viewer/markers-plugin@5.14.3/index.css">
-    <link rel="stylesheet" href="./css/styles.css?v=20260730-7">
+    <link rel="stylesheet" href="./css/styles.css?v=20260730-8">
     <script type="importmap">
       {
         "imports": {
@@ -86,7 +97,7 @@
               >
             </picture>
             <h1 id="welcome-overlay-title">Benvenuti al Museo Etnografico di Aquilonia</h1>
-            <p id="welcome-overlay-subtitle">Esplora gli ambienti e scopri la civiltà contadina.</p>
+            <p id="welcome-overlay-subtitle">Esplora gli ambienti e scopri la civiltà contadina</p>
             <button class="welcome-overlay__action" type="button" data-welcome-overlay-action="close">
               Inizia la visita
             </button>
@@ -122,6 +133,6 @@
       </div>
     </aside>
 
-    <script type="module" src="./js/app.js?v=20260730-7"></script>
+    <script type="module" src="./js/app.js?v=20260730-8"></script>
   </body>
 </html>
