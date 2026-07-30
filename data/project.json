@@ -2836,17 +2836,17 @@
   "scenes": [
     {
       "id": "casa-contadina",
-      "title": "Casa Contadina",
+      "title": "Casa contadina",
       "description": "Ambiente domestico della tradizione contadina aquiloniese.",
       "panorama": "./assets/panorami/Casa_4.JPG",
       "cover": "./assets/panorami/casa-contadina-360.jpeg",
       "order": 1,
       "panoramaMediaId": "casa-4",
       "coverMediaId": "casa-contadina-360",
-      "defaultYaw": "2.260736127391203",
-      "defaultPitch": "-0.012432202258439773",
+      "defaultYaw": "5.615365149181902",
+      "defaultPitch": "-0.13060764573652772",
       "defaultZoomLvl": 3,
-      "defaultFov": "93.01",
+      "defaultFov": "93.20",
       "hotspots": [
         {
           "id": "collegamento-001",
@@ -2870,8 +2870,8 @@
           "label": "Stalla",
           "orientation": "",
           "visible": true,
-          "yaw": 6.093835189038419,
-          "pitch": -0.40395247922676836
+          "yaw": 2.2909549697834763,
+          "pitch": -0.40132166121429824
         },
         {
           "id": "casa-1",
@@ -2898,8 +2898,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.682837542637186,
-          "pitch": -0.2882424864391233
+          "yaw": 5.1398175227658065,
+          "pitch": -0.46387484113460387
         },
         {
           "id": "hotspot-002",
@@ -2922,8 +2922,8 @@
           "label": "",
           "orientation": "sinistra",
           "visible": true,
-          "yaw": 4.087052400893059,
-          "pitch": -0.17748240031956874,
+          "yaw": 0.9693964533465983,
+          "pitch": -0.19965469628950272,
           "pronunciationMediaId": ""
         },
         {
@@ -2948,8 +2948,8 @@
           "label": "Frantoio",
           "orientation": "",
           "visible": true,
-          "yaw": 4.301270729092016,
-          "pitch": -0.29033249557835306
+          "yaw": 1.1244710872277461,
+          "pitch": -0.40721609572477413
         },
         {
           "id": "to-religione",
@@ -2973,8 +2973,8 @@
           "label": "Religiosità popolare",
           "orientation": "",
           "visible": true,
-          "yaw": 4.367502165875244,
-          "pitch": 0.08069211185769154
+          "yaw": 1.2801210841869841,
+          "pitch": -0.03694287230857163
         },
         {
           "id": "Tumbàgne",
@@ -2998,8 +2998,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.853077209628374,
-          "pitch": -0.047373171109010404
+          "yaw": 5.987041298027061,
+          "pitch": -0.196351116462957
         },
         {
           "id": "casa-3",
@@ -3023,8 +3023,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.9637228076004245,
-          "pitch": -0.3948214837320929
+          "yaw": 1.5583841198595842,
+          "pitch": -0.5334979061794352
         },
         {
           "id": "casa-5",
@@ -3048,8 +3048,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 6.140210574915296,
-          "pitch": 0.4728823777078115
+          "yaw": 3.3404148445316104,
+          "pitch": 0.3535871484956403
         },
         {
           "id": "casa-4",
@@ -3073,8 +3073,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 4.903876467683986,
-          "pitch": -0.08053654752315698
+          "yaw": 1.9312782578314585,
+          "pitch": -0.23414491038191132
         },
         {
           "id": "casa-6",
@@ -3098,8 +3098,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.5624336820903992,
-          "pitch": 0.030723596070716175
+          "yaw": 0.37856639253257063,
+          "pitch": -0.11813872708538176
         },
         {
           "id": "casa-7",
@@ -3148,8 +3148,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 0.0310619837010905,
-          "pitch": -0.19798819326196404
+          "yaw": 3.401167561978664,
+          "pitch": -0.24966385712135186
         },
         {
           "id": "casa-9",
@@ -3173,8 +3173,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.970644618548714,
-          "pitch": -0.06942771702775175
+          "yaw": 3.1575094979314153,
+          "pitch": -0.16704698455742206
         },
         {
           "id": "casa-10",
@@ -3223,8 +3223,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.8277836553342581,
-          "pitch": 0.05438258311583399
+          "yaw": 4.978045256026593,
+          "pitch": -0.09376530318162168
         },
         {
           "id": "letteratura-01",
@@ -3250,6 +3250,31 @@
           "visible": true,
           "yaw": 5.5596760911670815,
           "pitch": 0.28354397338988835
+        },
+        {
+          "type": "info",
+          "id": "hotspot-001",
+          "title": "Nuovo hotspot",
+          "description": "",
+          "category": "Approfondimento",
+          "keywords": [],
+          "icon": "info",
+          "iconMediaId": "",
+          "color": "#BE1622",
+          "borderColor": "#FFFFFF",
+          "size": 36,
+          "imageMediaId": "",
+          "audioMediaId": "",
+          "pronunciationMediaId": "",
+          "documentMediaId": "",
+          "youtube": "",
+          "externalUrl": "",
+          "yaw": 5.734108081910711,
+          "pitch": -0.7854736459248826,
+          "targetSceneId": "",
+          "label": "",
+          "orientation": "",
+          "visible": true
         }
       ],
       "settings": {},
