@@ -70,11 +70,12 @@ export function applySceneInitialView(viewer, scene) {
     yaw: normalizeAngle(scene.defaultYaw),
     pitch: normalizeAngle(scene.defaultPitch),
   });
-  setViewerZoom(viewer, scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl);
+  setViewerZoom(viewer, scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl, scene.defaultFov);
 }
 
-export function setViewerZoom(viewer, zoomLevel = viewerDefaults.defaultZoomLvl) {
-  const numericZoom = Number(zoomLevel);
+export function setViewerZoom(viewer, zoomLevel = viewerDefaults.defaultZoomLvl, fov = '') {
+  const fovZoomLevel = zoomLevelFromFov(viewer, fov);
+  const numericZoom = Number(fovZoomLevel ?? zoomLevel);
   const normalizedZoom = Number.isFinite(numericZoom)
     ? Math.max(0, Math.min(100, numericZoom))
     : viewerDefaults.defaultZoomLvl;
@@ -90,4 +91,17 @@ function normalizeAngle(value, fallback = '0deg') {
 
   const numericValue = Number(value);
   return Number.isFinite(numericValue) ? numericValue : value;
+}
+
+function zoomLevelFromFov(viewer, fov) {
+  const numericFov = Number(fov);
+  if (!Number.isFinite(numericFov) || numericFov <= 0) {
+    return null;
+  }
+
+  if (typeof viewer.dataHelper?.fovToZoomLevel === 'function') {
+    return viewer.dataHelper.fovToZoomLevel(numericFov);
+  }
+
+  return null;
 }
