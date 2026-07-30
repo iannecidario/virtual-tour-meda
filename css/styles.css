@@ -1150,6 +1150,47 @@ body:not(.is-editor-active) .editor-toolbar {
   font-size: 0.78rem;
 }
 
+.panorama-replace-card {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 10px 14px;
+  align-items: center;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(247, 245, 242, 0.78);
+}
+
+.panorama-replace-card[hidden] {
+  display: none;
+}
+
+.panorama-replace-card strong,
+.panorama-replace-card p {
+  grid-column: 1 / -1;
+}
+
+.panorama-replace-card img {
+  width: 112px;
+  height: 56px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: #f2efec;
+}
+
+.panorama-replace-card span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  overflow-wrap: anywhere;
+}
+
+.panorama-replace-card p {
+  margin: 0;
+  color: #8a611d;
+  font-size: 0.84rem;
+}
+
 .initial-view-config {
   position: fixed;
   left: max(18px, env(safe-area-inset-left));
@@ -1190,11 +1231,20 @@ body:not(.is-editor-active) .editor-toolbar {
   font-size: 0.82rem;
 }
 
+.panorama-replace-config {
+  width: min(1120px, calc(100vw - 36px));
+}
+
 body.is-initial-view-mode .hotspot-marker,
 body.is-initial-view-mode .editor-toolbar,
 body.is-initial-view-mode .tour-navigation {
   opacity: 0;
   pointer-events: none;
+}
+
+body.is-panorama-replace-mode .hotspot-marker {
+  opacity: var(--marker-opacity, 0.82);
+  pointer-events: auto;
 }
 
 .scene-list {

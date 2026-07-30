@@ -2699,6 +2699,123 @@
         "uploadedAt": "2026-07-22T14:38:59.978Z",
         "path": "./assets/audio/fabbro_soundtrack.mp3",
         "fileName": "fabbro_soundtrack.mp3"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-10-jpg",
+        "name": "360 CALZOLAIO2 10",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:19:40+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 10.jpg",
+        "fileName": "360 CALZOLAIO2 10.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-14-jpg",
+        "name": "360 CALZOLAIO2 14",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:09:32+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 14.jpg",
+        "fileName": "360 CALZOLAIO2 14.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-15-jpg",
+        "name": "360 CALZOLAIO2 15",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:09:32+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 15.jpg",
+        "fileName": "360 CALZOLAIO2 15.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-16-jpg",
+        "name": "360 CALZOLAIO2 16",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:09:32+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 16.jpg",
+        "fileName": "360 CALZOLAIO2 16.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-17-jpg",
+        "name": "360 CALZOLAIO2 17",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:19:40+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 17.jpg",
+        "fileName": "360 CALZOLAIO2 17.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-7-jpg",
+        "name": "360 CALZOLAIO2 7",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:19:38+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 7.jpg",
+        "fileName": "360 CALZOLAIO2 7.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-8-jpg",
+        "name": "360 CALZOLAIO2 8",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:09:32+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 8.jpg",
+        "fileName": "360 CALZOLAIO2 8.jpg"
+      },
+      {
+        "id": "asset-assets-panorami-360-calzolaio2-9-jpg",
+        "name": "360 CALZOLAIO2 9",
+        "description": "Risorsa rilevata automaticamente nella cartella assets.",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 1006701,
+        "uploadedAt": "2026-07-21T15:19:40+00:00",
+        "path": "./assets/panorami/360 CALZOLAIO2 9.jpg",
+        "fileName": "360 CALZOLAIO2 9.jpg"
+      },
+      {
+        "id": "ruggiero-2",
+        "name": "Collezione Ruggiero 360",
+        "description": "",
+        "category": "Panorami 360",
+        "keywords": [],
+        "collectionId": "",
+        "mimeType": "image/jpeg",
+        "size": 4195387,
+        "uploadedAt": "2026-07-30T10:10:03.863Z",
+        "path": "./assets/panorami/Ruggiero_2.JPG",
+        "fileName": "Ruggiero_2.JPG"
       }
     ]
   },
@@ -6849,10 +6966,10 @@
       "id": "ruggiero",
       "title": "Collezione Ruggiero",
       "description": "Collezione Ruggiero",
-      "panorama": "./assets/panorami/360 MINIATURA.jpg",
+      "panorama": "./assets/panorami/Ruggiero_2.JPG",
       "cover": "./assets/panorami/360 MINIATURA.jpg",
       "order": 17,
-      "panoramaMediaId": "asset-assets-panorami-360-miniatura-jpg",
+      "panoramaMediaId": "ruggiero-2",
       "coverMediaId": "asset-assets-panorami-360-miniatura-jpg",
       "defaultYaw": "3.475402124259284",
       "defaultPitch": "0.054251700020290006",
@@ -6885,31 +7002,6 @@
           "pitch": 0.05843576480768986
         },
         {
-          "id": "hotspot-001",
-          "type": "info",
-          "title": "Nuovo hotspot",
-          "description": "",
-          "category": "Approfondimento",
-          "keywords": [],
-          "icon": "info",
-          "iconMediaId": "",
-          "color": "#be1622",
-          "borderColor": "#ffffff",
-          "size": 36,
-          "imageMediaId": "asset-assets-immagini-contadini-naif-tag-4-jpg",
-          "audioMediaId": "",
-          "pronunciationMediaId": "",
-          "documentMediaId": "",
-          "youtube": "",
-          "externalUrl": "",
-          "targetSceneId": "",
-          "label": "",
-          "orientation": "",
-          "visible": true,
-          "yaw": 3.1226040046395225,
-          "pitch": 0.23484196263295365
-        },
-        {
           "id": "ruggiero-2",
           "type": "info",
           "title": "Abbeveraggio",
@@ -6931,8 +7023,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 3.864614561164857,
-          "pitch": -0.2916595119953147
+          "yaw": 3.83396006413105,
+          "pitch": -0.29949901133322965
         },
         {
           "id": "ruggiero-3",
@@ -6956,8 +7048,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 5.219496242559872,
-          "pitch": -0.20065202328429965
+          "yaw": 3.1722389984746027,
+          "pitch": 0.0999068426711569
         },
         {
           "id": "hotspot-002",
@@ -6981,8 +7073,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 2.514683031453062,
-          "pitch": 0.19531519194463876
+          "yaw": 2.9831789788306056,
+          "pitch": 0.08036427243303712
         },
         {
           "id": "Ruggero-5",

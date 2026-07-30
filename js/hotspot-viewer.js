@@ -1,6 +1,6 @@
-import { renderHotspots } from './hotspot-markers.js?v=20260722-6';
+import { renderHotspots } from './hotspot-markers.js?v=20260730-1';
 import { normalizeHotspot } from './hotspot-store.js';
-import { resolveHotspotMedia } from './media-store.js?v=20260722-6';
+import { resolveHotspotMedia } from './media-store.js?v=20260730-1';
 
 export async function createHotspotViewer({ viewer, markersPlugin, scene, project, onNavigate, popup, audioPlayer }) {
   const state = {
