@@ -1,0 +1,135 @@
+import { Viewer } from '@photo-sphere-viewer/core';
+import { GyroscopePlugin } from '@photo-sphere-viewer/gyroscope-plugin';
+import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
+
+const viewerDefaults = {
+  navbar: ['zoom', 'move', 'gyroscope', 'fullscreen'],
+  mousewheel: true,
+  mousemove: true,
+  touchmoveTwoFingers: false,
+  moveInertia: true,
+  fisheye: false,
+  minFov: 35,
+  maxFov: 95,
+  defaultZoomLvl: 28,
+  loadingTxt: 'Caricamento panorama...',
+};
+
+export function createPanoramaViewer({ container, scene, onReady, onError }) {
+  const viewer = new Viewer({
+    ...viewerDefaults,
+    container,
+    panorama: scene.panorama,
+    caption: scene.description,
+    defaultYaw: normalizeAngle(scene.defaultYaw),
+    defaultPitch: normalizeAngle(scene.defaultPitch),
+    defaultZoomLvl: scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl,
+    plugins: [
+      [
+        MarkersPlugin,
+        {
+          clickEventOnMarker: false,
+          markers: [],
+        },
+      ],
+      [
+        GyroscopePlugin,
+        {
+          touchmove: true,
+          absolutePosition: true,
+        },
+      ],
+    ],
+  });
+
+  viewer.addEventListener('ready', () => {
+    applySceneInitialView(viewer, scene, { stabilize: true });
+    onReady?.(viewer);
+  }, { once: true });
+
+  viewer.addEventListener('panorama-load-fail', (event) => {
+    onError?.(event);
+  });
+
+  return viewer;
+}
+
+export function getMarkersPlugin(viewer) {
+  return viewer.getPlugin(MarkersPlugin);
+}
+
+export async function setViewerScene(viewer, scene) {
+  await viewer.setPanorama(scene.panorama, {
+    caption: scene.description,
+  });
+  applySceneInitialView(viewer, scene, { stabilize: true });
+}
+
+export function applySceneInitialView(viewer, scene, { stabilize = false } = {}) {
+  applySceneViewOnce(viewer, scene);
+
+  if (!stabilize) {
+    return;
+  }
+
+  scheduleSceneViewStabilization(viewer, scene);
+}
+
+function applySceneViewOnce(viewer, scene) {
+  viewer.rotate({
+    yaw: normalizeAngle(scene.defaultYaw),
+    pitch: normalizeAngle(scene.defaultPitch),
+  });
+  setViewerZoom(viewer, scene.defaultZoomLvl ?? viewerDefaults.defaultZoomLvl, scene.defaultFov);
+}
+
+export function setViewerZoom(viewer, zoomLevel = viewerDefaults.defaultZoomLvl, fov = '') {
+  const fovZoomLevel = zoomLevelFromFov(viewer, fov);
+  const numericZoom = Number(fovZoomLevel ?? zoomLevel);
+  const normalizedZoom = Number.isFinite(numericZoom)
+    ? Math.max(0, Math.min(100, numericZoom))
+    : viewerDefaults.defaultZoomLvl;
+  if (typeof viewer.zoom === 'function') {
+    viewer.zoom(normalizedZoom);
+  }
+}
+
+function normalizeAngle(value, fallback = '0deg') {
+  if (value === undefined || value === null || value === '') {
+    return fallback;
+  }
+
+  const numericValue = Number(value);
+  return Number.isFinite(numericValue) ? numericValue : value;
+}
+
+function zoomLevelFromFov(viewer, fov) {
+  const numericFov = Number(fov);
+  if (!Number.isFinite(numericFov) || numericFov <= 0) {
+    return null;
+  }
+
+  if (typeof viewer.dataHelper?.fovToZoomLevel === 'function') {
+    return viewer.dataHelper.fovToZoomLevel(numericFov);
+  }
+
+  return null;
+}
+
+function scheduleSceneViewStabilization(viewer, scene) {
+  const apply = () => applySceneViewOnce(viewer, scene);
+  const browserWindow = globalThis.window;
+
+  if (typeof browserWindow?.requestAnimationFrame === 'function') {
+    browserWindow.requestAnimationFrame(() => {
+      apply();
+      browserWindow.requestAnimationFrame(apply);
+    });
+  }
+
+  if (typeof browserWindow?.setTimeout === 'function') {
+    [120, 360, 720].forEach((delay) => {
+      browserWindow.setTimeout(apply, delay);
+    });
+  }
+}
