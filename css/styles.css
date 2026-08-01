@@ -395,9 +395,15 @@ body.is-scene-transitioning .viewer-panel::after {
 }
 
 body.is-cinematic-transitioning .viewer-panel::after {
-  background: radial-gradient(circle at center, rgba(31, 35, 40, 0.48), rgba(31, 35, 40, 0.86));
+  background: radial-gradient(circle at center, rgba(31, 35, 40, 0.94), rgba(31, 35, 40, 0.98));
   opacity: 1;
   transition-duration: var(--scene-transition-fade-ms, 280ms);
+}
+
+body.is-panorama-swapping .viewer-panel::after {
+  background: #1f2328;
+  opacity: 1;
+  transition: none;
 }
 
 .viewer-panel {

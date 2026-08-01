@@ -1,14 +1,14 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260801-1';
-import { createInformationPanel } from './information-panel.js?v=20260801-1';
-import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260801-1';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260801-1';
-import { resolveSceneMedia } from './media-store.js?v=20260801-1';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260801-1';
-import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260801-1';
-import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260801-1';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260801-1';
-import { createWelcomeOverlay } from './welcome-overlay.js?v=20260801-1';
-import { setupEmbedMode } from './embed-mode.js?v=20260801-1';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260801-2';
+import { createInformationPanel } from './information-panel.js?v=20260801-2';
+import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260801-2';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260801-2';
+import { resolveSceneMedia } from './media-store.js?v=20260801-2';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260801-2';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260801-2';
+import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260801-2';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260801-2';
+import { createWelcomeOverlay } from './welcome-overlay.js?v=20260801-2';
+import { setupEmbedMode } from './embed-mode.js?v=20260801-2';
 
 const state = {
   project: null,
@@ -144,6 +144,7 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
 
   const cinematic = Boolean(transitionHotspot);
   if (cinematic) {
+    preloadPanorama(scene.panorama);
     await runExitTransition(transitionHotspot);
   }
 
@@ -156,6 +157,10 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
   setLoading(!cinematic, 'Caricamento scena');
   try {
     if (!cinematic) await wait(140);
+    if (cinematic) {
+      await ensurePanoramaReady(scene.panorama);
+      document.body.classList.add('is-panorama-swapping');
+    }
     await setViewerScene(state.viewer, scene);
     state.activeScene = scene;
     setActiveScene(scene);
@@ -165,6 +170,8 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
     preloadLinkedScenes(scene);
     if (cinematic) {
       setLoading(false);
+      await waitForNextPaint();
+      document.body.classList.remove('is-panorama-swapping');
       await waitForNextPaint();
       document.body.classList.remove('is-scene-transitioning');
       await wait(SCENE_TRANSITION.fadeMs);
@@ -178,6 +185,7 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
     return false;
   } finally {
     setLoading(false);
+    document.body.classList.remove('is-panorama-swapping');
     document.body.classList.remove('is-scene-transitioning');
     document.body.classList.remove('is-cinematic-transitioning');
   }
@@ -256,10 +264,43 @@ function preloadLinkedScenes(scene) {
     const storedTarget = getSceneById(state.project, sceneId);
     const target = storedTarget ? resolveSceneMedia(state.project, storedTarget) : null;
     if (target?.panorama) {
-      const image = new Image();
-      image.src = target.panorama;
+      preloadPanorama(target.panorama);
     }
   });
+}
+
+const panoramaPreloadCache = new Map();
+
+function preloadPanorama(src) {
+  if (!src) return Promise.resolve(false);
+  if (panoramaPreloadCache.has(src)) {
+    return panoramaPreloadCache.get(src);
+  }
+
+  const promise = new Promise((resolve) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.onload = async () => {
+      try {
+        await image.decode?.();
+      } catch {
+        // The image is already loaded; decode() is an optional optimization.
+      }
+      resolve(true);
+    };
+    image.onerror = () => resolve(false);
+    image.src = src;
+  });
+
+  panoramaPreloadCache.set(src, promise);
+  return promise;
+}
+
+async function ensurePanoramaReady(src) {
+  await Promise.race([
+    preloadPanorama(src),
+    wait(900),
+  ]);
 }
 
 async function initialize() {
