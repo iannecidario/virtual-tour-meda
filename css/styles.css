@@ -386,6 +386,8 @@ body[data-app-mode="admin"] .tours-toggle {
   opacity: 0;
   pointer-events: none;
   transition: opacity 220ms ease;
+  will-change: opacity;
+  transform: translateZ(0);
 }
 
 body.is-scene-transitioning .viewer-panel::after {

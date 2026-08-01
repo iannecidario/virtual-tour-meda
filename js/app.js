@@ -1,14 +1,14 @@
-import { createHotspotViewer } from './hotspot-viewer.js?v=20260730-8';
-import { createInformationPanel } from './information-panel.js?v=20260730-8';
-import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260730-8';
-import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260730-8';
-import { resolveSceneMedia } from './media-store.js?v=20260730-8';
-import { createMobileControlsMenu } from './mobile-controls.js?v=20260730-8';
-import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260730-8';
-import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260730-8';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260730-8';
-import { createWelcomeOverlay } from './welcome-overlay.js?v=20260730-8';
-import { setupEmbedMode } from './embed-mode.js?v=20260730-8';
+import { createHotspotViewer } from './hotspot-viewer.js?v=20260801-1';
+import { createInformationPanel } from './information-panel.js?v=20260801-1';
+import { createPanoramaViewer, getMarkersPlugin, setViewerScene } from './viewer.js?v=20260801-1';
+import { getInitialScene, getSceneById, loadProjectDocument } from './project-store.js?v=20260801-1';
+import { resolveSceneMedia } from './media-store.js?v=20260801-1';
+import { createMobileControlsMenu } from './mobile-controls.js?v=20260801-1';
+import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260801-1';
+import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260801-1';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260801-1';
+import { createWelcomeOverlay } from './welcome-overlay.js?v=20260801-1';
+import { setupEmbedMode } from './embed-mode.js?v=20260801-1';
 
 const state = {
   project: null,
@@ -147,8 +147,12 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
     await runExitTransition(transitionHotspot);
   }
 
-  document.body.classList.add('is-scene-transitioning');
-  document.body.classList.toggle('is-cinematic-transitioning', cinematic);
+  if (cinematic) {
+    await startCinematicFade();
+  } else {
+    document.body.classList.add('is-scene-transitioning');
+  }
+
   setLoading(!cinematic, 'Caricamento scena');
   try {
     if (!cinematic) await wait(140);
@@ -161,7 +165,9 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
     preloadLinkedScenes(scene);
     if (cinematic) {
       setLoading(false);
+      await waitForNextPaint();
       document.body.classList.remove('is-scene-transitioning');
+      await wait(SCENE_TRANSITION.fadeMs);
       await runEntryTransition(scene);
     }
     return true;
@@ -175,6 +181,12 @@ async function changeScene(sceneId, { pushHistory = true, transitionHotspot = nu
     document.body.classList.remove('is-scene-transitioning');
     document.body.classList.remove('is-cinematic-transitioning');
   }
+}
+
+async function startCinematicFade() {
+  document.body.classList.add('is-cinematic-transitioning', 'is-scene-transitioning');
+  await waitForNextPaint();
+  await wait(SCENE_TRANSITION.fadeMs);
 }
 
 async function runExitTransition(hotspot) {
@@ -193,7 +205,6 @@ async function runExitTransition(hotspot) {
   } catch {
     state.viewer.rotate({ yaw: hotspot.yaw, pitch: hotspot.pitch });
   }
-  await wait(SCENE_TRANSITION.fadeMs);
 }
 
 async function runEntryTransition(scene) {
@@ -227,6 +238,14 @@ function highlightHotspot(hotspotId) {
 
 function wait(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+function waitForNextPaint() {
+  return new Promise((resolve) => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(resolve);
+    });
+  });
 }
 
 function preloadLinkedScenes(scene) {
