@@ -6,7 +6,7 @@ import { resolveSceneMedia } from './media-store.js?v=20260801-2';
 import { createMobileControlsMenu } from './mobile-controls.js?v=20260801-2';
 import { createDynamicHotspotAppearance } from './hotspot-marker-config.js?v=20260801-2';
 import { SCENE_TRANSITION } from './scene-transition-config.js?v=20260801-2';
-import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260801-2';
+import { createAudioHotspotPlayer } from './audio-hotspot-player.js?v=20260802-1';
 import { createWelcomeOverlay } from './welcome-overlay.js?v=20260801-2';
 import { setupEmbedMode } from './embed-mode.js?v=20260801-2';
 
@@ -339,6 +339,10 @@ async function initialize() {
       });
       state.informationPanel = informationPanel;
       state.audioPlayer = createAudioHotspotPlayer();
+      setupFullscreenPortals(viewer.container, [
+        elements.infoPanel,
+        document.querySelector('.audio-hotspot-player'),
+      ]);
       createDynamicHotspotAppearance(viewer);
 
       createMobileControlsMenu({
@@ -401,4 +405,38 @@ initialize();
 
 function applyTransitionConfig() {
   document.documentElement.style.setProperty('--scene-transition-fade-ms', `${SCENE_TRANSITION.fadeMs}ms`);
+}
+
+function setupFullscreenPortals(fullscreenMount, nodes = []) {
+  const movableNodes = nodes.filter(Boolean).map((node) => {
+    const placeholder = document.createComment(`fullscreen-portal:${node.id || node.className}`);
+    node.parentNode?.insertBefore(placeholder, node);
+    return { node, placeholder };
+  });
+
+  if (!fullscreenMount || !movableNodes.length) return;
+
+  const update = () => {
+    const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+    const isViewerFullscreen = fullscreenElement
+      && (fullscreenElement === fullscreenMount || fullscreenElement.contains(fullscreenMount) || fullscreenMount.contains(fullscreenElement));
+    const target = isViewerFullscreen ? fullscreenElement : null;
+
+    movableNodes.forEach(({ node, placeholder }) => {
+      if (target) {
+        target.append(node);
+      } else if (placeholder.parentNode) {
+        placeholder.parentNode.insertBefore(node, placeholder.nextSibling);
+      }
+    });
+
+    window.requestAnimationFrame(() => {
+      state.viewer?.autoSize?.();
+      state.viewer?.needsUpdate?.();
+      state.hotspotViewer?.setScene?.(state.activeScene, state.project);
+    });
+  };
+
+  document.addEventListener('fullscreenchange', update);
+  document.addEventListener('webkitfullscreenchange', update);
 }

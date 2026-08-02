@@ -42,6 +42,7 @@ export function createAudioHotspotPlayer() {
     marker = targetMarker;
     elements.title.textContent = hotspot.title || 'Audio ambientale';
     elements.root.hidden = false;
+    document.body.classList.add('is-audio-player-visible');
     elements.root.classList.remove('is-ended');
     audio.pause();
     audio.src = source;
@@ -61,6 +62,7 @@ export function createAudioHotspotPlayer() {
     marker?.classList.remove('is-audio-playing');
     marker = null;
     elements.root.hidden = true;
+    document.body.classList.remove('is-audio-player-visible');
     elements.root.classList.remove('is-ended');
     updateProgress();
   }

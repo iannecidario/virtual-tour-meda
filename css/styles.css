@@ -606,6 +606,37 @@ body.is-welcome-overlay-open {
   backdrop-filter: blur(12px);
 }
 
+.embed-mode.is-audio-player-visible .psv-navbar {
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 70px);
+  left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 42px;
+  height: auto;
+  padding: 4px;
+}
+
+.embed-mode.is-audio-player-visible .psv-navbar .psv-button {
+  width: 34px;
+  height: 34px;
+  padding: 6px;
+}
+
+.embed-mode.is-audio-player-visible .psv-navbar .psv-zoom-range {
+  width: 34px;
+  max-width: 34px;
+  height: 74px;
+  margin: 4px 0;
+  writing-mode: bt-lr;
+  appearance: slider-vertical;
+}
+
+.embed-mode.is-audio-player-visible .mobile-controls-toggle {
+  bottom: calc(max(12px, env(safe-area-inset-bottom)) + 78px);
+}
+
 .psv-button {
   color: var(--ink);
 }
