@@ -6350,11 +6350,11 @@
           "pitch": 0.124279623327062
         },
         {
-          "id": "hotspot-002-copia-001",
+          "id": "proverbio-1",
           "type": "info",
-          "title": "Proverbio copia",
+          "title": "Dal barbiere...",
           "description": "",
-          "category": "Approfondimento",
+          "category": "Proverbio",
           "keywords": [],
           "icon": "speaker",
           "iconMediaId": "",
@@ -6371,8 +6371,8 @@
           "label": "",
           "orientation": "",
           "visible": true,
-          "yaw": 1.395129724331261,
-          "pitch": -0.46930489845267953
+          "yaw": 1.3179865541463327,
+          "pitch": -0.4765412266857112
         },
         {
           "id": "to-trebbiatura",
