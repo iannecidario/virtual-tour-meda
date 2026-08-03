@@ -63,12 +63,18 @@ export function mergeAssetManifest(project, manifest = {}) {
       if (!item.path || paths.has(item.path)) return false;
       const existing = byFileKey.get(mediaFileKey(item));
       if (existing) {
-        existing.path = item.path;
-        existing.fileName = item.fileName || existing.fileName;
+        const existingIsNumbered = isNumberedCopyName(existing.fileName || fileNameFromPath(existing.path));
+        const incomingIsNumbered = isNumberedCopyName(item.fileName || fileNameFromPath(item.path));
+        const shouldUseIncoming = existingIsNumbered && !incomingIsNumbered;
+        if (shouldUseIncoming || !existing.path || existing.path.startsWith('blob:')) {
+          existing.path = item.path;
+          existing.fileName = item.fileName || existing.fileName;
+        }
         existing.category = item.category || existing.category;
         existing.mimeType = item.mimeType || existing.mimeType;
         existing.size = item.size || existing.size;
         existing.uploadedAt = item.uploadedAt || existing.uploadedAt;
+        paths.add(existing.path);
         paths.add(item.path);
         return false;
       }
@@ -96,9 +102,23 @@ export function mergeAssetManifest(project, manifest = {}) {
 }
 
 function mediaFileKey(item = {}) {
-  const fileName = String(item.fileName || fileNameFromPath(item.path) || '').trim().toLowerCase();
+  const fileName = canonicalFileName(item.fileName || fileNameFromPath(item.path)).toLowerCase();
   const category = String(item.category || inferCategory(item) || '').trim().toLowerCase();
   return fileName ? `${category}:${fileName}` : '';
+}
+
+function canonicalFileName(value = '') {
+  const fileName = String(value || '').trim();
+  const dotIndex = fileName.lastIndexOf('.');
+  const stem = dotIndex === -1 ? fileName : fileName.slice(0, dotIndex);
+  const extension = dotIndex === -1 ? '' : fileName.slice(dotIndex);
+  return `${stem.replace(/ [2-9]\d*$/, '')}${extension}`;
+}
+
+function isNumberedCopyName(value = '') {
+  const dotIndex = String(value).lastIndexOf('.');
+  const stem = dotIndex === -1 ? String(value) : String(value).slice(0, dotIndex);
+  return / [2-9]\d*$/.test(stem);
 }
 
 export function getMediaItem(project, mediaId) {
